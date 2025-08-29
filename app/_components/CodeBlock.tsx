@@ -65,7 +65,7 @@ export default function CodeBlock() {
               <span className="select-none text-slate-400/80 tabular-nums">10</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;Svelte 5 Runes + Tailwind v4</span>
             </div>
-            <div className="group/line grid grid-cols-[2rem_1fr] gap-3 px-4 hover:bg-sky-50/70 hover:border-l-4 border-l-transparent hover:border-sky-400 transition-all">
+            <div className="group/line grid grid-cols-[2rem_1fr] gap-3 px-4 hover:bg-sky-50/70 hover:border-l-4 border-l-   ansparent hover:border-sky-400 transition-all">
               <span className="select-none text-slate-400/80 tabular-nums">11</span>
               <span>&nbsp;&nbsp;<span className="text-rose-600">&lt;/h2&gt;</span></span>
             </div>
