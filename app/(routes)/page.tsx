@@ -580,6 +580,14 @@ export default function Index() {
               style={{ animationDelay: "0.3s" }}
             >
               <StartYourProjectButton />
+              <Button
+                variant="outline"
+                size="lg"
+                className="h-12 px-8 border-2 border-brand-200 hover:border-brand-300 bg-linear-to-r hover:from-brand-50 hover:to-ocean-50 transform hover:scale-105 transition-all duration-500"
+                asChild
+              >
+                <a href="https://app.reclaim.ai/m/omniscripts/omniscripts" target="_blank">Schedule a call</a>
+              </Button>
             </div>
           </div>
         </div>
