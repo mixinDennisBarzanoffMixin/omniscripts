@@ -23,7 +23,7 @@ export default function CodeBlock() {
         </div>
 
         {/* Code area: white theme, line numbers, hover highlight */}
-        <div className="bg-white rounded-b-2xl relative z-10">
+        <div className="bg-white rounded-b-2xl relative z-5">
           <div className="font-mono text-[13px] leading-7">
             <div className="group/line grid grid-cols-[2rem_1fr] gap-3 px-4 first:pt-4 hover:bg-sky-50/70 hover:border-l-4 border-l-transparent hover:border-sky-400 transition-all">
               <span className="select-none text-slate-400/80 tabular-nums">1</span>

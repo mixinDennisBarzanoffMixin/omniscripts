@@ -23,6 +23,7 @@ import {
   ShoppingCart,
 } from "lucide-react";
 import CodeBlock from "../_components/CodeBlock";
+import StartYourProjectButton from "../_components/StartYourProjectButton";
 
 export default function Index() {
   return (
@@ -122,14 +123,7 @@ export default function Index() {
               className="mt-10 flex items-center justify-center gap-x-6 animate-fade-in"
               style={{ animationDelay: "0.4s" }}
             >
-              <Button
-                size="lg"
-                // onClick={() => setIsProjectFormOpen(true)}
-                className="h-12 px-8 bg-linear-to-r from-brand-500 to-ocean-500 hover:from-brand-600 hover:to-ocean-600 transform hover:scale-110 transition-transform duration-500 shadow-xl hover:shadow-2xl motion-safe:animate-[glow-50-100_3s_ease-in-out_infinite] cursor-pointer"
-              >
-                Start Your Project
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <StartYourProjectButton />
               <Button
                 variant="outline"
                 size="lg"
@@ -616,21 +610,6 @@ export default function Index() {
               </CardContent>
             </Card>
           </div>
-
-          <div
-            className="text-center mt-12 animate-fade-in"
-            style={{ animationDelay: "1.2s" }}
-          >
-            <Button
-              variant="outline"
-              size="lg"
-              // onClick={() => setIsProjectFormOpen(true)}
-              className="border-2 border-brand-200 hover:border-brand-300 bg-linear-to-r hover:from-brand-50 hover:to-ocean-50 transform hover:scale-105 transition-all duration-500"
-            >
-              Start Your Project Today
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
         </div>
       </section>
 
@@ -804,21 +783,7 @@ export default function Index() {
               className="mt-10 flex items-center justify-center gap-x-6 animate-fade-in"
               style={{ animationDelay: "0.3s" }}
             >
-              <Button
-                size="lg"
-                // onClick={() => setIsProjectFormOpen(true)}
-                className="h-12 px-8 bg-linear-to-r from-brand-500 to-ocean-500 hover:from-brand-600 hover:to-ocean-600 transform hover:scale-110 transition-all duration-500 shadow-xl hover:shadow-2xl animate-glow"
-              >
-                Start Your Project
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="h-12 px-8 border-2 border-brand-200 hover:border-brand-300 bg-linear-to-r hover:from-brand-50 hover:to-ocean-50 transform hover:scale-105 transition-all duration-500"
-              >
-                Schedule a Call
-              </Button>
+              <StartYourProjectButton />
             </div>
           </div>
         </div>
