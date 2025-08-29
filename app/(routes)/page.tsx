@@ -124,7 +124,7 @@ export default function Index() {
               <Button
                 size="lg"
                 // onClick={() => setIsProjectFormOpen(true)}
-                className="h-12 px-8 bg-linear-to-r from-brand-500 to-ocean-500 hover:from-brand-600 hover:to-ocean-600 transform hover:scale-110 transition-transform duration-500 shadow-xl hover:shadow-2xl motion-safe:animate-[glow-50-100_3s_ease-in-out_infinite]"
+                className="h-12 px-8 bg-linear-to-r from-brand-500 to-ocean-500 hover:from-brand-600 hover:to-ocean-600 transform hover:scale-110 transition-transform duration-500 shadow-xl hover:shadow-2xl motion-safe:animate-[glow-50-100_3s_ease-in-out_infinite] cursor-pointer"
               >
                 Start Your Project
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -158,13 +158,13 @@ export default function Index() {
           </div>
 
           <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3">
-            <Card className="border-0 shadow-xl bg-card/80 backdrop-blur-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-700 animate-slide-in-left group relative overflow-hidden">
-              <div className="absolute inset-0 bg-linear-to-br from-brand-500/5 to-brand-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+            <div className="group">
+              <Card className="border-0 shadow-xl bg-card/80 backdrop-blur-xl transform transition-transform duration-300 hover:scale-105 relative overflow-hidden">
               <CardHeader className="relative z-10">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br from-brand-500 to-brand-600 animate-float shadow-lg group-hover:shadow-xl transition-shadow duration-500">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br from-brand-500 to-brand-600 shadow-lg">
                   <Smartphone className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="group-hover:text-brand-600 transition-colors duration-500">
+                <CardTitle>
                   Mobile Apps
                 </CardTitle>
                 <CardDescription>
@@ -174,35 +174,34 @@ export default function Index() {
               </CardHeader>
               <CardContent className="relative z-10">
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-center group-hover:text-foreground transition-colors duration-500">
+                  <li className="flex items-center">
                     <CheckCircle className="mr-2 h-4 w-4 text-brand-500" />
                     iOS & Android Development
                   </li>
-                  <li className="flex items-center group-hover:text-foreground transition-colors duration-500">
+                  <li className="flex items-center">
                     <CheckCircle className="mr-2 h-4 w-4 text-brand-500" />
                     React Native & Flutter
                   </li>
-                  <li className="flex items-center group-hover:text-foreground transition-colors duration-500">
+                  <li className="flex items-center">
                     <CheckCircle className="mr-2 h-4 w-4 text-brand-500" />
                     App Store Optimization
                   </li>
                 </ul>
               </CardContent>
-            </Card>
+              </Card>
+            </div>
 
-            <Card
-              className="border-0 shadow-xl bg-card/80 backdrop-blur-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-700 animate-fade-in group relative overflow-hidden"
-              style={{ animationDelay: "0.2s" }}
-            >
-              <div className="absolute inset-0 bg-linear-to-br from-ocean-500/5 to-ocean-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+            <div className="group">
+              <Card
+                className="border-0 shadow-xl bg-card/80 backdrop-blur-xl transform transition-transform duration-300 hover:scale-105 relative overflow-hidden"
+              >
               <CardHeader className="relative z-10">
                 <div
-                  className="flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br from-ocean-500 to-ocean-600 animate-float shadow-lg group-hover:shadow-xl transition-shadow duration-500"
-                  style={{ animationDelay: "1s" }}
+                  className="flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br from-ocean-500 to-ocean-600 shadow-lg"
                 >
                   <Globe className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="group-hover:text-ocean-600 transition-colors duration-500">
+                <CardTitle>
                   Web Applications
                 </CardTitle>
                 <CardDescription>
@@ -212,35 +211,34 @@ export default function Index() {
               </CardHeader>
               <CardContent className="relative z-10">
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-center group-hover:text-foreground transition-colors duration-500">
+                  <li className="flex items-center">
                     <CheckCircle className="mr-2 h-4 w-4 text-ocean-500" />
                     React, Vue & Angular
                   </li>
-                  <li className="flex items-center group-hover:text-foreground transition-colors duration-500">
+                  <li className="flex items-center">
                     <CheckCircle className="mr-2 h-4 w-4 text-ocean-500" />
                     Cloud-Native Architecture
                   </li>
-                  <li className="flex items-center group-hover:text-foreground transition-colors duration-500">
+                  <li className="flex items-center">
                     <CheckCircle className="mr-2 h-4 w-4 text-ocean-500" />
                     Performance Optimization
                   </li>
                 </ul>
               </CardContent>
-            </Card>
+              </Card>
+            </div>
 
-            <Card
-              className="border-0 shadow-xl bg-card/80 backdrop-blur-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-700 animate-slide-in-right group relative overflow-hidden"
-              style={{ animationDelay: "0.4s" }}
-            >
-              <div className="absolute inset-0 bg-linear-to-br from-navy-600/5 to-navy-700/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+            <div className="group">
+              <Card
+                className="border-0 shadow-xl bg-card/80 backdrop-blur-xl transform transition-transform duration-300 hover:scale-105 relative overflow-hidden"
+              >
               <CardHeader className="relative z-10">
                 <div
-                  className="flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br from-navy-600 to-navy-700 animate-float shadow-lg group-hover:shadow-xl transition-shadow duration-500"
-                  style={{ animationDelay: "2s" }}
+                  className="flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br from-navy-600 to-navy-700 shadow-lg"
                 >
                   <Shield className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="group-hover:text-navy-600 transition-colors duration-500">
+                <CardTitle>
                   Enterprise Solutions
                 </CardTitle>
                 <CardDescription>
@@ -250,21 +248,22 @@ export default function Index() {
               </CardHeader>
               <CardContent className="relative z-10">
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-center group-hover:text-foreground transition-colors duration-500">
+                  <li className="flex items-center">
                     <CheckCircle className="mr-2 h-4 w-4 text-navy-600" />
                     API Development
                   </li>
-                  <li className="flex items-center group-hover:text-foreground transition-colors duration-500">
+                  <li className="flex items-center">
                     <CheckCircle className="mr-2 h-4 w-4 text-navy-600" />
                     Database Design
                   </li>
-                  <li className="flex items-center group-hover:text-foreground transition-colors duration-500">
+                  <li className="flex items-center">
                     <CheckCircle className="mr-2 h-4 w-4 text-navy-600" />
                     System Integration
                   </li>
                 </ul>
               </CardContent>
-            </Card>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
