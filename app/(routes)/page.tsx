@@ -21,6 +21,8 @@ import {
   Monitor,
   Palette,
   ShoppingCart,
+  Wrench,
+  Cpu,
 } from "lucide-react";
 import CodeBlock from "../_components/CodeBlock";
 import StartYourProjectButton from "../_components/StartYourProjectButton";
@@ -132,66 +134,6 @@ export default function Index() {
                 <a href="#portfolio">View Portfolio</a>
               </Button>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Tech Stack / Code Example Section */}
-      <section className="py-24 relative">
-        <div className="container relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-            {/* Left: Text content */}
-            <div className="space-y-5 animate-slide-in-left">
-              <Badge
-                variant="secondary"
-                className="mb-2 bg-linear-to-r from-brand-50 to-ocean-50 border-brand-200"
-              >
-                <Code className="mr-1 h-3 w-3" />
-                Modern Tech
-              </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
-                Modern Technologies build fast apps.
-              </h2>
-              <p className="text-muted-foreground md:text-lg">
-                We use latest technologies (SvelteKit, Next.js, Flutter, Tailwind CSS, Railway...) in order to deliver fast, secure and beautiful products 
-                that can be quickly deployed and maintained effortlessly</p>
-              <div className="flex flex-wrap gap-3 pt-2">
-                <Button className="bg-linear-to-r from-brand-500 to-ocean-500 hover:from-brand-600 hover:to-ocean-600">
-                  Try in Playground
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-                <Button variant="outline" className="border-2 border-brand-200 hover:border-brand-300">
-                  Read the Docs
-                  <ExternalLink className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-
-            <CodeBlock />
-
-          </div>
-        </div>
-      </section>
-
-      {/* Research-driven Stack Selection */}
-      <section className="py-20 bg-linear-to-r from-muted/20 via-brand-50/20 to-ocean-50/20 relative">
-        <div className="container relative z-10">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground">
-              We research every project
-            </h2>
-            <p className="mt-4 text-muted-foreground md:text-lg">
-              Δεν δουλεύουμε με ένα fixed stack. Κάνουμε research (έρευνα) για κάθε
-              project και επιλέγουμε τα καλύτερα εργαλεία για τις ανάγκες σου.
-            </p>
-          </div>
-
-          <div className="mx-auto mt-10 grid max-w-4xl grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
-            {['Svelte', 'Next.js', 'Remix', 'Astro', 'Nuxt', 'NestJS', 'Laravel', 'Rails', 'Spring', 'Flutter', 'React Native', 'Angular'].map((fw) => (
-              <div key={fw} className="text-sm px-3 py-2 rounded-lg border bg-card/70 text-foreground/90 hover:bg-card transition-colors text-center shadow-sm">
-                {fw}
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -337,14 +279,14 @@ export default function Index() {
           </div>
 
           <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {/* TechFlow Platform */}
+            {/* Sintagma */}
             <Card className="border-0 shadow-xl bg-card/80 backdrop-blur-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-700 animate-scale-in group relative overflow-hidden">
               <div className="absolute inset-0 bg-linear-to-br from-brand-500/5 to-brand-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               <div className="aspect-video bg-linear-to-br from-brand-100 to-brand-200 relative overflow-hidden">
                 <div className="absolute inset-0 bg-linear-to-br from-brand-500/20 to-ocean-500/20"></div>
-                <div className="absolute inset-4 bg-white/90 rounded-lg flex items-center justify-center">
-                  <Monitor className="h-12 w-12 text-brand-500" />
-                </div>
+                <a href="https://www.sintagma.co" target="_blank" rel="noopener noreferrer" className="absolute inset-2 bg-white/90 rounded-lg flex items-center justify-center">
+                  <img src="/sintagma.png" alt="Sintagma" className="h-full w-full object-cover rounded-lg" />
+                </a>
                 <Badge className="absolute top-3 right-3 bg-green-500 text-white">
                   Live
                 </Badge>
@@ -352,13 +294,14 @@ export default function Index() {
               <CardHeader className="relative z-10">
                 <div className="flex items-center justify-between">
                   <CardTitle className="group-hover:text-brand-600 transition-colors duration-500">
-                    TechFlow Platform
+                    Sintagma.co 
                   </CardTitle>
-                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-brand-500 transition-colors" />
+                  <a href="https://www.sintagma.co" target="_blank" rel="noopener noreferrer" className="cursor-pointer p-2 -m-2 rounded-full hover:bg-brand-100/50 transition-colors">
+                    <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-brand-500 transition-colors" />
+                  </a>
                 </div>
                 <CardDescription>
-                  Modern SaaS platform for tech startups with advanced analytics
-                  and team collaboration tools.
+                  A broker website for a private owner who sells properties.
                 </CardDescription>
               </CardHeader>
               <CardContent className="relative z-10">
@@ -367,20 +310,19 @@ export default function Index() {
                     React
                   </Badge>
                   <Badge variant="secondary" className="text-xs">
-                    Node.js
+                    PostgreSQL
                   </Badge>
                   <Badge variant="secondary" className="text-xs">
-                    PostgreSQL
+                    Railway
                   </Badge>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Built for a growing startup, featuring real-time collaboration
-                  and advanced data visualization.
+                  Built for a private owner who sells properties in multiple countries. With internationalisation and email sending.
                 </p>
               </CardContent>
             </Card>
 
-            {/* EcoShop E-commerce */}
+            {/* MalkotoHanche E-commerce */}
             <Card
               className="border-0 shadow-xl bg-card/80 backdrop-blur-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-700 animate-scale-in group relative overflow-hidden"
               style={{ animationDelay: "0.2s" }}
@@ -388,9 +330,9 @@ export default function Index() {
               <div className="absolute inset-0 bg-linear-to-br from-green-500/5 to-green-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               <div className="aspect-video bg-linear-to-br from-green-100 to-green-200 relative overflow-hidden">
                 <div className="absolute inset-0 bg-linear-to-br from-green-500/20 to-green-600/20"></div>
-                <div className="absolute inset-4 bg-white/90 rounded-lg flex items-center justify-center">
-                  <ShoppingCart className="h-12 w-12 text-green-500" />
-                </div>
+                <a href="https://www.malkotohanche.com" target="_blank" rel="noopener noreferrer" className="absolute inset-2 bg-white/90 rounded-lg flex items-center justify-center">
+                  <img src="/malkotohanche.png" alt="Malkoto Hanche" className="h-full w-full object-cover rounded-lg"  />
+                </a>
                 <Badge className="absolute top-3 right-3 bg-green-500 text-white">
                   Live
                 </Badge>
@@ -398,25 +340,26 @@ export default function Index() {
               <CardHeader className="relative z-10">
                 <div className="flex items-center justify-between">
                   <CardTitle className="group-hover:text-green-600 transition-colors duration-500">
-                    EcoShop
+                    Malkoto Hanche
                   </CardTitle>
-                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-green-500 transition-colors" />
+                  <a href="https://malkotohanche.com" target="_blank" rel="noopener noreferrer" className="cursor-pointer p-2 -m-2 rounded-full hover:bg-green-100/50 transition-colors">
+                    <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-green-500 transition-colors" />
+                  </a>
                 </div>
                 <CardDescription>
-                  Sustainable e-commerce platform with AI-powered product
-                  recommendations and carbon footprint tracking.
+                    A family market that sells products online thanks to their website, created by OmniScripts.
                 </CardDescription>
               </CardHeader>
               <CardContent className="relative z-10">
                 <div className="flex flex-wrap gap-2 mb-3">
                   <Badge variant="secondary" className="text-xs">
-                    Next.js
+                    React
                   </Badge>
                   <Badge variant="secondary" className="text-xs">
-                    Stripe
+                    Strapi
                   </Badge>
                   <Badge variant="secondary" className="text-xs">
-                    MongoDB
+                    PostgreSQL
                   </Badge>
                 </div>
                 <p className="text-sm text-muted-foreground">
@@ -434,35 +377,30 @@ export default function Index() {
               <div className="absolute inset-0 bg-linear-to-br from-purple-500/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               <div className="aspect-video bg-linear-to-br from-purple-100 to-purple-200 relative overflow-hidden">
                 <div className="absolute inset-0 bg-linear-to-br from-purple-500/20 to-purple-600/20"></div>
-                <div className="absolute inset-4 bg-white/90 rounded-lg flex items-center justify-center">
-                  <Palette className="h-12 w-12 text-purple-500" />
+                <div className="absolute inset-2 bg-white/90 rounded-lg flex items-center justify-center">
+                  <img src="/rentauto.png" alt="Rentauto" className="h-full w-full object-cover rounded-lg" />
                 </div>
-                <Badge className="absolute top-3 right-3 bg-green-500 text-white">
-                  Live
-                </Badge>
               </div>
               <CardHeader className="relative z-10">
                 <div className="flex items-center justify-between">
                   <CardTitle className="group-hover:text-purple-600 transition-colors duration-500">
-                    DesignStudio
+                    Rentauto
                   </CardTitle>
-                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-purple-500 transition-colors" />
                 </div>
                 <CardDescription>
-                  Creative agency portfolio with interactive animations and
-                  client project showcase galleries.
+                  Rentauto is a platform for renting cars. This client made lots of real profit as a result of the website.
                 </CardDescription>
               </CardHeader>
               <CardContent className="relative z-10">
                 <div className="flex flex-wrap gap-2 mb-3">
                   <Badge variant="secondary" className="text-xs">
-                    Vue.js
+                    Spring Boot
                   </Badge>
                   <Badge variant="secondary" className="text-xs">
-                    Three.js
+                    MySQL
                   </Badge>
                   <Badge variant="secondary" className="text-xs">
-                    GSAP
+                    Paypal
                   </Badge>
                 </div>
                 <p className="text-sm text-muted-foreground">
@@ -471,144 +409,44 @@ export default function Index() {
                 </p>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
 
-            {/* MedConnect App */}
-            <Card
-              className="border-0 shadow-xl bg-card/80 backdrop-blur-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-700 animate-scale-in group relative overflow-hidden"
-              style={{ animationDelay: "0.6s" }}
-            >
-              <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-              <div className="aspect-video bg-linear-to-br from-blue-100 to-blue-200 relative overflow-hidden">
-                <div className="absolute inset-0 bg-linear-to-br from-blue-500/20 to-blue-600/20"></div>
-                <div className="absolute inset-4 bg-white/90 rounded-lg flex items-center justify-center">
-                  <Users className="h-12 w-12 text-blue-500" />
-                </div>
-                <Badge className="absolute top-3 right-3 bg-green-500 text-white">
-                  Live
-                </Badge>
-              </div>
-              <CardHeader className="relative z-10">
-                <div className="flex items-center justify-between">
-                  <CardTitle className="group-hover:text-blue-600 transition-colors duration-500">
-                    MedConnect
-                  </CardTitle>
-                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-blue-500 transition-colors" />
-                </div>
-                <CardDescription>
-                  Healthcare platform connecting patients with medical
-                  professionals through secure video consultations.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="relative z-10">
-                <div className="flex flex-wrap gap-2 mb-3">
-                  <Badge variant="secondary" className="text-xs">
-                    React Native
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs">
-                    WebRTC
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs">
-                    HIPAA
-                  </Badge>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Secure telemedicine app with encrypted communications and
-                  appointment scheduling.
-                </p>
-              </CardContent>
-            </Card>
 
-            {/* FinTrack Dashboard */}
-            <Card
-              className="border-0 shadow-xl bg-card/80 backdrop-blur-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-700 animate-scale-in group relative overflow-hidden"
-              style={{ animationDelay: "0.8s" }}
-            >
-              <div className="absolute inset-0 bg-linear-to-br from-orange-500/5 to-orange-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-              <div className="aspect-video bg-linear-to-br from-orange-100 to-orange-200 relative overflow-hidden">
-                <div className="absolute inset-0 bg-linear-to-br from-orange-500/20 to-orange-600/20"></div>
-                <div className="absolute inset-4 bg-white/90 rounded-lg flex items-center justify-center">
-                  <Zap className="h-12 w-12 text-orange-500" />
-                </div>
-                <Badge className="absolute top-3 right-3 bg-green-500 text-white">
-                  Live
-                </Badge>
+            {/* Tech Stack / Code Example Section */}
+            <section className="py-24 relative">
+        <div className="container relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            {/* Left: Text content */}
+            <div className="space-y-5 animate-slide-in-left">
+              <Badge
+                variant="secondary"
+                className="mb-2 bg-linear-to-r from-brand-50 to-ocean-50 border-brand-200"
+              >
+                <Code className="mr-1 h-3 w-3" />
+                Modern Tech
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+                Modern Technologies build fast apps.
+              </h2>
+              <p className="text-muted-foreground md:text-lg">
+                We use latest technologies (SvelteKit, Next.js, Flutter, Tailwind CSS, Railway...) in order to deliver fast, secure and beautiful products 
+                that can be quickly deployed and maintained effortlessly</p>
+              <div className="flex flex-wrap gap-3 pt-2">
+                <Button className="bg-linear-to-r from-brand-500 to-ocean-500 hover:from-brand-600 hover:to-ocean-600">
+                  Try in Playground
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+                <Button variant="outline" className="border-2 border-brand-200 hover:border-brand-300">
+                  Read the Docs
+                  <ExternalLink className="ml-2 h-4 w-4" />
+                </Button>
               </div>
-              <CardHeader className="relative z-10">
-                <div className="flex items-center justify-between">
-                  <CardTitle className="group-hover:text-orange-600 transition-colors duration-500">
-                    FinTrack
-                  </CardTitle>
-                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-orange-500 transition-colors" />
-                </div>
-                <CardDescription>
-                  Financial analytics dashboard with real-time market data and
-                  automated investment recommendations.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="relative z-10">
-                <div className="flex flex-wrap gap-2 mb-3">
-                  <Badge variant="secondary" className="text-xs">
-                    Angular
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs">
-                    D3.js
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs">
-                    Redis
-                  </Badge>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Advanced financial dashboard with machine learning-powered
-                  insights and predictions.
-                </p>
-              </CardContent>
-            </Card>
+            </div>
 
-            {/* SmartHome IoT */}
-            <Card
-              className="border-0 shadow-xl bg-card/80 backdrop-blur-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-700 animate-scale-in group relative overflow-hidden"
-              style={{ animationDelay: "1s" }}
-            >
-              <div className="absolute inset-0 bg-linear-to-br from-teal-500/5 to-teal-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-              <div className="aspect-video bg-linear-to-br from-teal-100 to-teal-200 relative overflow-hidden">
-                <div className="absolute inset-0 bg-linear-to-br from-teal-500/20 to-teal-600/20"></div>
-                <div className="absolute inset-4 bg-white/90 rounded-lg flex items-center justify-center">
-                  <Shield className="h-12 w-12 text-teal-500" />
-                </div>
-                <Badge className="absolute top-3 right-3 bg-green-500 text-white">
-                  Live
-                </Badge>
-              </div>
-              <CardHeader className="relative z-10">
-                <div className="flex items-center justify-between">
-                  <CardTitle className="group-hover:text-teal-600 transition-colors duration-500">
-                    SmartHome
-                  </CardTitle>
-                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-teal-500 transition-colors" />
-                </div>
-                <CardDescription>
-                  IoT platform for smart home automation with AI-powered energy
-                  optimization and security monitoring.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="relative z-10">
-                <div className="flex flex-wrap gap-2 mb-3">
-                  <Badge variant="secondary" className="text-xs">
-                    Flutter
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs">
-                    AWS IoT
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs">
-                    MQTT
-                  </Badge>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Complete IoT solution with mobile app control and intelligent
-                  automation features.
-                </p>
-              </CardContent>
-            </Card>
+            <CodeBlock />
+
           </div>
         </div>
       </section>
@@ -651,14 +489,13 @@ export default function Index() {
                 className="flex h-16 w-16 items-center justify-center rounded-full bg-linear-to-br from-ocean-100 to-ocean-200 group-hover:from-ocean-200 group-hover:to-ocean-300 transition-all duration-500 animate-pulse-slow shadow-lg group-hover:shadow-xl"
                 style={{ animationDelay: "1s" }}
               >
-                <Users className="h-8 w-8 text-ocean-600 group-hover:scale-110 transition-transform duration-500" />
+                <Cpu className="h-8 w-8 text-ocean-600 group-hover:scale-110 transition-transform duration-500" />
               </div>
               <h3 className="mt-4 text-lg font-semibold group-hover:text-ocean-600 transition-colors duration-500">
-                User-Centric
+                Custom Technolgoies
               </h3>
               <p className="mt-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-500">
-                Intuitive designs and seamless user experiences that delight and
-                engage
+                We always choose the best technologies for your project based on your needs.
               </p>
             </div>
 
@@ -670,14 +507,13 @@ export default function Index() {
                 className="flex h-16 w-16 items-center justify-center rounded-full bg-linear-to-br from-navy-100 to-navy-200 group-hover:from-navy-200 group-hover:to-navy-300 transition-all duration-500 animate-pulse-slow shadow-lg group-hover:shadow-xl"
                 style={{ animationDelay: "2s" }}
               >
-                <Shield className="h-8 w-8 text-navy-600 group-hover:scale-110 transition-transform duration-500" />
+                <Wrench className="h-8 w-8 text-navy-600 group-hover:scale-110 transition-transform duration-500" />
               </div>
               <h3 className="mt-4 text-lg font-semibold group-hover:text-navy-600 transition-colors duration-500">
-                Secure & Reliable
+                Long-term Maintenance
               </h3>
               <p className="mt-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-500">
-                Enterprise-grade security and reliability you can trust for
-                mission-critical applications
+                We provide long-term maintenance and support for your project, ensuring it stays up to date and functional.
               </p>
             </div>
           </div>
@@ -693,8 +529,8 @@ export default function Index() {
             </h2>
           </div>
 
-          <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2">
-            <Card className="border-0 shadow-xl bg-card/80 backdrop-blur-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-700 animate-slide-in-left group relative overflow-hidden">
+          <div className="mx-auto mt-16 grid max-w-5xl grid-cols-4 gap-8">
+            <Card className="md:col-span-2 md:col-start-2 col-span-4 border-0 shadow-xl bg-card/80 backdrop-blur-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-700 animate-slide-in-left group relative overflow-hidden">
               <div className="absolute inset-0 bg-linear-to-br from-brand-500/5 to-ocean-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               <CardContent className="pt-6 relative z-10">
                 <div className="flex items-center space-x-1 mb-4">
@@ -706,58 +542,18 @@ export default function Index() {
                   ))}
                 </div>
                 <p className="text-muted-foreground mb-4 group-hover:text-foreground transition-colors duration-500">
-                  "OmniScripts delivered exactly what we needed. Their attention
-                  to detail and technical expertise helped us launch a product
-                  that exceeded our expectations."
+                  "Леле, не съм очаквала такъв професионален сайт, направо съм много доволна!"
                 </p>
                 <div className="flex items-center space-x-3">
                   <div className="h-10 w-10 rounded-full bg-linear-to-br from-brand-400 to-brand-500 flex items-center justify-center text-white font-semibold animate-float shadow-lg">
-                    SM
+                    VB
                   </div>
                   <div>
                     <p className="font-semibold group-hover:text-brand-600 transition-colors duration-500">
-                      Sarah Mitchell
+                      Vanya Blagoeva 
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      CEO, TechFlow
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card
-              className="border-0 shadow-xl bg-card/80 backdrop-blur-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-700 animate-slide-in-right group relative overflow-hidden"
-              style={{ animationDelay: "0.2s" }}
-            >
-              <div className="absolute inset-0 bg-linear-to-br from-ocean-500/5 to-brand-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-              <CardContent className="pt-6 relative z-10">
-                <div className="flex items-center space-x-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-4 w-4 fill-yellow-400 text-yellow-400"
-                    />
-                  ))}
-                </div>
-                <p className="text-muted-foreground mb-4 group-hover:text-foreground transition-colors duration-500">
-                  "Incredible team with deep technical knowledge. They
-                  transformed our complex requirements into an elegant, scalable
-                  solution. Highly recommended!"
-                </p>
-                <div className="flex items-center space-x-3">
-                  <div
-                    className="h-10 w-10 rounded-full bg-linear-to-br from-ocean-400 to-ocean-500 flex items-center justify-center text-white font-semibold animate-float shadow-lg"
-                    style={{ animationDelay: "1s" }}
-                  >
-                    JD
-                  </div>
-                  <div>
-                    <p className="font-semibold group-hover:text-ocean-600 transition-colors duration-500">
-                      James Davidson
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      CTO, Innovate Labs
+                      CEO, Strongplast LTD
                     </p>
                   </div>
                 </div>
