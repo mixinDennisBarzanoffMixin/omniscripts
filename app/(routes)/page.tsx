@@ -26,6 +26,32 @@ import {
 } from "lucide-react";
 import CodeBlock from "../_components/CodeBlock";
 import StartYourProjectButton from "../_components/StartYourProjectButton";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Modern Software Solutions & Development Services",
+  description: "OmniScripts creates exceptional mobile apps, web applications, and digital solutions. Expert development with React, Flutter, Next.js, and modern technologies. Transform your vision into reality with our professional software development services.",
+  keywords: ["software development", "mobile app development", "web development", "React development", "Flutter apps", "Next.js", "digital solutions", "custom software", "app development services", "website development"],
+  openGraph: {
+    title: "OmniScripts - Modern Software Solutions & Development Services",
+    description: "We craft exceptional apps, websites, and digital solutions that drive growth and innovation. Expert development with modern technologies.",
+    url: "https://omniscripts.com",
+    images: [
+      {
+        url: "/og-home.jpg",
+        width: 1200,
+        height: 630,
+        alt: "OmniScripts Software Development Services",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "OmniScripts - Modern Software Solutions & Development Services",
+    description: "We craft exceptional apps, websites, and digital solutions that drive growth and innovation.",
+    images: ["/twitter-home.jpg"],
+  },
+};
 
 export default function Index() {
   return (

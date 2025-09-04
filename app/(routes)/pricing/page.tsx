@@ -19,6 +19,32 @@ import {
   Star,
 } from "lucide-react";
 import PricingCTA from "@/components/PricingCTA";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Pricing - Transparent Software Development Costs",
+  description: "Simple, transparent pricing for mobile apps, web applications, and enterprise solutions. Choose from Starter ($2,999), Professional ($7,999), or Enterprise ($19,999) packages. All plans include modern technologies, support, and deployment.",
+  keywords: ["software development pricing", "app development cost", "web development pricing", "mobile app cost", "custom software pricing", "development packages", "transparent pricing", "software development rates"],
+  openGraph: {
+    title: "OmniScripts Pricing - Transparent Software Development Costs",
+    description: "Simple, transparent pricing for all your software development needs. From startups to enterprise solutions.",
+    url: "https://omniscripts.com/pricing",
+    images: [
+      {
+        url: "/og-pricing.jpg",
+        width: 1200,
+        height: 630,
+        alt: "OmniScripts Pricing Plans",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "OmniScripts Pricing - Transparent Software Development Costs",
+    description: "Simple, transparent pricing for all your software development needs. From startups to enterprise solutions.",
+    images: ["/twitter-pricing.jpg"],
+  },
+};
 
 export default function Pricing() {
 
