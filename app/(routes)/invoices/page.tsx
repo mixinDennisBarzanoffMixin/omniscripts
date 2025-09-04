@@ -6,43 +6,22 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Code, LogOut, FileText, DollarSign, Calendar, User } from "lucide-react";
+import { Code, LogOut, FileText, DollarSign, Calendar, User, Eye } from "lucide-react";
+import { INVOICES, calculateInvoiceTotal } from "@/app/_data/invoices";
 
-// Mock invoice data - you can replace this with real data
-const mockInvoices = [
-  {
-    id: "INV-001",
-    client: "Sintagma.co",
-    amount: 7999,
-    status: "paid",
-    date: "2024-01-15",
-    description: "Professional Package - Real Estate Platform"
-  },
-  {
-    id: "INV-002", 
-    client: "Malkoto Hanche",
-    amount: 7999,
-    status: "paid",
-    date: "2024-02-20",
-    description: "Professional Package - E-commerce Platform"
-  },
-  {
-    id: "INV-003",
-    client: "Rentauto",
-    amount: 19999,
-    status: "pending",
-    date: "2024-03-10",
-    description: "Enterprise Package - Car Rental Platform"
-  },
-  {
-    id: "INV-004",
-    client: "New Client Project",
-    amount: 2999,
-    status: "draft",
-    date: "2024-03-25",
-    description: "Starter Package - Portfolio Website"
-  }
-];
+// Transform hardcoded invoices for display
+const invoicesWithTotals = INVOICES.map(invoice => {
+  const calculations = calculateInvoiceTotal(invoice.services);
+  return {
+    id: invoice.id,
+    number: invoice.number,
+    client: invoice.client.name,
+    amount: calculations.totals.total,
+    status: invoice.status,
+    date: invoice.date,
+    description: invoice.notes,
+  };
+});
 
 export default function InvoicesPage() {
   const router = useRouter();
@@ -177,7 +156,7 @@ export default function InvoicesPage() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-green-600">
-                {formatPrice(mockInvoices.filter(inv => inv.status === 'paid').reduce((sum, inv) => sum + inv.amount, 0))}
+                {formatPrice(invoicesWithTotals.filter(inv => inv.status === 'paid').reduce((sum, inv) => sum + inv.amount, 0))}
               </div>
             </CardContent>
           </Card>
@@ -191,7 +170,7 @@ export default function InvoicesPage() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-yellow-600">
-                {formatPrice(mockInvoices.filter(inv => inv.status === 'pending').reduce((sum, inv) => sum + inv.amount, 0))}
+                {formatPrice(invoicesWithTotals.filter(inv => inv.status === 'pending').reduce((sum, inv) => sum + inv.amount, 0))}
               </div>
             </CardContent>
           </Card>
@@ -205,7 +184,7 @@ export default function InvoicesPage() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-brand-600">
-                {new Set(mockInvoices.map(inv => inv.client)).size}
+                {new Set(invoicesWithTotals.map(inv => inv.client)).size}
               </div>
             </CardContent>
           </Card>
@@ -224,18 +203,19 @@ export default function InvoicesPage() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>ID</TableHead>
+                  <TableHead>Αριθμός (Number)</TableHead>
                   <TableHead>Πελάτης (Client)</TableHead>
                   <TableHead>Περιγραφή (Description)</TableHead>
                   <TableHead>Ποσό (Amount)</TableHead>
                   <TableHead>Κατάσταση (Status)</TableHead>
                   <TableHead>Ημερομηνία (Date)</TableHead>
+                  <TableHead>Ενέργειες (Actions)</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {mockInvoices.map((invoice) => (
+                {invoicesWithTotals.map((invoice) => (
                   <TableRow key={invoice.id} className="hover:bg-muted/50">
-                    <TableCell className="font-medium">{invoice.id}</TableCell>
+                    <TableCell className="font-medium">{invoice.number}</TableCell>
                     <TableCell>{invoice.client}</TableCell>
                     <TableCell className="max-w-xs truncate" title={invoice.description}>
                       {invoice.description}
@@ -247,7 +227,18 @@ export default function InvoicesPage() {
                       {getStatusBadge(invoice.status)}
                     </TableCell>
                     <TableCell>
-                      {new Date(invoice.date).toLocaleDateString('el-GR')}
+                      {new Date(invoice.date.split('.').reverse().join('-')).toLocaleDateString('el-GR')}
+                    </TableCell>
+                    <TableCell>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => router.push(`/invoices/${invoice.id}`)}
+                        className="hover:scale-105 transition-all duration-300"
+                      >
+                        <Eye className="h-4 w-4 mr-2" />
+                        Προβολή (View)
+                      </Button>
                     </TableCell>
                   </TableRow>
                 ))}
