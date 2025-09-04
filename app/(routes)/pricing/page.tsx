@@ -177,8 +177,9 @@ export default function Pricing() {
               variant="ghost"
               size="sm"
               className="hover:scale-105 transition-all duration-300"
+              asChild
             >
-              Sign In
+              <a href="/login?redirect=%2Finvoices">Sign In</a>
             </Button>
             <PricingCTA
               size="sm"

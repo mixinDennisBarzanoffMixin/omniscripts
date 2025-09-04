@@ -107,8 +107,9 @@ export default function Index() {
               variant="ghost"
               size="sm"
               className="hover:scale-105 transition-all duration-500"
+              asChild
             >
-              Sign In
+              <a href="/login?redirect=%2Finvoices">Sign In</a>
             </Button>
             <Button
               size="sm"
