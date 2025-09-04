@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+"use client";
 import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { X, Send, Sparkles } from "lucide-react";
+import { useState, useEffect } from "react";
 
 interface ProjectBriefFormProps {
   isOpen: boolean;
