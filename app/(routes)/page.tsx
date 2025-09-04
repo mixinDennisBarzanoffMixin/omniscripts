@@ -29,27 +29,46 @@ import StartYourProjectButton from "../_components/StartYourProjectButton";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Modern Software Solutions & Development Services",
-  description: "OmniScripts creates exceptional mobile apps, web applications, and digital solutions. Expert development with React, Flutter, Next.js, and modern technologies. Transform your vision into reality with our professional software development services.",
-  keywords: ["software development", "mobile app development", "web development", "React development", "Flutter apps", "Next.js", "digital solutions", "custom software", "app development services", "website development"],
+  title: "Professional Software Development Company in Bulgaria",
+  description: "OmniScripts EOOD - Premier Bulgarian software development company. We specialize in mobile app development, web applications, and enterprise solutions using React, Flutter, Next.js. Serving clients across Sofia, Plovdiv, Varna, and internationally with cutting-edge technology solutions.",
+  keywords: [
+    "software development company Bulgaria",
+    "mobile app development Sofia", 
+    "web development services Bulgaria",
+    "React development company",
+    "Flutter app development",
+    "Next.js development services",
+    "enterprise software solutions",
+    "custom software development",
+    "Bulgarian tech company",
+    "digital transformation services",
+    "професионална разработка на софтуер България",
+    "разработка на мобилни приложения София",
+    "уеб разработка България",
+    "дигитални решения"
+  ],
   openGraph: {
-    title: "OmniScripts - Modern Software Solutions & Development Services",
-    description: "We craft exceptional apps, websites, and digital solutions that drive growth and innovation. Expert development with modern technologies.",
+    title: "OmniScripts - Professional Software Development Company in Bulgaria",
+    description: "Premier Bulgarian software development company specializing in mobile apps, web applications, and enterprise solutions. Expert React, Flutter, and Next.js development services.",
     url: "https://omniscripts.com",
     images: [
       {
-        url: "/og-home.jpg",
+        url: "/og-home.jpg", 
         width: 1200,
         height: 630,
-        alt: "OmniScripts Software Development Services",
+        alt: "OmniScripts - Professional Software Development Company Bulgaria",
       },
     ],
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "OmniScripts - Modern Software Solutions & Development Services",
-    description: "We craft exceptional apps, websites, and digital solutions that drive growth and innovation.",
+    title: "OmniScripts - Professional Software Development Company in Bulgaria",
+    description: "Premier Bulgarian software development company specializing in mobile apps, web applications, and enterprise solutions.",
     images: ["/twitter-home.jpg"],
+  },
+  alternates: {
+    canonical: "https://omniscripts.com",
   },
 };
 

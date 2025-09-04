@@ -14,14 +14,30 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "OmniScripts - Modern Software Solutions & Development",
+    default: "OmniScripts - Professional Software Development & Digital Solutions",
     template: "%s | OmniScripts"
   },
-  description: "OmniScripts creates exceptional mobile apps, websites, and digital solutions. Expert development in React, Flutter, Next.js with modern technologies. Transform your vision into reality.",
-  keywords: ["software development", "mobile apps", "web applications", "React", "Flutter", "Next.js", "digital solutions", "custom software", "app development"],
-  authors: [{ name: "OmniScripts Team" }],
-  creator: "OmniScripts",
-  publisher: "OmniScripts",
+  description: "OmniScripts EOOD - Leading Bulgarian software development company. We create exceptional mobile apps, websites, and enterprise solutions using React, Flutter, Next.js. Transform your business with our expert development services.",
+  keywords: [
+    "software development Bulgaria", 
+    "mobile app development", 
+    "web development", 
+    "React development", 
+    "Flutter apps", 
+    "Next.js", 
+    "digital solutions", 
+    "custom software", 
+    "enterprise software", 
+    "Bulgarian tech company",
+    "Sofia software development",
+    "OmniScripts EOOD",
+    "професионална разработка на софтуер",
+    "мобилни приложения",
+    "уеб разработка"
+  ],
+  authors: [{ name: "OmniScripts Development Team", url: "https://omniscripts.com" }],
+  creator: "OmniScripts EOOD",
+  publisher: "OmniScripts EOOD",
   formatDetection: {
     email: false,
     address: false,
@@ -30,10 +46,14 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://omniscripts.com"),
   alternates: {
     canonical: "/",
+    languages: {
+      'en-US': '/en',
+      'bg-BG': '/bg',
+    },
   },
   openGraph: {
-    title: "OmniScripts - Modern Software Solutions & Development",
-    description: "We craft exceptional apps, websites, and digital solutions that drive growth and innovation. Your vision, our expertise, unlimited possibilities.",
+    title: "OmniScripts - Professional Software Development & Digital Solutions",
+    description: "Leading Bulgarian software development company creating exceptional mobile apps, websites, and enterprise solutions. Expert React, Flutter, and Next.js development services.",
     url: "https://omniscripts.com",
     siteName: "OmniScripts",
     images: [
@@ -41,7 +61,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "OmniScripts - Modern Software Solutions",
+        alt: "OmniScripts - Professional Software Development Company",
       },
     ],
     locale: "en_US",
@@ -49,10 +69,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "OmniScripts - Modern Software Solutions & Development",
-    description: "We craft exceptional apps, websites, and digital solutions that drive growth and innovation.",
+    title: "OmniScripts - Professional Software Development & Digital Solutions",
+    description: "Leading Bulgarian software development company creating exceptional mobile apps, websites, and enterprise solutions.",
     images: ["/twitter-image.jpg"],
     creator: "@omniscripts",
+    site: "@omniscripts",
   },
   robots: {
     index: true,
@@ -65,6 +86,11 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: "your-google-site-verification-code",
+    yandex: "your-yandex-verification-code",
+  },
+  category: "Technology",
 };
 
 export default function RootLayout({

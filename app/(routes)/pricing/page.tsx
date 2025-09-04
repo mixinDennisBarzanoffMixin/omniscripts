@@ -22,27 +22,45 @@ import PricingCTA from "@/components/PricingCTA";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Pricing - Transparent Software Development Costs",
-  description: "Simple, transparent pricing for mobile apps, web applications, and enterprise solutions. Choose from Starter ($2,999), Professional ($7,999), or Enterprise ($19,999) packages. All plans include modern technologies, support, and deployment.",
-  keywords: ["software development pricing", "app development cost", "web development pricing", "mobile app cost", "custom software pricing", "development packages", "transparent pricing", "software development rates"],
+  title: "Pricing - Affordable Software Development Packages Bulgaria",
+  description: "Transparent pricing for professional software development in Bulgaria. Starter package from $2,999, Professional from $7,999, Enterprise from $19,999. All packages include modern React, Flutter, Next.js development, deployment, and 3-12 months support. No hidden fees.",
+  keywords: [
+    "software development pricing Bulgaria",
+    "app development cost Bulgaria", 
+    "web development pricing Sofia",
+    "mobile app development cost",
+    "custom software pricing Bulgaria",
+    "React development packages",
+    "Flutter app development cost",
+    "Next.js development pricing",
+    "enterprise software pricing",
+    "transparent development costs",
+    "цени за разработка на софтуер България",
+    "цена за мобилно приложение",
+    "цени за уеб разработка"
+  ],
   openGraph: {
-    title: "OmniScripts Pricing - Transparent Software Development Costs",
-    description: "Simple, transparent pricing for all your software development needs. From startups to enterprise solutions.",
+    title: "OmniScripts Pricing - Affordable Software Development Packages Bulgaria",
+    description: "Transparent pricing for professional software development in Bulgaria. From startup-friendly packages to enterprise solutions. All inclusive with modern technologies and support.",
     url: "https://omniscripts.com/pricing",
     images: [
       {
         url: "/og-pricing.jpg",
         width: 1200,
         height: 630,
-        alt: "OmniScripts Pricing Plans",
+        alt: "OmniScripts Pricing Plans - Software Development Bulgaria",
       },
     ],
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "OmniScripts Pricing - Transparent Software Development Costs",
-    description: "Simple, transparent pricing for all your software development needs. From startups to enterprise solutions.",
+    title: "OmniScripts Pricing - Affordable Software Development Packages Bulgaria",
+    description: "Transparent pricing for professional software development in Bulgaria. From startup-friendly to enterprise solutions.",
     images: ["/twitter-pricing.jpg"],
+  },
+  alternates: {
+    canonical: "https://omniscripts.com/pricing",
   },
 };
 

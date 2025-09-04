@@ -102,8 +102,8 @@ export default function InvoiceViewPage() {
             <div>
               <div className="flex items-center gap-4 mb-2">
                 {/* Company Logo */}
-                <div className="w-12 h-12 bg-white rounded-lg p-1 flex items-center justify-center">
-                  <div className="w-full h-full bg-brand-600 rounded flex items-center justify-center text-white font-bold text-xs">
+                <div className="w-12 h-12 flex items-center justify-center">
+                  <div className="w-full h-full bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center text-white font-bold text-lg border border-white/30">
                     OS
                   </div>
                 </div>

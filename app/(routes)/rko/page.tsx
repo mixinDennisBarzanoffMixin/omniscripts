@@ -6,29 +6,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Code, LogOut, FileText, DollarSign, Calendar, User, Eye } from "lucide-react";
-import { INVOICES, calculateInvoiceTotal } from "@/app/_data/invoices";
+import { Code, LogOut, Receipt, DollarSign, Calendar, TrendingDown, Eye } from "lucide-react";
+import { RKOS } from "@/app/_data/invoices";
 
-// Transform hardcoded invoices for display
-const invoicesWithTotals = INVOICES.map(invoice => {
-  const calculations = calculateInvoiceTotal(invoice.services);
-  return {
-    id: invoice.id,
-    number: invoice.number,
-    client: invoice.client.name,
-    amount: calculations.totals.total,
-    status: invoice.status,
-    date: invoice.date,
-    description: invoice.notes,
-  };
-});
-
-export default function InvoicesPage() {
+export default function RKOPage() {
   const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    document.title = "Invoices - Admin Dashboard | OmniScripts";
+    document.title = "RKO - Expense Orders | OmniScripts";
     
     // Check authentication via API (since we use HTTPOnly cookies)
     const checkAuth = async () => {
@@ -65,24 +51,40 @@ export default function InvoicesPage() {
   };
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("en-US", {
+    return new Intl.NumberFormat("bg-BG", {
       style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 0,
+      currency: "BGN",
+      minimumFractionDigits: 2,
     }).format(price);
   };
 
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case 'paid':
-        return <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Πληρωμένο (Paid)</Badge>;
+      case 'completed':
+        return <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Завършен (Completed)</Badge>;
       case 'pending':
-        return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100">Εκκρεμεί (Pending)</Badge>;
-      case 'draft':
-        return <Badge className="bg-gray-100 text-gray-800 hover:bg-gray-100">Πρόχειρο (Draft)</Badge>;
+        return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100">Чакащ (Pending)</Badge>;
+      case 'cancelled':
+        return <Badge className="bg-red-100 text-red-800 hover:bg-red-100">Отменен (Cancelled)</Badge>;
       default:
         return <Badge variant="secondary">{status}</Badge>;
     }
+  };
+
+  const getCategoryBadge = (category: string) => {
+    const colors = {
+      "Офис разходи": "bg-blue-100 text-blue-800",
+      "Оборудване": "bg-purple-100 text-purple-800", 
+      "Софтуер и лицензи": "bg-indigo-100 text-indigo-800",
+      "Маркетинг": "bg-pink-100 text-pink-800",
+      "Командировки": "bg-orange-100 text-orange-800",
+      "Комунални услуги": "bg-green-100 text-green-800",
+      "Други разходи": "bg-gray-100 text-gray-800",
+    };
+    
+    const colorClass = colors[category as keyof typeof colors] || "bg-gray-100 text-gray-800";
+    
+    return <Badge className={`${colorClass} hover:${colorClass}`}>{category}</Badge>;
   };
 
   if (!isAuthenticated) {
@@ -112,10 +114,10 @@ export default function InvoicesPage() {
           <div className="flex items-center space-x-4">
             <Button
               variant="ghost"
-              onClick={() => router.push('/rko')}
+              onClick={() => router.push('/invoices')}
               className="hover:scale-105 transition-all duration-300"
             >
-              РКО (Expenses)
+              Τιμολόγια (Invoices)
             </Button>
             <Button
               variant="ghost"
@@ -140,15 +142,15 @@ export default function InvoicesPage() {
       <main className="container py-8 relative z-10">
         <div className="mb-8">
           <div className="flex items-center space-x-2 mb-2">
-            <FileText className="h-8 w-8 text-brand-600" />
+            <Receipt className="h-8 w-8 text-brand-600" />
             <h1 className="text-3xl font-bold bg-linear-to-r from-foreground to-brand-600 bg-clip-text text-transparent">
-              Τιμολόγια (Invoices)
+              РКО - Приходни касови ордери
             </h1>
           </div>
           <p className="text-muted-foreground">
-            Διαχείριση όλων των τιμολογίων και πληρωμών
+            Управление на всички приходни касови ордери и получени плащания
             <br />
-            (Manage all invoices and payments)
+            (Manage all incoming cash orders and received payments)
           </p>
         </div>
 
@@ -158,12 +160,12 @@ export default function InvoicesPage() {
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
                 <DollarSign className="h-4 w-4 mr-2" />
-                Συνολικά Έσοδα (Total Revenue)
+                Общо Приходи (Total Income)
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-green-600">
-                {formatPrice(invoicesWithTotals.filter(inv => inv.status === 'paid').reduce((sum, inv) => sum + inv.amount, 0))}
+                {formatPrice(RKOS.filter(rko => rko.status === 'completed').reduce((sum, rko) => sum + rko.amount, 0))}
               </div>
             </CardContent>
           </Card>
@@ -172,12 +174,12 @@ export default function InvoicesPage() {
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
                 <Calendar className="h-4 w-4 mr-2" />
-                Εκκρεμή (Pending)
+                Чакащи (Pending)
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-yellow-600">
-                {formatPrice(invoicesWithTotals.filter(inv => inv.status === 'pending').reduce((sum, inv) => sum + inv.amount, 0))}
+                {formatPrice(RKOS.filter(rko => rko.status === 'pending').reduce((sum, rko) => sum + rko.amount, 0))}
               </div>
             </CardContent>
           </Card>
@@ -185,66 +187,70 @@ export default function InvoicesPage() {
           <Card className="border-0 shadow-lg bg-card/80 backdrop-blur-xl">
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
-                <User className="h-4 w-4 mr-2" />
-                Σύνολο Πελατών (Total Clients)
+                <DollarSign className="h-4 w-4 mr-2" />
+                Брой РКО (Total RKOs)
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-brand-600">
-                {new Set(invoicesWithTotals.map(inv => inv.client)).size}
+                {RKOS.length}
               </div>
             </CardContent>
           </Card>
         </div>
 
-        {/* Invoices Table */}
+        {/* RKO Table */}
         <Card className="border-0 shadow-xl bg-card/90 backdrop-blur-xl">
           <CardHeader>
-            <CardTitle>Λίστα Τιμολογίων (Invoice List)</CardTitle>
+            <CardTitle>Списък РКО (RKO List)</CardTitle>
             <CardDescription>
-              Όλα τα τιμολόγια και η κατάστασή τους
-              (All invoices and their status)
+              Всички разходни касови ордери и тяхното състояние
+              (All expense cash orders and their status)
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Αριθμός (Number)</TableHead>
-                  <TableHead>Πελάτης (Client)</TableHead>
-                  <TableHead>Περιγραφή (Description)</TableHead>
-                  <TableHead>Ποσό (Amount)</TableHead>
-                  <TableHead>Κατάσταση (Status)</TableHead>
-                  <TableHead>Ημερομηνία (Date)</TableHead>
-                  <TableHead>Ενέργειες (Actions)</TableHead>
+                  <TableHead>Номер (Number)</TableHead>
+                  <TableHead>Платец (Payer)</TableHead>
+                  <TableHead>Цел (Purpose)</TableHead>
+                  <TableHead>Категория (Category)</TableHead>
+                  <TableHead>Сума (Amount)</TableHead>
+                  <TableHead>Състояние (Status)</TableHead>
+                  <TableHead>Дата (Date)</TableHead>
+                  <TableHead>Действия (Actions)</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {invoicesWithTotals.map((invoice) => (
-                  <TableRow key={invoice.id} className="hover:bg-muted/50">
-                    <TableCell className="font-medium">{invoice.number}</TableCell>
-                    <TableCell>{invoice.client}</TableCell>
-                    <TableCell className="max-w-xs truncate" title={invoice.description}>
-                      {invoice.description}
+                {RKOS.map((rko) => (
+                  <TableRow key={rko.id} className="hover:bg-muted/50">
+                    <TableCell className="font-medium">{rko.number}</TableCell>
+                    <TableCell>{rko.payer}</TableCell>
+                    <TableCell className="max-w-xs truncate" title={rko.purpose}>
+                      {rko.purpose}
+                    </TableCell>
+                    <TableCell>
+                      {getCategoryBadge(rko.category)}
                     </TableCell>
                     <TableCell className="font-semibold">
-                      {formatPrice(invoice.amount)}
+                      {formatPrice(rko.amount)}
                     </TableCell>
                     <TableCell>
-                      {getStatusBadge(invoice.status)}
+                      {getStatusBadge(rko.status)}
                     </TableCell>
                     <TableCell>
-                      {new Date(invoice.date.split('.').reverse().join('-')).toLocaleDateString('el-GR')}
+                      {new Date(rko.date.split('.').reverse().join('-')).toLocaleDateString('bg-BG')}
                     </TableCell>
                     <TableCell>
                       <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => router.push(`/invoices/${invoice.id}`)}
+                        onClick={() => router.push(`/rko/${rko.id}`)}
                         className="hover:scale-105 transition-all duration-300"
                       >
                         <Eye className="h-4 w-4 mr-2" />
-                        Προβολή (View)
+                        Преглед (View)
                       </Button>
                     </TableCell>
                   </TableRow>
