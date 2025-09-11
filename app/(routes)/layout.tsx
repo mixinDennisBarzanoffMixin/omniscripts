@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     default: "OmniScripts - Professional Software Development & Digital Solutions",
     template: "%s | OmniScripts"
   },
-  description: "OmniScripts EOOD - Leading Bulgarian software development company. We create exceptional mobile apps, websites, and enterprise solutions using React, Flutter, Next.js. Transform your business with our expert development services.",
+  description: "OmniScripts LTD - Leading Bulgarian software development company. We create exceptional mobile apps, websites, and enterprise solutions using React, Flutter, Next.js. Transform your business with our expert development services.",
   keywords: [
     "software development Bulgaria", 
     "mobile app development", 
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
     "enterprise software", 
     "Bulgarian tech company",
     "Sofia software development",
-    "OmniScripts EOOD",
+    "OmniScripts LTD",
     "професионална разработка на софтуер",
     "мобилни приложения",
     "уеб разработка"
   ],
   authors: [{ name: "OmniScripts Development Team", url: "https://omniscripts.com" }],
-  creator: "OmniScripts EOOD",
-  publisher: "OmniScripts EOOD",
+  creator: "OmniScripts LTD",
+  publisher: "OmniScripts LTD",
   formatDetection: {
     email: false,
     address: false,

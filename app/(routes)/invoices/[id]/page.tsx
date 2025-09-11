@@ -73,9 +73,9 @@ export default function InvoiceViewPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-brand-50 to-blue-50 p-8 print:p-0 print:bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-brand-50 to-blue-50 p-6 print:p-0 print:bg-white">
       {/* Print/Back Controls - Hidden in print */}
-      <div className="max-w-5xl mx-auto mb-6 print:hidden">
+      <div className="max-w-5xl mx-auto mb-4 print:hidden">
         <div className="flex justify-between items-center">
           <Button
             variant="outline"
@@ -97,18 +97,18 @@ export default function InvoiceViewPage() {
 
       <div className="invoice-container max-w-5xl mx-auto bg-white shadow-xl rounded-xl print:shadow-none print:rounded-none print:max-w-none">
         {/* Header with Logo */}
-        <div className="invoice-header bg-gradient-to-r from-brand-600 to-brand-700 p-6 rounded-t-xl print:rounded-none">
+        <div className="invoice-header bg-gradient-to-r from-brand-600 to-brand-700 p-4 rounded-t-xl print:rounded-none">
           <div className="flex justify-between items-start text-white">
             <div>
-              <div className="flex items-center gap-4 mb-2">
+              <div className="flex items-center gap-3 mb-1">
                 {/* Company Logo */}
-                <div className="w-12 h-12 flex items-center justify-center">
-                  <div className="w-full h-full bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center text-white font-bold text-lg border border-white/30">
-                    OS
+                <div className="w-10 h-10 flex items-center justify-center">
+                  <div className="w-full h-full bg-white/80 backdrop-blur-sm rounded-lg flex items-center justify-center text-white font-bold text-lg border border-white/30">
+                    <img src="/logo.png" alt="OmniScripts" width={40} height={40} />
                   </div>
                 </div>
                 <div>
-                  <h1 className="text-2xl font-bold">{COMPANY_DATA.name}</h1>
+                  <h1 className="text-xl font-bold">{COMPANY_DATA.name}</h1>
                   <p className="text-brand-100 text-sm">
                     {COMPANY_DATA.nameEn}
                   </p>
@@ -116,8 +116,8 @@ export default function InvoiceViewPage() {
               </div>
             </div>
             <div className="text-right">
-              <h2 className="text-3xl font-bold mb-1">ФАКТУРА</h2>
-              <p className="text-brand-100 text-lg">
+              <h2 className="text-2xl font-bold mb-0.5">ФАКТУРА</h2>
+              <p className="text-brand-100 text-base">
                 № {invoice.number}
               </p>
             </div>
@@ -125,11 +125,11 @@ export default function InvoiceViewPage() {
         </div>
 
         {/* Main Content */}
-        <div className="p-6 print:p-4">
+        <div className="p-4 print:p-3 text-[13px] leading-tight print:text-[11px]">
           {/* Company and Client Info */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6 border border-gray-300 rounded-lg print:rounded-none">
+          <div className="grid grid-cols-2 gap-4 mb-4 border border-gray-300 rounded-lg print:rounded-none">
             {/* Company Info */}
-            <div className="p-4 bg-gradient-to-br from-brand-50 to-blue-50">
+            <div className="p-3 bg-gradient-to-br from-brand-50 to-blue-50">
               <h3 className="text-sm font-bold text-brand-800 mb-3 uppercase">
                 ИЗДАТЕЛ
               </h3>
@@ -147,22 +147,16 @@ export default function InvoiceViewPage() {
                   <strong>Управител:</strong> {COMPANY_DATA.manager}
                 </div>
                 <div>
-                  <strong>Дейност:</strong> {COMPANY_DATA.activity}
-                </div>
-                <div>
                   <strong>Email:</strong> {COMPANY_DATA.email}
                 </div>
                 <div>
                   <strong>Телефон:</strong> {COMPANY_DATA.phone}
                 </div>
-                <div>
-                  <strong>Уебсайт:</strong> {COMPANY_DATA.website}
-                </div>
               </div>
             </div>
 
             {/* Client Info */}
-            <div className="p-4">
+            <div className="p-3">
               <h3 className="text-sm font-bold text-brand-800 mb-3 uppercase">
                 ПОЛУЧАТЕЛ
               </h3>
@@ -182,8 +176,8 @@ export default function InvoiceViewPage() {
               </div>
 
               {/* Invoice Details */}
-              <div className="mt-6 p-3 bg-gray-50 rounded border">
-                <div className="grid grid-cols-2 gap-4 text-sm">
+              <div className="mt-3 p-2 bg-gray-50 rounded border">
+                <div className="grid grid-cols-2 gap-2 text-sm">
                   <div>
                     <strong>Дата:</strong> {invoice.date}
                   </div>
@@ -203,77 +197,99 @@ export default function InvoiceViewPage() {
           </div>
 
           {/* Services Table */}
-          <div className="services-table mb-6">
-            <h3 className="text-sm font-bold text-brand-800 mb-3 uppercase">
-              УСЛУГИ
-            </h3>
+          <div className="services-table mb-4">
             <div className="overflow-hidden rounded-lg border border-gray-300">
               <table className="w-full">
                 <thead className="bg-gradient-to-r from-brand-600 to-brand-700 text-white">
                   <tr>
-                    <th className="px-4 py-3 text-left text-sm font-semibold w-12">
+                    <th className="px-3 py-2 text-left text-sm font-semibold w-10">
                       №
                     </th>
-                    <th className="px-4 py-3 text-left text-sm font-semibold">
+                    <th className="px-3 py-2 text-left text-sm font-semibold">
                       Описание на услугата
                     </th>
-                    <th className="px-4 py-3 text-center text-sm font-semibold w-20">
+                    <th className="px-3 py-2 text-center text-sm font-semibold w-16">
                       Кол.
                     </th>
-                    <th className="px-4 py-3 text-right text-sm font-semibold w-32">
+                    <th className="px-3 py-2 text-right text-sm font-semibold w-28">
                       Ед. цена
                     </th>
-                    <th className="px-4 py-3 text-right text-sm font-semibold w-32">
+                    <th className="px-3 py-2 text-right text-sm font-semibold w-28">
                       Сума
                     </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
-                  {calculatedData.services.map((service, index) => (
-                    <tr
-                      key={service.id}
-                      className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}
-                    >
-                      <td className="px-4 py-3 text-center text-sm">
-                        {service.id}
-                      </td>
-                      <td className="px-4 py-3 text-sm">
-                        <div className="font-medium text-gray-900">
-                          {service.description}
-                        </div>
-                      </td>
-                      <td className="px-4 py-3 text-center text-sm">
-                        {service.quantity}
-                      </td>
-                      <td className="px-4 py-3 text-right text-sm">
-                        {service.unitPrice.toFixed(2)} лв.
-                      </td>
-                      <td className="px-4 py-3 text-right text-sm font-medium">
-                        {service.total.toFixed(2)} лв.
-                      </td>
-                    </tr>
-                  ))}
+                  {Array.from({ length: Math.max(5, calculatedData.services.length) }, (_, index) => {
+                    const service = calculatedData.services[index];
+                    if (service) {
+                      return (
+                        <tr
+                          key={service.id}
+                          className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}
+                        >
+                          <td className="px-3 py-2 text-center text-sm">
+                            {service.id}
+                          </td>
+                          <td className="px-3 py-2 text-sm">
+                            <div className="font-medium text-gray-900">
+                              {service.description}
+                            </div>
+                          </td>
+                          <td className="px-3 py-2 text-center text-sm">
+                            {service.quantity}
+                          </td>
+                          <td className="px-3 py-2 text-right text-sm">
+                            {service.unitPrice.toFixed(2)} лв.
+                          </td>
+                          <td className="px-3 py-2 text-right text-sm font-medium">
+                            {service.total.toFixed(2)} лв.
+                          </td>
+                        </tr>
+                      );
+                    } else {
+                      return (
+                        <tr
+                          key={`empty-${index}`}
+                          className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}
+                        >
+                          <td className="px-3 py-2 text-center text-sm">
+                            {index + 1}
+                          </td>
+                          <td className="px-3 py-2 text-sm">
+                            <div className="font-medium text-gray-900">
+                              &nbsp;
+                            </div>
+                          </td>
+                          <td className="px-3 py-2 text-center text-sm">
+                            &nbsp;
+                          </td>
+                          <td className="px-3 py-2 text-right text-sm">
+                            &nbsp;
+                          </td>
+                          <td className="px-3 py-2 text-right text-sm font-medium">
+                            &nbsp;
+                          </td>
+                        </tr>
+                      );
+                    }
+                  })}
                 </tbody>
               </table>
             </div>
           </div>
 
           {/* Payment Information and Summary - Side by side */}
-          <div className="flex flex-col lg:flex-row gap-6 mb-6">
+          <div className="flex flex-row gap-4 mb-4">
             {/* Payment Information */}
-            <div className="w-full lg:w-3/5">
-              <div className="payment-terms p-4 bg-gradient-to-r from-brand-50 to-blue-50 border border-gray-300 rounded-lg h-full">
+            <div className="w-3/5">
+              <div className="payment-terms p-3 bg-gradient-to-r from-brand-50 to-blue-50 border border-gray-300 rounded-lg h-full">
                 <h3 className="text-sm font-bold text-brand-800 mb-3 uppercase">
                   Информация за плащане
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 gap-2 text-sm">
                   <div>
-                    <p className="font-medium mb-2">Начини на плащане:</p>
-                    <p>• SEPA превод</p>
-                    <p>• В брой</p>
-                  </div>
-                  <div>
-                    <p className="font-medium mb-2">За банков превод:</p>
+                    <p className="font-medium mb-1">За банков превод:</p>
                     <p>
                       <strong>Получател:</strong> {COMPANY_DATA.name}
                     </p>
@@ -286,7 +302,7 @@ export default function InvoiceViewPage() {
                     <p>
                       <strong>Банка:</strong> {COMPANY_DATA.bank}
                     </p>
-                    <p className="text-xs text-gray-600 mt-1">
+                    <p className="text-xs text-gray-600 mt-1 print:hidden">
                       {COMPANY_DATA.bankAddress}
                     </p>
                   </div>
@@ -295,8 +311,8 @@ export default function InvoiceViewPage() {
             </div>
 
             {/* Summary Section */}
-            <div className="w-full lg:w-2/5">
-              <div className="bg-gradient-to-br from-gray-50 to-brand-50 border border-gray-300 rounded-lg p-4 h-full">
+            <div className="w-2/5">
+              <div className="bg-gradient-to-br from-gray-50 to-brand-50 border border-gray-300 rounded-lg p-3 h-full">
                 <h4 className="text-sm font-bold text-brand-800 mb-3 uppercase">
                   Обобщение
                 </h4>
@@ -323,11 +339,8 @@ export default function InvoiceViewPage() {
           </div>
 
           {/* Terms and Notes */}
-          <div className="notes-section border-t border-gray-300 pt-4">
-            <h3 className="text-sm font-bold text-brand-800 mb-3 uppercase">
-              Условия и забележки
-            </h3>
-            <div className="text-sm text-gray-700 space-y-2">
+          <div className="notes-section border-t border-gray-300 pt-3">
+            <div className="text-xs text-gray-700 space-y-1">
               <p>
                 <strong>*ДДС:</strong> Фирмата не е регистрирана по ЗДДС и не
                 начислява данък добавена стойност.
@@ -337,50 +350,41 @@ export default function InvoiceViewPage() {
                 срок от {invoice.paymentTermsDays} дни от датата
                 на фактурата.
               </p>
-              <p>
-                <strong>Гаранция:</strong> Всички разработени софтуерни решения
-                имат 90-дневна гаранция за отстраняване на грешки.
-              </p>
-              <p>
-                <strong>Интелектуална собственост:</strong> След пълното
-                заплащане, всички персонализирани разработки стават собственост
-                на клиента, с изключение на proprietary frameworks и библиотеки.
-              </p>
             </div>
           </div>
 
           {/* Signatures Section */}
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-gray-300 pt-6">
+          <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-gray-300 pt-18">
             <div>
-              <h4 className="text-sm font-bold text-brand-800 mb-4">ИЗДАТЕЛ</h4>
-              <div className="space-y-4">
+              <h4 className="text-sm font-bold text-brand-800 mb-2">ИЗДАТЕЛ</h4>
+              <div className="space-y-3">
                 <div>
-                  <p className="text-sm mb-2">Съставил:</p>
-                  <div className="border-b border-gray-400 w-48 h-8 flex items-end">
+                  <p className="text-sm mb-1">Съставил:</p>
+                  <div className="border-b border-gray-400 w-48 h-6 flex items-end">
                     <span className="text-sm">{COMPANY_DATA.manager}</span>
                   </div>
-                  <p className="text-xs text-gray-600 mt-1">(име и длъжност)</p>
                 </div>
                 <div>
-                  <p className="text-sm mb-2">Подпис:</p>
-                  <div className="border-b border-gray-400 w-48 h-8"></div>
+                  <p className="text-sm mb-1">Подпис:</p>
+                  <div className="border-b border-gray-400 w-48 h-6"></div>
                 </div>
               </div>
             </div>
 
             <div>
-              <h4 className="text-sm font-bold text-brand-800 mb-4">
+              <h4 className="text-sm font-bold text-brand-800 mb-2">
                 ПОЛУЧАТЕЛ
               </h4>
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <div>
-                  <p className="text-sm mb-2">Получил:</p>
-                  <div className="border-b border-gray-400 w-48 h-8"></div>
-                  <p className="text-xs text-gray-600 mt-1">(име и длъжност)</p>
+                  <p className="text-sm mb-1">Получил:</p>
+                  <div className="border-b border-gray-400 w-48 h-6">
+                    <span className="text-sm">{invoice.client.manager}</span>
+                  </div>
                 </div>
                 <div>
-                  <p className="text-sm mb-2">Подпис:</p>
-                  <div className="border-b border-gray-400 w-48 h-8"></div>
+                  <p className="text-sm mb-1">Подпис:</p>
+                  <div className="border-b border-gray-400 w-48 h-6"></div>
                 </div>
               </div>
             </div>

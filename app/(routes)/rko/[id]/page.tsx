@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Printer } from "lucide-react";
-import { RKOS, COMPANY_DATA } from "@/app/_data/invoices";
+import { RKOS, COMPANY_DATA, DOCUMENT_SERIES } from "@/app/_data/invoices";
 
 export default function RKOViewPage() {
   const router = useRouter();
@@ -278,13 +278,15 @@ export default function RKOViewPage() {
                 <span className="font-bold">гр./с.</span>
               </div>
               <div className="col-span-2">
-                <div className="border-b border-gray-400 pb-1 text-center">София</div>
+                <div className="border-b border-gray-400 pb-1 text-center">{rko.payerData?.city || "София"}</div>
               </div>
               <div className="col-span-2">
                 <span className="font-bold">ул.</span>
               </div>
               <div className="col-span-4">
-                <div className="border-b border-gray-400 pb-1"></div>
+                <div className="border-b border-gray-400 pb-1 text-sm">
+                  {rko.payerData?.address?.split(', ').slice(1).join(', ') || ""}
+                </div>
               </div>
               <div className="col-span-1">
                 <span className="font-bold">№</span>
@@ -319,8 +321,29 @@ export default function RKOViewPage() {
             </div>
           </div>
 
-          {/* Empty space for additional notes */}
-          <div className="border-b-2 border-gray-300 p-2 print:p-1 h-16 print:h-12">
+          {/* Additional details and notes */}
+          <div className="border-b-2 border-gray-300 p-3 print:p-2">
+            <div className="grid grid-cols-12 gap-4 mb-2">
+              <div className="col-span-4">
+                <div className="text-sm print:text-xs">
+                  <strong>Начин на плащане:</strong> {rko.paymentMethod}
+                </div>
+              </div>
+              <div className="col-span-4">
+                {rko.bankReference && (
+                  <div className="text-sm print:text-xs">
+                    <strong>Банкова референция:</strong> {rko.bankReference}
+                  </div>
+                )}
+              </div>
+              <div className="col-span-4">
+                {rko.category && (
+                  <div className="text-sm print:text-xs">
+                    <strong>Категория:</strong> {rko.category}
+                  </div>
+                )}
+              </div>
+            </div>
             {rko.notes && (
               <div className="text-sm print:text-xs text-gray-700">
                 <strong>Забележки:</strong> {rko.notes}
@@ -336,6 +359,9 @@ export default function RKOViewPage() {
               </div>
               <div className="border-b border-gray-400 w-full h-6 print:h-4 mb-1"></div>
               <div className="text-center text-xs print:text-xs text-gray-600">подпис</div>
+              <div className="text-center text-xs print:text-xs text-gray-500 mt-1">
+                {COMPANY_DATA.accountant.name}
+              </div>
             </div>
             <div className="p-3 print:p-2 bg-gray-50">
               <div className="text-center mb-2 print:mb-1">
@@ -343,6 +369,9 @@ export default function RKOViewPage() {
               </div>
               <div className="border-b border-gray-400 w-full h-6 print:h-4 mb-1"></div>
               <div className="text-center text-xs print:text-xs text-gray-600">подпис</div>
+              <div className="text-center text-xs print:text-xs text-gray-500 mt-1">
+                {COMPANY_DATA.manager}
+              </div>
             </div>
           </div>
 
@@ -354,7 +383,7 @@ export default function RKOViewPage() {
               </div>
               <div className="col-span-2">
                 <div className="border-b border-gray-400 pb-1 text-center text-sm print:text-xs">
-                  {rko.invoiceRef || ''}
+                  {rko.invoiceRef || rko.bankReference || ''}
                 </div>
               </div>
               <div className="col-span-1">
@@ -369,7 +398,9 @@ export default function RKOViewPage() {
                 <span className="font-bold text-sm print:text-xs">г., ЕГН</span>
               </div>
               <div className="col-span-3">
-                <div className="border-b border-gray-400 pb-1"></div>
+                <div className="border-b border-gray-400 pb-1 text-center text-sm print:text-xs">
+                  {rko.receivedBy?.egn || ''}
+                </div>
               </div>
             </div>
             
@@ -378,19 +409,25 @@ export default function RKOViewPage() {
                 <span className="font-bold text-sm print:text-xs">лична карта №</span>
               </div>
               <div className="col-span-3">
-                <div className="border-b border-gray-400 pb-1"></div>
+                <div className="border-b border-gray-400 pb-1 text-center text-sm print:text-xs">
+                  {rko.receivedBy?.idCard || ''}
+                </div>
               </div>
               <div className="col-span-2">
                 <span className="font-bold text-sm print:text-xs">издадена на</span>
               </div>
               <div className="col-span-2">
-                <div className="border-b border-gray-400 pb-1"></div>
+                <div className="border-b border-gray-400 pb-1 text-center text-xs print:text-xs">
+                  {rko.receivedBy?.issuedOn || ''}
+                </div>
               </div>
               <div className="col-span-1">
                 <span className="font-bold text-sm print:text-xs">/</span>
               </div>
               <div className="col-span-2">
-                <div className="border-b border-gray-400 pb-1"></div>
+                <div className="border-b border-gray-400 pb-1 text-center text-xs print:text-xs">
+                  {rko.receivedBy?.issuedBy || ''}
+                </div>
               </div>
             </div>
           </div>
@@ -400,6 +437,9 @@ export default function RKOViewPage() {
             <div className="col-span-3">
               <span className="font-bold text-sm print:text-xs">от</span>
               <div className="border-b border-gray-400 w-full h-6 print:h-4 mt-1 mb-1"></div>
+              <div className="text-center text-xs print:text-xs text-gray-500 mt-1">
+                {rko.receivedBy?.name || ''}
+              </div>
             </div>
             <div className="col-span-3 text-right px-2 print:px-1">
               <span className="font-bold text-sm print:text-xs">подпис:</span>
@@ -409,11 +449,17 @@ export default function RKOViewPage() {
               <span className="font-bold text-sm print:text-xs">Броил сумата:</span>
               <div className="border-b border-gray-400 w-full h-6 print:h-4 mt-1 mb-1"></div>
               <div className="text-center text-xs text-gray-600">касиер</div>
+              <div className="text-center text-xs print:text-xs text-gray-500 mt-1">
+                {rko.processedBy || COMPANY_DATA.cashier.name}
+              </div>
             </div>
             <div className="col-span-3 text-right">
               <span className="font-bold text-sm print:text-xs">Съставил:</span>
               <div className="border-b border-gray-400 w-full h-6 print:h-4 mt-1 mb-1"></div>
               <div className="text-center text-xs text-gray-600">подпис</div>
+              <div className="text-center text-xs print:text-xs text-gray-500 mt-1">
+                {rko.approvedBy}
+              </div>
             </div>
           </div>
         </div>
@@ -421,13 +467,13 @@ export default function RKOViewPage() {
         {/* Footer - Official RKO Style */}
         <div className="border-t-2 border-gray-300 p-2 bg-gray-50 text-center text-xs rounded-b-xl print:rounded-none">
           <div className="grid grid-cols-3 gap-4">
-            <div>1-1401хим.</div>
-            <div><strong>*Веа - 33</strong> &nbsp;&nbsp;&nbsp; Счетоводител:</div>
+            <div>{DOCUMENT_SERIES.rko.series}</div>
+            <div><strong>{DOCUMENT_SERIES.rko.form}</strong> &nbsp;&nbsp;&nbsp; Счетоводител:</div>
             <div className="text-right"><strong>Всичко</strong></div>
           </div>
-          <div className="mt-2 text-xs">03.2008</div>
+          <div className="mt-2 text-xs">{DOCUMENT_SERIES.rko.approvalDate}</div>
           <div className="text-xs">|||||||||||||||||||||||||||||||||||||||</div>
-          <div className="text-xs">3||8 0 0 1 4 6 ||8 0 0 3</div>
+          <div className="text-xs">{DOCUMENT_SERIES.rko.barcode}</div>
         </div>
       </div>
       </div>
