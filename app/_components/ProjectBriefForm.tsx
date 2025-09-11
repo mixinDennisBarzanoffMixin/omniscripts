@@ -206,10 +206,10 @@ export default function ProjectBriefForm({
                     className="w-full p-3 border border-input rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all"
                   >
                     <option value="">Select budget range</option>
+                    <option value="1k-5k">$1k - $5k</option>
+                    <option value="5k-10k">$5k - $10k</option>
                     <option value="10k-25k">$10k - $25k</option>
-                    <option value="25k-50k">$25k - $50k</option>
-                    <option value="50k-100k">$50k - $100k</option>
-                    <option value="100k+">$100k+</option>
+                    <option value="25k+">$25k+</option>
                   </select>
                 </div>
               </div>
