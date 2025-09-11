@@ -32,17 +32,40 @@ export default function ProjectBriefForm({
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the data to your backend
-    console.log("Project brief submitted:", formData);
-    setIsSubmitted(true);
+    setError(null);
+    setIsLoading(true);
+
+    try {
+      const res = await fetch("/api/brief", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data?.ok) {
+        throw new Error(data?.error || "Failed to send. Please try again.");
+      }
+
+      setIsSubmitted(true);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Unexpected error";
+      setError(message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleInputChange = (
@@ -100,6 +123,11 @@ export default function ProjectBriefForm({
         <CardContent>
           {!isSubmitted ? (
             <form onSubmit={handleSubmit} className="space-y-6">
+              {error && (
+                <div className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+                  {error}
+                </div>
+              )}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-2">
@@ -223,10 +251,11 @@ export default function ProjectBriefForm({
                 <Button
                   type="submit"
                   size="lg"
-                  className="flex-1 bg-linear-to-r from-brand-500 to-ocean-500 hover:from-brand-600 hover:to-ocean-600 transform hover:scale-105 transition-all duration-300"
+                  disabled={isLoading}
+                  className="flex-1 bg-linear-to-r from-brand-500 to-ocean-500 hover:from-brand-600 hover:to-ocean-600 disabled:opacity-60 disabled:cursor-not-allowed transform hover:scale-105 transition-all duration-300"
                 >
                   <Send className="mr-2 h-4 w-4" />
-                  Send Project Brief
+                  {isLoading ? "Sending..." : "Send Project Brief"}
                 </Button>
                 <Button
                   type="button"
