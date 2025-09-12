@@ -95,9 +95,9 @@ export default function InvoiceViewPage() {
         </div>
       </div>
 
-      <div className="invoice-container max-w-5xl mx-auto bg-white shadow-xl rounded-xl print:shadow-none print:rounded-none print:max-w-none">
+      <div className="invoice-container max-w-5xl mx-auto bg-white shadow-xl rounded-xl print:shadow-none print:rounded-none print:max-w-4xl print:mx-4">
         {/* Header with Logo */}
-        <div className="invoice-header bg-gradient-to-r from-brand-600 to-brand-700 p-4 rounded-t-xl print:rounded-none">
+        <div className="invoice-header bg-gradient-to-r from-brand-600 to-brand-700 p-4 rounded-t-xl print:rounded-none print:p-2">
           <div className="flex justify-between items-start text-white">
             <div>
               <div className="flex items-center gap-3 mb-1">
@@ -125,11 +125,11 @@ export default function InvoiceViewPage() {
         </div>
 
         {/* Main Content */}
-        <div className="p-4 print:p-3 text-[13px] leading-tight print:text-[11px]">
+        <div className="p-4 print:p-2 text-[13px] leading-tight print:text-[11px]">
           {/* Company and Client Info */}
-          <div className="grid grid-cols-2 gap-4 mb-4 border border-gray-300 rounded-lg print:rounded-none">
+          <div className="grid grid-cols-2 gap-4 mb-4 border border-gray-300 rounded-lg print:rounded-none print:gap-2 print:mb-2">
             {/* Company Info */}
-            <div className="p-3 bg-gradient-to-br from-brand-50 to-blue-50">
+            <div className="p-3 bg-gradient-to-br from-brand-50 to-blue-50 print:p-2">
               <h3 className="text-sm font-bold text-brand-800 mb-3 uppercase">
                 ИЗДАТЕЛ
               </h3>
@@ -156,7 +156,7 @@ export default function InvoiceViewPage() {
             </div>
 
             {/* Client Info */}
-            <div className="p-3">
+            <div className="p-3 print:p-2">
               <h3 className="text-sm font-bold text-brand-800 mb-3 uppercase">
                 ПОЛУЧАТЕЛ
               </h3>
@@ -197,24 +197,24 @@ export default function InvoiceViewPage() {
           </div>
 
           {/* Services Table */}
-          <div className="services-table mb-4">
+          <div className="services-table mb-4 print:mb-2">
             <div className="overflow-hidden rounded-lg border border-gray-300">
               <table className="w-full">
                 <thead className="bg-gradient-to-r from-brand-600 to-brand-700 text-white">
                   <tr>
-                    <th className="px-3 py-2 text-left text-sm font-semibold w-10">
+                    <th className="px-3 py-2 text-left text-sm font-semibold w-10 print:px-2 print:py-1">
                       №
                     </th>
-                    <th className="px-3 py-2 text-left text-sm font-semibold">
+                    <th className="px-3 py-2 text-left text-sm font-semibold print:px-2 print:py-1">
                       Описание на услугата
                     </th>
-                    <th className="px-3 py-2 text-center text-sm font-semibold w-16">
+                    <th className="px-3 py-2 text-center text-sm font-semibold w-16 print:px-2 print:py-1 print:w-12">
                       Кол.
                     </th>
-                    <th className="px-3 py-2 text-right text-sm font-semibold w-28">
+                    <th className="px-3 py-2 text-right text-sm font-semibold w-28 print:px-2 print:py-1 print:w-20">
                       Ед. цена
                     </th>
-                    <th className="px-3 py-2 text-right text-sm font-semibold w-28">
+                    <th className="px-3 py-2 text-right text-sm font-semibold w-28 print:px-2 print:py-1 print:w-20">
                       Сума
                     </th>
                   </tr>
@@ -228,21 +228,21 @@ export default function InvoiceViewPage() {
                           key={service.id}
                           className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}
                         >
-                          <td className="px-3 py-2 text-center text-sm">
+                          <td className="px-3 py-2 text-center text-sm print:px-2 print:py-1">
                             {service.id}
                           </td>
-                          <td className="px-3 py-2 text-sm">
+                          <td className="px-3 py-2 text-sm print:px-2 print:py-1">
                             <div className="font-medium text-gray-900">
                               {service.description}
                             </div>
                           </td>
-                          <td className="px-3 py-2 text-center text-sm">
+                          <td className="px-3 py-2 text-center text-sm print:px-2 print:py-1">
                             {service.quantity}
                           </td>
-                          <td className="px-3 py-2 text-right text-sm">
+                          <td className="px-3 py-2 text-right text-sm print:px-2 print:py-1">
                             {service.unitPrice.toFixed(2)} лв.
                           </td>
-                          <td className="px-3 py-2 text-right text-sm font-medium">
+                          <td className="px-3 py-2 text-right text-sm font-medium print:px-2 print:py-1">
                             {service.total.toFixed(2)} лв.
                           </td>
                         </tr>
@@ -253,21 +253,21 @@ export default function InvoiceViewPage() {
                           key={`empty-${index}`}
                           className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}
                         >
-                          <td className="px-3 py-2 text-center text-sm">
+                          <td className="px-3 py-2 text-center text-sm print:px-2 print:py-1">
                             {index + 1}
                           </td>
-                          <td className="px-3 py-2 text-sm">
+                          <td className="px-3 py-2 text-sm print:px-2 print:py-1">
                             <div className="font-medium text-gray-900">
                               &nbsp;
                             </div>
                           </td>
-                          <td className="px-3 py-2 text-center text-sm">
+                          <td className="px-3 py-2 text-center text-sm print:px-2 print:py-1">
                             &nbsp;
                           </td>
-                          <td className="px-3 py-2 text-right text-sm">
+                          <td className="px-3 py-2 text-right text-sm print:px-2 print:py-1">
                             &nbsp;
                           </td>
-                          <td className="px-3 py-2 text-right text-sm font-medium">
+                          <td className="px-3 py-2 text-right text-sm font-medium print:px-2 print:py-1">
                             &nbsp;
                           </td>
                         </tr>
