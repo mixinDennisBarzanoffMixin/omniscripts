@@ -14,7 +14,7 @@ export const COMPANY_DATA = {
   phone: "+359 88 360 0203",
   website: "www.omniscripts.eu",
   bank: "Postbank",
-  iban: "BG51 BPBI 7940 1948 6300 1",
+  iban: "BG51 BPBI 7940 1094 8630 01",
   bic: "BPBIBGSF",
   bankAddress: "OKOLOVRASTEN PAT STR 260, SOFIA",
   // Accounting and signature data
