@@ -16,7 +16,7 @@ const CUSTOM_CONTRACTS = [
     client: "Ahmad Areeb",
     title: "Website Development Agreement (Ahmad Areeb)",
     status: "active",
-    start: "today",
+    start: "11.10.2025",
     end: "—",
     path: "/contracts/ahmad-areeb",
   },
