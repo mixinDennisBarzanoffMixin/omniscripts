@@ -112,6 +112,13 @@ export default function InvoicesPage() {
           <div className="flex items-center space-x-4">
             <Button
               variant="ghost"
+              onClick={() => router.push('/contracts')}
+              className="hover:scale-105 transition-all duration-300"
+            >
+              Συμβόλαια (Contracts)
+            </Button>
+            <Button
+              variant="ghost"
               onClick={() => router.push('/rko')}
               className="hover:scale-105 transition-all duration-300"
             >
