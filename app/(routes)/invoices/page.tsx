@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Code, LogOut, FileText, DollarSign, Calendar, User, Eye } from "lucide-react";
+import { Code, LogOut, FileText, Calendar, User, Eye } from "lucide-react";
 import { INVOICES, calculateInvoiceTotal } from "@/app/_data/invoices";
 
 // Transform hardcoded invoices for display
@@ -65,9 +65,9 @@ export default function InvoicesPage() {
   };
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("en-US", {
+    return new Intl.NumberFormat("bg-BG", {
       style: "currency",
-      currency: "USD",
+      currency: "BGN",
       minimumFractionDigits: 0,
     }).format(price);
   };
@@ -164,7 +164,7 @@ export default function InvoicesPage() {
           <Card className="border-0 shadow-lg bg-card/80 backdrop-blur-xl">
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
-                <DollarSign className="h-4 w-4 mr-2" />
+                лв.
                 Συνολικά Έσοδα (Total Revenue)
               </CardTitle>
             </CardHeader>
