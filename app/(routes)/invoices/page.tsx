@@ -80,6 +80,10 @@ export default function InvoicesPage() {
         return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100">Εκκρεμεί (Pending)</Badge>;
       case 'draft':
         return <Badge className="bg-gray-100 text-gray-800 hover:bg-gray-100">Πρόχειρο (Draft)</Badge>;
+      case 'cancelled':
+        return <Badge className="bg-red-100 text-red-800 hover:bg-red-100">Ακυρώθηκε (Cancelled)</Badge>;
+      case 'overdue':
+        return <Badge className="bg-orange-100 text-orange-800 hover:bg-orange-100">Καθυστερημένο (Overdue)</Badge>;
       default:
         return <Badge variant="secondary">{status}</Badge>;
     }

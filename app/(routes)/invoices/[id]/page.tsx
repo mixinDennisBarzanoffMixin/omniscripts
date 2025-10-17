@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Printer } from "lucide-react";
 import { INVOICES, COMPANY_DATA, calculateInvoiceTotal, addDays } from "@/app/_data/invoices";
 
@@ -52,6 +53,23 @@ export default function InvoiceViewPage() {
 
   const handlePrint = () => {
     window.print();
+  };
+
+  const getStatusBadge = (status: string) => {
+    switch (status) {
+      case 'paid':
+        return <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Πληρωμένο (Paid)</Badge>;
+      case 'pending':
+        return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100">Εκκρεμεί (Pending)</Badge>;
+      case 'draft':
+        return <Badge className="bg-gray-100 text-gray-800 hover:bg-gray-100">Πρόχειρο (Draft)</Badge>;
+      case 'cancelled':
+        return <Badge className="bg-red-100 text-red-800 hover:bg-red-100">Ακυρώθηκε (Cancelled)</Badge>;
+      case 'overdue':
+        return <Badge className="bg-orange-100 text-orange-800 hover:bg-orange-100">Καθυστερημένο (Overdue)</Badge>;
+      default:
+        return <Badge variant="secondary">{status}</Badge>;
+    }
   };
 
   if (!isAuthenticated) {
@@ -120,6 +138,9 @@ export default function InvoiceViewPage() {
               <p className="text-brand-100 text-base">
                 № {invoice.number}
               </p>
+              <div className="mt-2 print:hidden">
+                {getStatusBadge(invoice.status)}
+              </div>
             </div>
           </div>
         </div>

@@ -1,3 +1,44 @@
+// Types
+export type InvoiceStatus = 'draft' | 'pending' | 'paid' | 'cancelled' | 'overdue';
+
+export interface Service {
+  description: string;
+  quantity: number;
+  unitPrice: number;
+}
+
+export interface Client {
+  name: string;
+  nameLocal: string;
+  address: string;
+  city: string;
+  postalCode: string;
+  eik: string;
+  vatNumber: string;
+  manager: string;
+  managerEgn?: string;
+  managerIdCard?: string;
+  managerIdIssuePlace?: string;
+  managerIdIssueDate?: string;
+  email: string;
+  phone: string;
+  bank?: string;
+  iban?: string;
+  bic?: string;
+}
+
+export interface Invoice {
+  id: string;
+  number: string;
+  client: Client;
+  date: string;
+  paymentTermsDays: number;
+  place: string;
+  services: Service[];
+  status: InvoiceStatus;
+  notes?: string;
+}
+
 // Company data (static)
 export const COMPANY_DATA = {
   name: "ОмниСкриптс ЕООД",
@@ -175,14 +216,31 @@ export const INVOICES = [
   {
     id: "INV-002",
     number: "INV-2025-002",
-    client: CLIENTS.carsbg11,
-    date: "14.10.2025",
+    client: CLIENTS.malkotohanche,
+    date: "17.10.2025",
     paymentTermsDays: 30,
-    place: "София",
-    services: SERVICE_TEMPLATES.carWebsiteIvan,
-    status: "pending",
-    notes: "Професионален пакет - Уебсайт за автомобили",
+    place: "Костинброд",
+    services: [
+      {
+        description: "Актуализация на сайта в евро и лева",
+        quantity: 1,
+        unitPrice: 50.0,
+      },
+    ],
+    status: "draft",
+    notes: "Към Професионален пакет - E-commerce платформа",
   },
+  // {
+  //   id: "INV-002",
+  //   number: "INV-2025-002",
+  //   client: CLIENTS.carsbg11,
+  //   date: "14.10.2025",
+  //   paymentTermsDays: 30,
+  //   place: "София",
+  //   services: SERVICE_TEMPLATES.carWebsiteIvan,
+  //   status: "pending",
+  //   notes: "Професионален пакет - Уебсайт за автомобили",
+  // },
 ];
 
 // Utility functions
@@ -293,32 +351,4 @@ type RKO = {
 };
 
 export const RKOS: RKO[] = [
-  {
-    id: "RKO-001",
-    number: "ПКО-2025-001", 
-    date: "14.10.2025",
-    type: "income",
-    payer: "КАРСБГ-1 ЕООД",
-    payerData: CLIENTS.carsbg11,
-    recipient: "OmniScripts EOOD",
-    purpose: "Авансово плащане за уебсайт",
-    category: RKO_CATEGORIES.advance_payment,
-    amount: 6500.00,
-    paymentMethod: "В брой",
-    bankReference: "",
-    approvedBy: "Денис Руменов Бързанов", 
-    processedBy: COMPANY_DATA.cashier.name,
-    accountingCode: ACCOUNTING_CODES.advance_payment,
-    status: "pending",
-    notes: "50% аванс за стартов пакет",
-    invoiceRef: "INV-2025-002",
-    documentSeries: DOCUMENT_SERIES.rko,
-    receivedBy: {
-      name: "Елена Николова",
-      egn: "7803154567",
-      idCard: "789123456",
-      issuedBy: "МВР Бургас",
-      issuedOn: "05.12.2021"
-    }
-  },
 ];
