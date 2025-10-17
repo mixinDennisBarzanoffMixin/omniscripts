@@ -7,40 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Code, LogOut, FileText, Calendar, User, Eye } from "lucide-react";
-
-// Custom contracts registry (standalone pages, not by ID)
-const CUSTOM_CONTRACTS = [
-  {
-    id: "custom-001",
-    number: "CTR-2025-WS-001",
-    client: "Ahmad Areeb",
-    title: "Website Development Agreement (Ahmad Areeb)",
-    status: "active",
-    start: "11.10.2025",
-    end: "—",
-    path: "/contracts/ahmad-areeb",
-  },
-  {
-    id: "custom-002",
-    number: "CTR-2025-WS-002",
-    client: "CarsBG-11 LTD",
-    title: "Website Development Agreement (CarsBG-11)",
-    status: "pending",
-    start: "14.10.2025",
-    end: "—",
-    path: "/contracts/ivan-contract",
-  },
-  {
-    id: "custom-003",
-    number: "CTR-TEMPLATE",
-    client: "Freelancer Template",
-    title: "Freelancer Contract (Template)",
-    status: "draft",
-    start: "—",
-    end: "—",
-    path: "/contracts/contract-freelancer",
-  },
-];
+import { CONTRACTS } from "@/app/_data/contracts";
 
 export default function ContractsPage() {
   const router = useRouter();
@@ -75,9 +42,9 @@ export default function ContractsPage() {
   };
 
   // Simple counts for stats (no money aggregation)
-  const totalContracts = CUSTOM_CONTRACTS.length;
-  const activeContracts = CUSTOM_CONTRACTS.filter(c => c.status === 'active').length;
-  const uniqueClients = new Set(CUSTOM_CONTRACTS.map(c => c.client)).size;
+  const totalContracts = CONTRACTS.length;
+  const activeContracts = CONTRACTS.filter(c => c.status === 'active').length;
+  const uniqueClients = new Set(CONTRACTS.map(c => c.client.nameLocal)).size;
 
   const formatDate = (date: Date) => {
     const dd = String(date.getDate()).padStart(2, "0");
@@ -244,10 +211,10 @@ export default function ContractsPage() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {CUSTOM_CONTRACTS.map((contract) => (
+                {CONTRACTS.map((contract) => (
                   <TableRow key={contract.id} className="hover:bg-muted/50">
                     <TableCell className="font-medium">{contract.number}</TableCell>
-                    <TableCell>{contract.client}</TableCell>
+                    <TableCell>{contract.client.nameLocal}</TableCell>
                     <TableCell className="max-w-xs truncate" title={contract.title}>
                       {contract.title}
                     </TableCell>
@@ -255,16 +222,16 @@ export default function ContractsPage() {
                       {getStatusBadge(contract.status)}
                     </TableCell>
                     <TableCell>
-                      {contract.start === 'today' ? todayStr : contract.start}
+                      {contract.startDate === 'today' ? todayStr : contract.startDate}
                     </TableCell>
                     <TableCell>
-                      {contract.end}
+                      {contract.endDate || '—'}
                     </TableCell>
                     <TableCell>
                       <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => router.push(contract.path)}
+                        onClick={() => router.push(`/contracts/${contract.id}`)}
                         className="hover:scale-105 transition-all duration-300"
                       >
                         <Eye className="h-4 w-4 mr-2" />

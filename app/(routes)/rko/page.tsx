@@ -14,7 +14,7 @@ export default function RKOPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    document.title = "RKO - Expense Orders | OmniScripts";
+    document.title = "Касови ордери (ПКО/РКО) | OmniScripts";
     
     // Check authentication via API (since we use HTTPOnly cookies)
     const checkAuth = async () => {
@@ -151,28 +151,48 @@ export default function RKOPage() {
           <div className="flex items-center space-x-2 mb-2">
             <Receipt className="h-8 w-8 text-brand-600" />
             <h1 className="text-3xl font-bold bg-linear-to-r from-foreground to-brand-600 bg-clip-text text-transparent">
-              РКО - Приходни касови ордери
+              Касови ордери (ПКО/РКО)
             </h1>
           </div>
           <p className="text-muted-foreground">
-            Управление на всички приходни касови ордери и получени плащания
+            Управление на всички касови ордери - приходи и разходи
             <br />
-            (Manage all incoming cash orders and received payments)
+            (Manage all cash orders - income and expenses)
           </p>
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <Card className="border-0 shadow-lg bg-card/80 backdrop-blur-xl">
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
-                <DollarSign className="h-4 w-4 mr-2" />
-                Общо Приходи (Total Income)
+                <TrendingDown className="h-4 w-4 mr-2 text-green-600 rotate-180" />
+                ПКО - Приходи (Income)
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-green-600">
-                {formatPrice(RKOS.filter(rko => rko.status === 'completed').reduce((sum, rko) => sum + rko.amount, 0))}
+                {formatPrice(RKOS.filter(rko => rko.type === 'income' && rko.status === 'completed').reduce((sum, rko) => sum + rko.amount, 0))}
+              </div>
+              <div className="text-xs text-muted-foreground mt-1">
+                {RKOS.filter(rko => rko.type === 'income').length} ордера
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="border-0 shadow-lg bg-card/80 backdrop-blur-xl">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
+                <TrendingDown className="h-4 w-4 mr-2 text-red-600" />
+                РКО - Разходи (Expenses)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold text-red-600">
+                {formatPrice(RKOS.filter(rko => rko.type === 'expense' && rko.status === 'completed').reduce((sum, rko) => sum + rko.amount, 0))}
+              </div>
+              <div className="text-xs text-muted-foreground mt-1">
+                {RKOS.filter(rko => rko.type === 'expense').length} ордера
               </div>
             </CardContent>
           </Card>
@@ -188,6 +208,9 @@ export default function RKOPage() {
               <div className="text-2xl font-bold text-yellow-600">
                 {formatPrice(RKOS.filter(rko => rko.status === 'pending').reduce((sum, rko) => sum + rko.amount, 0))}
               </div>
+              <div className="text-xs text-muted-foreground mt-1">
+                {RKOS.filter(rko => rko.status === 'pending').length} ордера
+              </div>
             </CardContent>
           </Card>
 
@@ -195,12 +218,22 @@ export default function RKOPage() {
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
                 <DollarSign className="h-4 w-4 mr-2" />
-                Брой РКО (Total RKOs)
+                Нетен баланс (Net Balance)
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-brand-600">
-                {RKOS.length}
+              <div className={`text-2xl font-bold ${
+                (RKOS.filter(rko => rko.type === 'income' && rko.status === 'completed').reduce((sum, rko) => sum + rko.amount, 0) - 
+                 RKOS.filter(rko => rko.type === 'expense' && rko.status === 'completed').reduce((sum, rko) => sum + rko.amount, 0)) >= 0 
+                  ? 'text-green-600' : 'text-red-600'
+              }`}>
+                {formatPrice(
+                  RKOS.filter(rko => rko.type === 'income' && rko.status === 'completed').reduce((sum, rko) => sum + rko.amount, 0) - 
+                  RKOS.filter(rko => rko.type === 'expense' && rko.status === 'completed').reduce((sum, rko) => sum + rko.amount, 0)
+                )}
+              </div>
+              <div className="text-xs text-muted-foreground mt-1">
+                {RKOS.length} общо ордера
               </div>
             </CardContent>
           </Card>
@@ -209,18 +242,19 @@ export default function RKOPage() {
         {/* RKO Table */}
         <Card className="border-0 shadow-xl bg-card/90 backdrop-blur-xl">
           <CardHeader>
-            <CardTitle>Списък РКО (RKO List)</CardTitle>
+            <CardTitle>Списък касови ордери (Cash Orders List)</CardTitle>
             <CardDescription>
-              Всички разходни касови ордери и тяхното състояние
-              (All expense cash orders and their status)
+              Всички касови ордери - приходи и разходи
+              (All cash orders - income and expenses)
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
+                  <TableHead>Тип (Type)</TableHead>
                   <TableHead>Номер (Number)</TableHead>
-                  <TableHead>Платец (Payer)</TableHead>
+                  <TableHead>От/До (From/To)</TableHead>
                   <TableHead>Цел (Purpose)</TableHead>
                   <TableHead>Категория (Category)</TableHead>
                   <TableHead>Сума (Amount)</TableHead>
@@ -232,8 +266,13 @@ export default function RKOPage() {
               <TableBody>
                 {RKOS.map((rko) => (
                   <TableRow key={rko.id} className="hover:bg-muted/50">
+                    <TableCell>
+                      <Badge className={rko.type === 'income' ? 'bg-green-100 text-green-800 hover:bg-green-100' : 'bg-red-100 text-red-800 hover:bg-red-100'}>
+                        {rko.type === 'income' ? 'ПКО ↓' : 'РКО ↑'}
+                      </Badge>
+                    </TableCell>
                     <TableCell className="font-medium">{rko.number}</TableCell>
-                    <TableCell>{rko.payer}</TableCell>
+                    <TableCell>{rko.type === 'income' ? rko.payer : rko.recipient}</TableCell>
                     <TableCell className="max-w-xs truncate" title={rko.purpose}>
                       {rko.purpose}
                     </TableCell>
@@ -241,7 +280,9 @@ export default function RKOPage() {
                       {getCategoryBadge(rko.category)}
                     </TableCell>
                     <TableCell className="font-semibold">
-                      {formatPrice(rko.amount)}
+                      <span className={rko.type === 'income' ? 'text-green-600' : 'text-red-600'}>
+                        {rko.type === 'income' ? '+' : '-'}{formatPrice(rko.amount)}
+                      </span>
                     </TableCell>
                     <TableCell>
                       {getStatusBadge(rko.status)}

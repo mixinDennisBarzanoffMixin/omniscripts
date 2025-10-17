@@ -15,7 +15,11 @@ export default function RKOViewPage() {
   const rko = RKOS.find(r => r.id === rkoId);
 
   useEffect(() => {
-    document.title = `RKO ${rkoId} | OmniScripts`;
+    if (rko?.type === 'income') {
+      document.title = `ПКО ${rkoId} | OmniScripts`;
+    } else {
+      document.title = `РКО ${rkoId} | OmniScripts`;
+    }
     
     // Check authentication via API (since we use HTTPOnly cookies)
     const checkAuth = async () => {
@@ -49,6 +53,14 @@ export default function RKOViewPage() {
     }).format(price);
   };
 
+  // Dynamic labels based on type (income vs expense)
+  const isIncome = rko?.type === 'income';
+  const orderTitle = isIncome ? 'ПРИХОДЕН' : 'РАЗХОДЕН';
+  const fromToLabel = isIncome ? 'Получено от' : 'Да се брои на';
+  const depositedReceivedLabel = isIncome ? 'Внесе сумата, пълн. №' : 'Получих сумата, пълн. №';
+  const acceptedCountedLabel = isIncome ? 'Приел сумата:' : 'Броил сумата:';
+  const numberPrefix = isIncome ? 'ПКО-' : 'РКО-';
+
   const convertNumberToWords = (num: number): string => {
     // Simple number to words converter for Bulgarian
     const ones = ['', 'един', 'два', 'три', 'четири', 'пет', 'шест', 'седем', 'осем', 'девет'];
@@ -77,10 +89,10 @@ export default function RKOViewPage() {
     return (
       <div className="min-h-screen bg-linear-to-br from-background via-red-50/30 to-orange-50/50 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">RKO Not Found</h1>
+          <h1 className="text-2xl font-bold mb-4">ПКО Не е намерен (PKO Not Found)</h1>
           <Button onClick={() => router.push('/rko')}>
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to RKO List
+            Назад към ПКО (Back to PKO List)
           </Button>
         </div>
       </div>
@@ -216,7 +228,7 @@ export default function RKOViewPage() {
             className="hover:scale-105 transition-all duration-300"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Назад към РКО (Back to RKO)
+            Назад към ПКО (Back to PKO)
           </Button>
           <Button
             onClick={handlePrint}
@@ -229,7 +241,7 @@ export default function RKOViewPage() {
       </div>
 
       <div className="rko-container max-w-4xl mx-auto bg-white shadow-xl rounded-xl print:shadow-none print:rounded-none print:max-w-none">
-        {/* Header - Official RKO Style */}
+        {/* Header - Official PKO Style */}
         <div className="rko-header border-4 border-teal-700 rounded-t-xl print:rounded-none bg-white">
           <div className="border-b-2 border-gray-300 p-4">
             <div className="text-center text-sm text-gray-600 mb-2">
@@ -243,13 +255,13 @@ export default function RKOViewPage() {
           <div className="grid grid-cols-12 border-b-2 border-gray-300">
             <div className="col-span-3 bg-teal-700 text-white p-4 flex items-center justify-center">
               <div className="text-center">
-                <div className="font-bold text-lg">РАЗХОДЕН</div>
+                <div className="font-bold text-lg">{orderTitle}</div>
                 <div className="font-bold text-lg">КАСОВ ОРДЕР</div>
               </div>
             </div>
             <div className="col-span-3 border-r border-gray-300 p-4 text-center">
               <div className="text-sm text-gray-600 mb-2">№</div>
-              <div className="font-bold text-lg">{rko.number.replace('РКО-', '')}</div>
+              <div className="font-bold text-lg">{rko.number.replace(numberPrefix, '')}</div>
             </div>
             <div className="col-span-3 border-r border-gray-300 p-4 text-center">
               <div className="text-sm text-gray-600 mb-2">Дата</div>
@@ -262,14 +274,14 @@ export default function RKOViewPage() {
           </div>
         </div>
 
-        {/* Main Content - Official RKO Form Style */}
+        {/* Main Content - Official PKO Form Style */}
         <div className="border-4 border-teal-700 border-t-0 rounded-b-xl print:rounded-none bg-white">
-          {/* Da se broi na (To be counted to) */}
+          {/* From/To section - dynamic based on type */}
           <div className="border-b-2 border-gray-300 p-4">
             <div className="flex items-center mb-4">
-              <span className="font-bold mr-4">Да се брои на</span>
+              <span className="font-bold mr-4">{fromToLabel}</span>
               <div className="flex-1 border-b border-gray-400 pb-1">
-                <span className="font-semibold">{rko.payer}</span>
+                <span className="font-semibold">{isIncome ? rko.payer : rko.recipient}</span>
               </div>
             </div>
             
@@ -379,7 +391,7 @@ export default function RKOViewPage() {
           <div className="border-b-2 border-gray-300 p-3 print:p-2">
             <div className="grid grid-cols-12 gap-2 print:gap-1 items-center mb-3 print:mb-2">
               <div className="col-span-3">
-                <span className="font-bold text-sm print:text-xs">Получих сумата, пълн. №</span>
+                <span className="font-bold text-sm print:text-xs">{depositedReceivedLabel}</span>
               </div>
               <div className="col-span-2">
                 <div className="border-b border-gray-400 pb-1 text-center text-sm print:text-xs">
@@ -446,7 +458,7 @@ export default function RKOViewPage() {
               <div className="border-b border-gray-400 w-full h-6 print:h-4 mt-1 mb-1"></div>
             </div>
             <div className="col-span-3">
-              <span className="font-bold text-sm print:text-xs">Броил сумата:</span>
+              <span className="font-bold text-sm print:text-xs">{acceptedCountedLabel}</span>
               <div className="border-b border-gray-400 w-full h-6 print:h-4 mt-1 mb-1"></div>
               <div className="text-center text-xs text-gray-600">касиер</div>
               <div className="text-center text-xs print:text-xs text-gray-500 mt-1">
@@ -464,7 +476,7 @@ export default function RKOViewPage() {
           </div>
         </div>
 
-        {/* Footer - Official RKO Style */}
+        {/* Footer - Official PKO Style */}
         <div className="border-t-2 border-gray-300 p-2 bg-gray-50 text-center text-xs rounded-b-xl print:rounded-none">
           <div className="grid grid-cols-3 gap-4">
             <div>{DOCUMENT_SERIES.rko.series}</div>

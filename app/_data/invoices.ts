@@ -33,25 +33,6 @@ export const COMPANY_DATA = {
 
 // Client data (hardcoded clients)
 export const CLIENTS = {
-  // sintagma: {
-  //   name: "Sintagma Real Estate",
-  //   nameLocal: "Синтагма Недвижими Имоти ЕООД",
-  //   address: "гр. София, ул. Витоша 15, ет. 3",
-  //   city: "София",
-  //   postalCode: "1000",
-  //   eik: "123456789",
-  //   vatNumber: "BG123456789",
-  //   manager: "Георги Петров",
-  //   managerEgn: "8010151234",
-  //   managerIdCard: "123456789",
-  //   managerIdIssuePlace: "МВР София",
-  //   managerIdIssueDate: "15.01.2020",
-  //   email: "contact@sintagma.co",
-  //   phone: "+359 888 111 222",
-  //   bank: "УниКредит Булбанк",
-  //   iban: "BG80 UNCR 7630 1234 5678 90",
-  //   bic: "UNCRBGSF"
-  // },
   malkotohanche: {
     name: "StrongPlast Ltd",
     nameLocal: "СТРОНГПЛАСТ ЕООД",
@@ -71,24 +52,26 @@ export const CLIENTS = {
     // iban: "BG56 STSA 9300 0012 3456 78",
     // bic: "STSABGSF"
   },
-  newclient: {
-    name: "New Business Ventures",
-    nameLocal: "Нов Бизнес Венчърс ЕООД",
-    address: "гр. Бургас, ул. Богориди 8",
-    city: "Бургас",
-    postalCode: "8000",
-    eik: "789123456",
+  carsbg11: {
+    name: "CarsBG-11 LTD",
+    nameLocal: "КАРСБГ-11 ООД",
+    address: 'ж.к. Люлин 1, бул. "Сливница" 357А, 1360 София',
+    city: "София",
+    postalCode: "1360",
+    eik: "204743277",
     vatNumber: "-",
-    manager: "Елена Николова",
-    managerEgn: "7803154567",
-    managerIdCard: "789123456",
-    managerIdIssuePlace: "МВР Бургас",
-    managerIdIssueDate: "05.12.2021",
-    email: "hello@newventures.bg",
-    phone: "+359 888 777 888",
-    bank: "Първа инвестиционна банка",
-    iban: "BG11 FINV 9150 0012 3456 78",
-    bic: "FINVBGSF"
+    manager: "Елеонора Богданова Хардалиева",
+    // The below fields do not have EGN/лична карта info by default
+    // managerEgn: "",
+    // managerIdCard: "",
+    // managerIdIssuePlace: "",
+    // managerIdIssueDate: "",
+    email: "rentauto@abv.bg",
+    phone: "—",
+    // No bank info known for this client in contract context
+    // bank: "",
+    // iban: "",
+    // bic: ""
   },
 };
 
@@ -132,6 +115,13 @@ export const SERVICE_TEMPLATES = {
       quantity: 1,
       unitPrice: 300.0,
     },
+  ],
+  carWebsiteIvan: [
+    {
+      description: "Авансово плащане за направата на сайт",
+      quantity: 1,
+      unitPrice: 6500.0,
+    }
   ],
   // enterprise: [
   //   {
@@ -179,20 +169,20 @@ export const INVOICES = [
     paymentTermsDays: 30,
     place: "Костинброд",
     services: SERVICE_TEMPLATES.ecommerceCheap,
-    status: "pending",
+    status: "paid",
     notes: "Професионален пакет - E-commerce платформа",
   },
-  // {
-  //   id: "INV-002",
-  //   number: "INV-2024-002",
-  //   client: CLIENTS.sintagma,
-  //   date: "15.01.2024",
-  //   paymentTermsDays: 30,
-  //   place: "Костинброд",
-  //   services: SERVICE_TEMPLATES.webDevelopment,
-  //   status: "paid",
-  //   notes: "Професионален пакет - Платформа за недвижими имоти",
-  // },
+  {
+    id: "INV-002",
+    number: "INV-2025-002",
+    client: CLIENTS.carsbg11,
+    date: "14.10.2025",
+    paymentTermsDays: 30,
+    place: "София",
+    services: SERVICE_TEMPLATES.carWebsiteIvan,
+    status: "pending",
+    notes: "Професионален пакет - Уебсайт за автомобили",
+  },
 ];
 
 // Utility functions
@@ -228,7 +218,7 @@ export const calculateInvoiceTotal = (services: typeof SERVICE_TEMPLATES.ecommer
   };
 };
 
-// RKO (Разходен касов ордер) - Incoming Cash Orders (Money received by OmniScripts)
+// ПКО (Приходен касов ордер) - Incoming Cash Orders (Money received by OmniScripts)
 export const RKO_CATEGORIES = {
   client_payment: "Плащане от клиент",
   advance_payment: "Авансово плащане", 
@@ -277,6 +267,7 @@ type RKO = {
   id: string;
   number: string;
   date: string;
+  type: 'income' | 'expense'; // ПКО (приходен) или РКО (разходен)
   payer: string;
   payerData: any;
   recipient: string;
@@ -302,157 +293,32 @@ type RKO = {
 };
 
 export const RKOS: RKO[] = [
-  // {
-  //   id: "RKO-001",
-  //   number: "РКО-2024-001",
-  //   date: "15.01.2024",
-  //   payer: "Sintagma Real Estate",
-  //   payerData: CLIENTS.sintagma,
-  //   recipient: "OmniScripts EOOD",
-  //   purpose: "Плащане по фактура INV-2024-001 за разработка на уеб платформа",
-  //   category: RKO_CATEGORIES.client_payment,
-  //   amount: 25000.00,
-  //   paymentMethod: "Банков превод",
-  //   bankReference: "BT240115001",
-  //   approvedBy: "Денис Руменов Бързанов",
-  //   processedBy: COMPANY_DATA.cashier.name,
-  //   accountingCode: ACCOUNTING_CODES.client_payment,
-  //   status: "completed",
-  //   notes: "Пълно плащане за професионален пакет - недвижими имоти",
-  //   invoiceRef: "INV-2024-001",
-  //   documentSeries: DOCUMENT_SERIES.rko,
-  //   receivedBy: {
-  //     name: "Георги Петров",
-  //     egn: "8010151234",
-  //     idCard: "123456789",
-  //     issuedBy: "МВР София",
-  //     issuedOn: "15.01.2020"
-  //   }
-  // },
-  // {
-  //   id: "RKO-002", 
-  //   number: "РКО-2024-002",
-  //   date: "22.02.2024",
-  //   payer: "Malkoto Hanche EOOD",
-  //   payerData: CLIENTS.malkotohanche,
-  //   recipient: "OmniScripts EOOD", 
-  //   purpose: "Плащане по фактура INV-2024-002 за e-commerce платформа",
-  //   category: RKO_CATEGORIES.client_payment,
-  //   amount: 21500.00,
-  //   paymentMethod: "Банков превод",
-  //   bankReference: "BT240222001",
-  //   approvedBy: "Денис Руменов Бързанов",
-  //   processedBy: COMPANY_DATA.cashier.name,
-  //   accountingCode: ACCOUNTING_CODES.client_payment,
-  //   status: "completed",
-  //   notes: "Пълно плащане за професионален пакет - онлайн магазин",
-  //   invoiceRef: "INV-2024-002",
-  //   documentSeries: DOCUMENT_SERIES.rko,
-  //   receivedBy: {
-  //     name: "Мария Димитрова",
-  //     egn: "7505201987",
-  //     idCard: "987654321",
-  //     issuedBy: "МВР Пловдив",
-  //     issuedOn: "22.03.2018"
-  //   }
-  // },
-  // {
-  //   id: "RKO-003",
-  //   number: "РКО-2024-003", 
-  //   date: "05.03.2024",
-  //   payer: "New Business Ventures EOOD",
-  //   payerData: CLIENTS.newclient,
-  //   recipient: "OmniScripts EOOD",
-  //   purpose: "Авансово плащане за портфолио уебсайт",
-  //   category: RKO_CATEGORIES.advance_payment,
-  //   amount: 1500.00,
-  //   paymentMethod: "В брой",
-  //   bankReference: null,
-  //   approvedBy: "Денис Руменов Бързанов", 
-  //   processedBy: COMPANY_DATA.cashier.name,
-  //   accountingCode: ACCOUNTING_CODES.advance_payment,
-  //   status: "completed",
-  //   notes: "50% аванс за стартов пакет",
-  //   invoiceRef: "INV-2024-004",
-  //   documentSeries: DOCUMENT_SERIES.rko,
-  //   receivedBy: {
-  //     name: "Елена Николова",
-  //     egn: "7803154567",
-  //     idCard: "789123456",
-  //     issuedBy: "МВР Бургас",
-  //     issuedOn: "05.12.2021"
-  //   }
-  // },
-  // {
-  //   id: "RKO-004",
-  //   number: "РКО-2024-004",
-  //   date: "18.03.2024",
-  //   payer: "Rentauto Services OOD",
-  //   payerData: CLIENTS.rentauto,
-  //   recipient: "OmniScripts EOOD",
-  //   purpose: "Частично плащане по фактура INV-2024-003",
-  //   category: RKO_CATEGORIES.client_payment,
-  //   amount: 22000.00,
-  //   paymentMethod: "Банков превод",
-  //   bankReference: "BT240318001",
-  //   approvedBy: "Денис Руменов Бързанов",
-  //   processedBy: COMPANY_DATA.cashier.name,
-  //   accountingCode: ACCOUNTING_CODES.client_payment,
-  //   status: "completed",
-  //   notes: "Частично плащане 50% от enterprise пакет",
-  //   invoiceRef: "INV-2024-003",
-  //   documentSeries: DOCUMENT_SERIES.rko,
-  //   receivedBy: {
-  //     name: "Иван Стоянов",
-  //     egn: "8212103456",
-  //     idCard: "456789123",
-  //     issuedBy: "МВР Варна",
-  //     issuedOn: "10.07.2019"
-  //   }
-  // },
-  // {
-  //   id: "RKO-005",
-  //   number: "РКО-2024-005",
-  //   date: "25.03.2024", 
-  //   payer: "Българска банка за развитие",
-  //   payerData: {
-  //     name: "Българска банка за развитие АД",
-  //     nameLocal: "Българска банка за развитие АД",
-  //     address: "гр. София, ул. Веслец 7",
-  //     city: "София", 
-  //     postalCode: "1000",
-  //     eik: "831629564",
-  //     vatNumber: "BG831629564",
-  //     manager: "Стоян Мавродиев",
-  //     managerEgn: "6801011234",
-  //     managerIdCard: "123654789",
-  //     managerIdIssuePlace: "МВР София",
-  //     managerIdIssueDate: "15.05.2015",
-  //     email: "info@bbr.bg",
-  //     phone: "+359 2 940 7400",
-  //     bank: "Българска народна банка",
-  //     iban: "BG80 BNBG 9661 1000 1001 01",
-  //     bic: "BNBGBGSF"
-  //   },
-  //   recipient: "OmniScripts EOOD",
-  //   purpose: "Безвъзмездна финансова помощ за дигитализация",
-  //   category: RKO_CATEGORIES.grant,
-  //   amount: 5000.00,
-  //   paymentMethod: "Банков превод",
-  //   bankReference: "GT240325001",
-  //   approvedBy: "Денис Руменов Бързанов",
-  //   processedBy: COMPANY_DATA.cashier.name,
-  //   accountingCode: ACCOUNTING_CODES.grant,
-  //   status: "pending", 
-  //   notes: "Европейски фонд за дигитални иновации",
-  //   invoiceRef: null,
-  //   documentSeries: DOCUMENT_SERIES.rko,
-  //   receivedBy: {
-  //     name: "Стоян Мавродиев",
-  //     egn: "6801011234",
-  //     idCard: "123654789",
-  //     issuedBy: "МВР София",
-  //     issuedOn: "15.05.2015"
-  //   }
-  // },
+  {
+    id: "RKO-001",
+    number: "ПКО-2025-001", 
+    date: "14.10.2025",
+    type: "income",
+    payer: "КАРСБГ-1 ЕООД",
+    payerData: CLIENTS.carsbg11,
+    recipient: "OmniScripts EOOD",
+    purpose: "Авансово плащане за уебсайт",
+    category: RKO_CATEGORIES.advance_payment,
+    amount: 6500.00,
+    paymentMethod: "В брой",
+    bankReference: "",
+    approvedBy: "Денис Руменов Бързанов", 
+    processedBy: COMPANY_DATA.cashier.name,
+    accountingCode: ACCOUNTING_CODES.advance_payment,
+    status: "pending",
+    notes: "50% аванс за стартов пакет",
+    invoiceRef: "INV-2025-002",
+    documentSeries: DOCUMENT_SERIES.rko,
+    receivedBy: {
+      name: "Елена Николова",
+      egn: "7803154567",
+      idCard: "789123456",
+      issuedBy: "МВР Бургас",
+      issuedOn: "05.12.2021"
+    }
+  },
 ];
