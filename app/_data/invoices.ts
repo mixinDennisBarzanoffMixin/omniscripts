@@ -224,10 +224,10 @@ export const INVOICES = [
       {
         description: "Актуализация на сайта в евро и лева",
         quantity: 1,
-        unitPrice: 50.0,
+        unitPrice: 40.0,
       },
     ],
-    status: "draft",
+    status: "pending",
     notes: "Към Професионален пакет - E-commerce платформа",
   },
   // {
