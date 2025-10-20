@@ -257,7 +257,7 @@ export const CONTRACTS: Contract[] = [
     language: "bg",
     title: "Договор за изработка на уебсайт",
     titleLocal: "Website Development Agreement",
-    status: "pending",
+    status: "active",
     startDate: "01.10.2025",
     endDate: "01.10.2027",
     client: {
@@ -293,7 +293,7 @@ export const CONTRACTS: Contract[] = [
         {
           title: "Цена и плащане",
           points: [
-            "Обща цена: 3,000 лв.",
+            "Обща цена: 4,000 лв.",
             "Плащане след финално приемане.",
             `Плащане с кеш и касова бележка или по банков път към IBAN: ${COMPANY_DATA.iban}, Bank: ${COMPANY_DATA.bank}, BIC: ${COMPANY_DATA.bic}.`,
             "Просрочие: законна лихва след 5 работни дни от падеж."
@@ -499,7 +499,7 @@ export const CONTRACTS: Contract[] = [
     language: "bg",
     title: "Договор за изработка на уебсайт",
     titleLocal: "Website Development Agreement",
-    status: "pending",
+    status: "active",
     startDate: "01.09.2025",
     endDate: "01.10.2025",
     client: {
@@ -544,6 +544,12 @@ export const CONTRACTS: Contract[] = [
           points: [
             "Възложителят има 30 работни дни за писмени забележки.",
             "При липса на забележки в срока: приемане по право."
+          ]
+        },
+        {
+          title: "Оперативни разходи на сайта",
+          points: [
+            "Оперативните разходи се поемат първо от Изпълнителя, а след това от Възложителя, който възстановява сумата чрез фактура. "
           ]
         },
         {
@@ -691,7 +697,126 @@ export const CONTRACTS: Contract[] = [
       ]
     },
     notes: "Проект webcar.eu – еднократна задача; документите са чернова до плащане."
-  }
+  },
+  {
+    id: "saad-ali-abbasi",
+    number: "CTR-2025-WS-004", //freelancer
+    type: "freelancer",
+    language: "en",
+    title: "Freelance Web Development Agreement",
+    titleLocal: "Граждански договор за уеб разработка",
+    status: "active",
+    startDate: "20.10.2025",
+    client: {
+      nameLocal: "Saad Ali Abbasi",
+      nameEn: "Saad Ali Abbasi",
+      cnic: "3740423977455",
+      address: "I-10/4 street 26 house 1113 Islamabad, Pakistan",
+      phone: "+92 331 9525595",
+      email: "saadaliabbasi2347@gmail.com",
+      manager: "Saad Ali Abbasi",
+      bankAccount: "PK95MEZN0003020110099471",
+      bankName: "Meezan Bank",
+    },
+    terms: {
+      definitions: [
+        `"Work Result": The final website, web application, or related code produced as a deliverable under this agreement, except for pre-existing libraries, frameworks, or third-party components used by the Contractor.`,
+        `"Freelancer": The independent contractor undertaking assigned tasks for the Company on a per-project basis, not as an employee.`,
+        `"Confidential Information": Any proprietary, business, technical, or financial information disclosed by either party during this Agreement.`
+      ],
+      clauses: [
+        {
+          title: "Scope of Work",
+          points: [
+            "Design, development, and implementation of web projects as detailed in written task briefs.",
+            "Freelancer chooses technologies suitable to the task, unless stated otherwise.",
+            "Deliverables and milestones defined in each task/order."
+          ]
+        },
+        {
+          title: "Payment Terms",
+          points: [
+            "Payment is per completed and accepted project/task.",
+            "Fees are specified and agreed upon prior to commencement of each task.",
+            "Invoices (or written payment requests) to be issued by the Freelancer upon completion and acceptance of deliverables.",
+            "Payment to be made via bank transfer to account details provided by the Freelancer or through Wise (License with reg. code Registration code: 0713629988 or Payoneer (License #C189473, regulated under the Bank of Ireland)." 
+          ]
+        },
+        {
+          title: "Provision of Tools and Licenses",
+          points: [
+            "If the Freelancer does not possess the necessary tools, software, or licenses essential for the completion of the assigned task, the Company shall provide an additional budget to cover these costs.",
+            "The Company may fulfill this obligation either by directly providing access/licenses, or by reimbursing the Freelancer based on an invoice, in which case the Freelancer obtains the required tool or license in their own name and submits an official invoice/receipt to the Company.",
+            "The purchase and reimbursement of such tools require written pre-approval by the Company prior to sourcing.",
+            "Any tools or licenses purchased and reimbursed in the Freelancer's own name remain the property of the Freelancer after project completion, unless otherwise agreed in writing."
+          ]
+        },
+        {
+          title: "Taxes",
+          points: [
+            "If the Freelancer provides a valid Tax Residence Certificate, taxation in Bulgaria will follow Article 9",
+            "(“Elimination of Double Taxation”) of the Convention between the Republic of Bulgaria and the Islamic Republic of Pakistan",
+            "for the Avoidance of Double Taxation and the Prevention of Fiscal Evasion with respect to Taxes on Income (signed 21 May 2019). ",
+            "In such case, income tax will not be withheld at source in Bulgaria, provided the requirements of Article 9 of the treaty are me", 
+            "and the Freelancer is recognized as a resident of Pakistan for tax purposes.",
+            "If the Freelancer does not provide a valid Tax Residence Certificate, taxation in Bulgaria will follow the Bulgarian tax law."
+          ]
+        },
+        {
+          title: "Acceptance",
+          points: [
+            "Client reviews deliverables within 15 business days.",
+            "Deliverables are deemed accepted unless written objections are raised within the review period."
+          ]
+        },
+        {
+          title: "Rights to Work Result",
+          points: [
+            "All rights to the final deliverables are transferred to the Client upon full payment.",
+            "Pre-existing tools, resources, and libraries of the Freelancer are not transferred.",
+            "The Freelancer may showcase non-confidential work in a portfolio unless otherwise agreed."
+          ]
+        },
+        {
+          title: "Confidentiality",
+          points: [
+            "Both parties agree to treat all Confidential Information as strictly confidential.",
+            "Access credentials or sensitive information will not be shared with third parties."
+          ]
+        },
+        {
+          title: "Independent Contractor",
+          points: [
+            "The relationship is not one of employment; the Freelancer works independently.",
+            "No working hours, payroll benefits, or subordination; payment is per result, not per time."
+          ]
+        },
+        {
+          title: "Termination",
+          points: [
+            "Either party may terminate with 7 days written notice prior to acceptance.",
+            "Immediate termination is possible in case of material breach.",
+            "Upon termination, all accepted work is paid as per agreement; no payment for unaccepted work."
+          ]
+        },
+        {
+          title: "Documentation",
+          points: [
+            "Necessary statements and payment documents must be prepared by parties as required by law and agreement.",
+            "Drafts may be created and finalized upon payment or annual closure."
+          ]
+        },
+        {
+          title: "Governing Law",
+          points: [
+            "Bulgarian law applies; competent court – Sofia unless otherwise stated.",
+            "Both parties strive for amicable resolution prior to legal action."
+          ]
+        }
+      ]
+    },
+    notes: "Freelancer contract for individual web development tasks; payment only upon accepted deliverables. Documents may remain in draft form until settlement."
+  },
 
 ];
 
