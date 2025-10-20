@@ -110,6 +110,13 @@ export default function ContractsPage() {
             </Button>
             <Button
               variant="ghost"
+              onClick={() => router.push('/documents')}
+              className="hover:scale-105 transition-all duration-300"
+            >
+              Documents
+            </Button>
+            <Button
+              variant="ghost"
               onClick={() => router.push('/')}
               className="hover:scale-105 transition-all duration-300"
             >
