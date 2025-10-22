@@ -114,6 +114,13 @@ export default function RKOPage() {
           <div className="flex items-center space-x-4">
             <Button
               variant="ghost"
+              onClick={() => router.push('/offers')}
+              className="hover:scale-105 transition-all duration-300"
+            >
+              Προσφορές (Offers)
+            </Button>
+            <Button
+              variant="ghost"
               onClick={() => router.push('/contracts')}
               className="hover:scale-105 transition-all duration-300"
             >

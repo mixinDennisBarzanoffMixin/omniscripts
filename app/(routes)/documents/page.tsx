@@ -56,6 +56,9 @@ export default function DocumentsPage() {
           </div>
           <div className="flex items-center gap-2">
             <Input placeholder="Search..." value={q} onChange={e => setQ(e.target.value)} className="w-56" />
+            <Button variant="ghost" onClick={() => router.push('/offers')}>
+              Offers
+            </Button>
             <Button variant="ghost" onClick={() => router.push('/contracts')}>
               <ArrowLeft className="mr-2 h-4 w-4" /> Back
             </Button>
