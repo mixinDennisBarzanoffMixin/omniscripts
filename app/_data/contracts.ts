@@ -812,6 +812,25 @@ createWebsiteContractorContractEn({
   },
   paymentWisePayoneerOnly: true
 }),
+createWebsiteContractorContractEn({
+  id: "muhammad-ashir",
+  number: "CTR-2025-WS-007",
+  startDate: "23.10.2025",
+  status: "pending",
+  contractor: {
+    nameLocal: "Muhammad Ashir",
+    nameEn: "Muhammad Ashir",
+    cnic: "42201-3980178-1",
+    address: "Rabia city block d1 flat no 41 3rd floor, gulistan e johar, karachi",
+    phone: "+923368272591",
+    email: "shaikhashir871@gmail.com",
+    manager: "Muhammad Ashir",
+    bankAccount: "PK80ASCM0003710350003094",
+    bankName: "Askari bank , Muhammad Ashir"
+  },
+  paymentWisePayoneerOnly: true
+}),
+
 ];
 
 // Helper function to get contract by ID
