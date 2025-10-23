@@ -23,7 +23,7 @@ export default function ContractPage() {
           const contractData = getContractById(params.id as string);
           if (contractData) {
             setContract(contractData);
-            document.title = `${contractData.title} | OmniScripts`;
+            document.title = `${contractData.number} | OmniScripts`;
           } else {
             // Contract not found, redirect to contracts list
             router.push("/contracts");

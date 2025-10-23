@@ -1,47 +1,6 @@
 // Contract Types
-export type ContractType = 'website' | 'marketing' | 'freelancer' | 'nda';
-export type ContractLanguage = 'bg' | 'en';
-
-export interface ContractParty {
-  nameLocal: string;
-  nameEn?: string;
-  address: string;
-  eik?: string; // EIK for Bulgarian entities
-  vatNumber?: string; // VAT number
-  cnic?: string; // CNIC for Pakistani individuals
-  phone: string;
-  email: string;
-  manager: string;
-  bankAccount?: string;
-  bankName?: string;
-  legalForm?: string;
-}
-
-export interface ContractTerms {
-  definitions: string[];
-  clauses: {
-    title: string;
-    points: string[];
-  }[];
-}
-
-export interface Contract {
-  id: string;
-  number: string;
-  type: ContractType;
-  language: ContractLanguage; // 'bg' for Bulgarian, 'en' for English
-  title: string;
-  titleLocal?: string;
-  status: 'active' | 'pending' | 'draft' | 'expired';
-  startDate: string;
-  endDate?: string;
-  client: ContractParty;
-  terms: ContractTerms;
-  price?: string;
-  advance?: string;
-  remainder?: string;
-  notes?: string;
-}
+import type { Contract, ContractLanguage } from "@/app/_data/contractTypes";
+import { createWebsiteContractorContractEn } from "@/app/_lib/contractTemplates";
 
 // Company data (OmniScripts)
 export const COMPANY_DATA = {
@@ -817,7 +776,42 @@ export const CONTRACTS: Contract[] = [
     },
     notes: "Freelancer contract for individual web development tasks; payment only upon accepted deliverables. Documents may remain in draft form until settlement."
   },
-
+  createWebsiteContractorContractEn({
+    id: "kiran-ahmad",
+    number: "CTR-2025-WS-005",
+    startDate: "23.10.2025",
+    status: "pending",
+    contractor: {
+      nameLocal: "Kiran Ahmad",
+      nameEn: "Kiran Ahmad",
+      cnic: "14301-1199011-4",
+      address: "Happy valley Kohat Kpk near children park",
+      phone: "+92 331 9696940",
+      email: "kiran.ahmad.usman@gmail.com",
+      manager: "Kiran Ahmad",
+      bankAccount: "PK29MEZN0000300109403559",
+      bankName: "Meezan Bank - Meezan Digital Center"
+    },
+    paymentWisePayoneerOnly: true
+  }),
+createWebsiteContractorContractEn({
+  id: "syed-ali-asghar",
+  number: "CTR-2025-WS-006",
+  startDate: "23.10.2025",
+  status: "pending",
+  contractor: {
+    nameLocal: "Syed Ali Asghar",
+    nameEn: "Syed Ali Asghar",
+    cnic: "34603-5563963-1",
+    address: "Umer Academy Street, Defence Road, Sialkot, Pakistan",
+    phone: "03338622122",
+    email: "aligee512@gmail.com",
+    manager: "Syed Ali Asghar",
+    bankAccount: "PK05NAYA1234503328622123",
+    bankName: "NAYAPAY"
+  },
+  paymentWisePayoneerOnly: true
+}),
 ];
 
 // Helper function to get contract by ID
