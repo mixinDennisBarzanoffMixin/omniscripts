@@ -10,6 +10,7 @@ export interface ContractParty {
   eik?: string; // EIK for Bulgarian entities
   vatNumber?: string; // VAT number
   cnic?: string; // CNIC for Pakistani individuals
+  egn?: string; // EGN for Bulgarian individuals
   phone: string;
   email: string;
   manager: string;

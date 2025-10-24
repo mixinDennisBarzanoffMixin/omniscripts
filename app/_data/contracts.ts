@@ -556,22 +556,25 @@ export const CONTRACTS: Contract[] = [
     number: "CTR-2025-WS-003", // freelancer, task-based
     type: "freelancer",
     language: "bg",
-    title: "Граждански договор за изработка (Дизайн за webcar.eu)",
-    titleLocal: "Civil Contract for Design (webcar.eu)",
-    status: "draft",
-    startDate: "20.10.2025",
-    endDate: "—",
+    title: "Граждански договор за дизайн изработка",
+    titleLocal: "Civil Contract for Design",
+    status: "pending",
+    startDate: "24.10.2025",
+    endDate: "23.11.2025",
     client: {
-      nameLocal: "-",
-      nameEn: "Junior Designer",
-      address: "—",
-      phone: "—",
-      email: "—",
-      manager: "Dennis Rumenoff Barzanoff"
+      nameLocal: "Виктория Младенова",
+      nameEn: "Viktoria Mladenova",
+      egn: "0552186774",
+      address: "ул. Янко Забунов 23, гр. Костинброд",
+      phone: "0889003790",
+      email: "viktoriamladenova30soy@gmail.com",
+      manager: "Виктория Младенова",
+      bankAccount: "BG31STSA93000030316979",
+      bankName: "Банка ДСК АД"
     },
     terms: {
       definitions: [
-        `"Задача": Изработка на дизайн за уебсайт webcar.eu: 1) Главна/Търсене страница; 2) Детайли за автомобил + контакт; 3) "Theme" страница с цветове и шрифтове.`,
+        `"Задача": Изработка на дизайн за уебсайт carsbg.eu: 1) Главна/Търсене страница; 2) Детайли за автомобил + контакт; 3) "Theme" страница с цветове и шрифтове.`,
         `"Възнаграждение": Фиксирано възнаграждение 100 лв. за задачата, освен ако не е уговорено друго.`,
         `"Приемане": Писмено потвърждение от Възложителя или изтичане на срока за преглед без възражения.`,
         `"Рамка": Договорът е за конкретната задача; допълнителни задачи могат да се възлагат с допълнително писмено съгласие (анекс/задание).`
@@ -581,7 +584,7 @@ export const CONTRACTS: Contract[] = [
           title: "Обхват на работата",
           points: [
             "Дизайн на: Главна/Търсене страница; Детайли за автомобил + Контакт; 'Theme' страница (цветове и шрифтове).",
-            "Доставяне като Figma файл или PDF, освен ако не е уговорено друго.",
+            "Доставяне като Figma файл, освен ако не е уговорено друго.",
             "Без изискване за работно време или място на работа; изпълнението е резултатно, не почасово."
           ]
         },
@@ -595,8 +598,8 @@ export const CONTRACTS: Contract[] = [
         {
           title: "Цена и плащане",
           points: [
-            "Фиксирана цена: 100 лв. (бруто) за задачата, освен ако не е уговорено друго.",
-            `Плащане до 5 работни дни след приемане, в брой с касова бележка или по банков път към IBAN: ${COMPANY_DATA.iban}, Банка: ${COMPANY_DATA.bank}, BIC: ${COMPANY_DATA.bic}.`,
+            "Фиксирана цена: 200 лв. (бруто) за задачата, освен ако не е уговорено друго.",
+            `Плащане до 5 работни дни след приемане, в брой с касова бележка или по банков път към IBAN: BG31STSA93000030316979, Банка: Банка ДСК АД.`,
             "Данък по ЗДДФЛ 10% се удържа върху 75% от сумата (след нормативно признати разходи 25%).",
             "Осигуровки се дължат само при наличие на друго осигуряване за месеца или ако доходът достига минималната работна заплата – иначе не се начисляват."
           ]
@@ -655,7 +658,7 @@ export const CONTRACTS: Contract[] = [
         }
       ]
     },
-    notes: "Проект webcar.eu – еднократна задача; документите са чернова до плащане."
+    notes: "Проект carsbg.eu – еднократна задача; документите са чернова до плащане."
   },
   {
     id: "saad-ali-abbasi",
@@ -780,7 +783,7 @@ export const CONTRACTS: Contract[] = [
     id: "kiran-ahmad",
     number: "CTR-2025-WS-005",
     startDate: "23.10.2025",
-    status: "pending",
+    status: "active",
     contractor: {
       nameLocal: "Kiran Ahmad",
       nameEn: "Kiran Ahmad",
@@ -798,7 +801,7 @@ createWebsiteContractorContractEn({
   id: "syed-ali-asghar",
   number: "CTR-2025-WS-006",
   startDate: "23.10.2025",
-  status: "pending",
+  status: "active",
   contractor: {
     nameLocal: "Syed Ali Asghar",
     nameEn: "Syed Ali Asghar",
@@ -806,7 +809,7 @@ createWebsiteContractorContractEn({
     address: "Umer Academy Street, Defence Road, Sialkot, Pakistan",
     phone: "03338622122",
     email: "aligee512@gmail.com",
-    manager: "Syed Ali Asghar",
+    manager: "-",
     bankAccount: "PK05NAYA1234503328622123",
     bankName: "NAYAPAY"
   },
@@ -816,7 +819,7 @@ createWebsiteContractorContractEn({
   id: "muhammad-ashir",
   number: "CTR-2025-WS-007",
   startDate: "23.10.2025",
-  status: "pending",
+  status: "active",
   contractor: {
     nameLocal: "Muhammad Ashir",
     nameEn: "Muhammad Ashir",
@@ -824,12 +827,31 @@ createWebsiteContractorContractEn({
     address: "Rabia city block d1 flat no 41 3rd floor, gulistan e johar, karachi",
     phone: "+923368272591",
     email: "shaikhashir871@gmail.com",
-    manager: "Muhammad Ashir",
+    manager: "-",
     bankAccount: "PK80ASCM0003710350003094",
     bankName: "Askari bank , Muhammad Ashir"
   },
   paymentWisePayoneerOnly: true
 }),
+createWebsiteContractorContractEn({
+  id: "muhammed-umar",
+  number: "CTR-2025-WS-008",
+  startDate: "23.10.2025",
+  status: "active",
+  contractor: {
+    nameLocal: "Muhammed Umar",
+    nameEn: "Muhammed Umar",
+    cnic: "42301-2029631-5",
+    address: "SHOE MARKET GHOSIA PLAZA G W R 24 FLAT NUMBER GARDEN WEST KARACHI WEST",
+    phone: "+92 3186960656",
+    email: "umartkd989@gmail.com",
+    manager: "-",
+    bankAccount: "PK52UNIL0109000312764519",
+    bankName: "United Bank Limited (UBL)"
+  },
+  paymentWisePayoneerOnly: true
+}),
+
 
 ];
 
