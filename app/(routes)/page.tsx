@@ -788,6 +788,21 @@ export default function Index() {
         isOpen={isProjectFormOpen}
         onClose={() => setIsProjectFormOpen(false)}
       /> */}
+      {/* Floating WhatsApp Button */}
+      <div className="fixed bottom-4 right-4 z-50">
+        <a
+          href="https://wa.me/359883600203?text=Hi%21%20I%27m%20interested%20in%20building%20a%20website.%20Could%20we%20talk%3F"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp"
+        >
+          <img
+            src="/WhatsAppButtonGreenMedium.svg"
+            alt="Chat on WhatsApp"
+            className="h-10 w-auto md:h-10 drop-shadow-xl hover:opacity-90 transition-opacity"
+          />
+        </a>
+      </div>
     </div>
   );
 }
