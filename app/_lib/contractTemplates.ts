@@ -31,9 +31,8 @@ const WEBSITE_CONTRACTOR_TERMS_EN: ContractTerms = {
       title: "Price and Payment",
       points: [
         "Independent contractor; invoice-based payment.",
-        "All payments shall be made exclusively via Wise or Payoneer (no direct bank transfer) due to high bank fees.",
+        "All payments shall be made via a Wise bank transfer to the Contractor's account.",
         "Payment within 5 business days of invoice, unless otherwise agreed in writing.",
-        "Contractor is responsible for transaction fees charged by Wise/Payoneer.",
         "Late payments: Statutory interest applies after 5 business days from due date."
       ]
     },

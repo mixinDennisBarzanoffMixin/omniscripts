@@ -851,6 +851,43 @@ createWebsiteContractorContractEn({
   },
   paymentWisePayoneerOnly: true
 }),
+createWebsiteContractorContractEn({
+  id: "kafayat-ullah",
+  number: "CTR-2025-WS-009",
+  startDate: "23.10.2025",
+  status: "draft",
+  contractor: {
+    nameLocal: "Kafayat Ullah",
+    nameEn: "Kafayat Ullah",
+    cnic: "14302-2340898-1",
+    address: "I-14, Bhata Chowk, Islamabad.",
+    phone: "+923329868850",
+    email: "kafayatullah000@gmail.com",
+    manager: "-",
+    bankAccount: "",
+    bankName: ""
+  },
+  paymentWisePayoneerOnly: true
+}),
+createWebsiteContractorContractEn({
+  id: "ashar-ali",
+  number: "CTR-2025-WS-010",
+  startDate: "28.10.2025",
+  status: "pending",
+  contractor: {
+    nameLocal: "Ashar Ali",
+    nameEn: "Ashar Ali",
+    cnic: "34601-4553888-9",
+    address: "171, Greenpark, Lahore.",
+    phone: "+923209055678",
+    email: "email.asharalii@gmail.com",
+    manager: "-",
+    bankAccount: "PK69BAHL0022009500806501",
+    bankName: "Bank Al Habib, Ashar Ali"
+  },
+  paymentWisePayoneerOnly: true
+}),
+
 
 
 ];
