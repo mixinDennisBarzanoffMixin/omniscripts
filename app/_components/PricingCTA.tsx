@@ -25,7 +25,18 @@ export default function PricingCTA({
       <Button
         size={size}
         variant={variant}
-        onClick={() => setIsProjectFormOpen(true)}
+        onClick={() => {
+          try {
+            const event_source_url = typeof window !== "undefined" ? window.location.href : undefined;
+            fetch("/api/conversions", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ event_name: "Schedule", event_source_url }),
+              keepalive: true,
+            }).catch(() => {});
+          } catch {}
+          setIsProjectFormOpen(true);
+        }}
         className={className}
       >
         {children}

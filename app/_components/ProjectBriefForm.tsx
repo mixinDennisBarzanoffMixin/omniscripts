@@ -59,6 +59,17 @@ export default function ProjectBriefForm({
         throw new Error(data?.error || "Failed to send. Please try again.");
       }
 
+      // Fire Contact event to Conversions API (email + country from server)
+      try {
+        const event_source_url = typeof window !== "undefined" ? window.location.href : undefined;
+        await fetch("/api/conversions", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ event_name: "Contact", email: formData.email, event_source_url }),
+          keepalive: true,
+        });
+      } catch {}
+
       setIsSubmitted(true);
     } catch (err) {
       const message = err instanceof Error ? err.message : "Unexpected error";

@@ -12,7 +12,18 @@ export default function StartYourProjectButton() {
     <>
       <Button
         size="lg"
-        onClick={() => setIsProjectFormOpen(true)}
+        onClick={() => {
+          try {
+            const event_source_url = typeof window !== "undefined" ? window.location.href : undefined;
+            fetch("/api/conversions", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ event_name: "Schedule", event_source_url }),
+              keepalive: true,
+            }).catch(() => {});
+          } catch {}
+          setIsProjectFormOpen(true);
+        }}
         className="h-12 px-8 bg-linear-to-r from-brand-500 to-ocean-500 hover:from-brand-600 hover:to-ocean-600 transform hover:scale-110 transition-transform duration-500 shadow-xl hover:shadow-2xl motion-safe:animate-[glow-50-100_3s_ease-in-out_infinite] cursor-pointer"
       >
         Start Your Project

@@ -887,6 +887,24 @@ createWebsiteContractorContractEn({
   },
   paymentWisePayoneerOnly: true
 }),
+createWebsiteContractorContractEn({
+  id: "amsil-sarim",
+  number: "CTR-2025-WS-011",
+  startDate: "", // Please fill in the actual start date
+  status: "draft",
+  contractor: {
+    nameLocal: "Amsil Sarim",
+    nameEn: "Amsil Sarim",
+    cnic: "36502-1538650-9",
+    address: "627, block F2, Wapda Town, Lahore",
+    email: "amsil.engr@gmail.com",
+    phone: "0313-4046179",
+    manager: "-",
+    bankAccount: "PK17MEZN0002060101106695",
+    bankName: "Meezan Bank, AMSIL SARIM, Swift: MEZNPKKALH2"
+  },
+  paymentWisePayoneerOnly: true
+}),
 
 
 

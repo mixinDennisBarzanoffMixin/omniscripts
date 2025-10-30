@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import MetaEventsTracker from "@/app/_components/MetaEventsTracker";
+import ThirdPartyNotice from "@/app/_components/ThirdPartyNotice";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -162,6 +164,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <MetaEventsTracker />
+        <ThirdPartyNotice />
       </body>
     </html>
   );
