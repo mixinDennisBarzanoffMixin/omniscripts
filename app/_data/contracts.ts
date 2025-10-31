@@ -87,7 +87,7 @@ export const CONTRACTS: Contract[] = [
     },
     terms: {
         definitions: [
-        `"Deliverables": Final website, web application, and associated source code, excluding pre-existing libraries, frameworks, or third-party components used by the Contractor.`,
+        `"Deliverables": Final task about website, web application, and associated source code, excluding pre-existing libraries, frameworks, or third-party components used by the Contractor.`,
         `"Acceptance": Client's written approval of the Deliverables, or expiration of the review period without written objections.`,
         `"Change Request": Any modification to the original Scope of Work requiring additional time, resources, or budget.`,
         `"Confidential Information": Any proprietary business, technical, or financial information disclosed by either party during this Agreement.`
@@ -890,8 +890,8 @@ createWebsiteContractorContractEn({
 createWebsiteContractorContractEn({
   id: "amsil-sarim",
   number: "CTR-2025-WS-011",
-  startDate: "", // Please fill in the actual start date
-  status: "draft",
+  startDate: "31.10.2025", // Please fill in the actual start date
+  status: "pending",
   contractor: {
     nameLocal: "Amsil Sarim",
     nameEn: "Amsil Sarim",

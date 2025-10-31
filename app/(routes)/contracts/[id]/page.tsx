@@ -195,7 +195,7 @@ export default function ContractPage() {
           )}
 
           {/* Signatures */}
-          <section className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-gray-300 pt-4">
+          <section className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-gray-300 pt-10">
             {/* Company */}
             <div>
               <h4 className="text-sm font-bold text-brand-800 mb-2">
