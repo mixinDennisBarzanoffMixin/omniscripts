@@ -135,7 +135,7 @@ export default async function RootLayout({
         name: "Starter Package",
         description: "Perfect for small projects and startups",
         price: "2999",
-        priceCurrency: "USD",
+        priceCurrency: "EUR",
         category: "Software Development"
       },
       {
@@ -143,7 +143,7 @@ export default async function RootLayout({
         name: "Professional Package",
         description: "Ideal for growing businesses and scale-ups",
         price: "7999",
-        priceCurrency: "USD",
+        priceCurrency: "EUR",
         category: "Software Development"
       },
       {
@@ -151,7 +151,7 @@ export default async function RootLayout({
         name: "Enterprise Package",
         description: "For large organizations and complex projects",
         price: "19999",
-        priceCurrency: "USD",
+        priceCurrency: "EUR",
         category: "Software Development"
       }
     ],
