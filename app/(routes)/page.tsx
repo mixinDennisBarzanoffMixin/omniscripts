@@ -27,52 +27,15 @@ import {
 import CodeBlock from "../_components/CodeBlock";
 import StartYourProjectButton from "../_components/StartYourProjectButton";
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
+import { getDictionary } from "@/app/_i18n/getDictionary";
 
-export const metadata: Metadata = {
-  title: "Professional Software Development Company in Bulgaria",
-  description: "OmniScripts EOOD - Premier Bulgarian software development company. We specialize in mobile app development, web applications, and enterprise solutions using React, Flutter, Next.js. Serving clients across Sofia, Plovdiv, Varna, and internationally with cutting-edge technology solutions.",
-  keywords: [
-    "software development company Bulgaria",
-    "mobile app development Sofia", 
-    "web development services Bulgaria",
-    "React development company",
-    "Flutter app development",
-    "Next.js development services",
-    "enterprise software solutions",
-    "custom software development",
-    "Bulgarian tech company",
-    "digital transformation services",
-    "професионална разработка на софтуер България",
-    "разработка на мобилни приложения София",
-    "уеб разработка България",
-    "дигитални решения"
-  ],
-  openGraph: {
-    title: "OmniScripts - Professional Software Development Company in Bulgaria",
-    description: "Premier Bulgarian software development company specializing in mobile apps, web applications, and enterprise solutions. Expert React, Flutter, and Next.js development services.",
-    url: "https://omniscripts.com",
-    images: [
-      {
-        url: "/og-home.jpg", 
-        width: 1200,
-        height: 630,
-        alt: "OmniScripts - Professional Software Development Company Bulgaria",
-      },
-    ],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "OmniScripts - Professional Software Development Company in Bulgaria",
-    description: "Premier Bulgarian software development company specializing in mobile apps, web applications, and enterprise solutions.",
-    images: ["/twitter-home.jpg"],
-  },
-  alternates: {
-    canonical: "https://omniscripts.com",
-  },
-};
 
-export default function Index() {
+export default async function Index() {
+  const cookieStore = await cookies();
+  const preferredLang = cookieStore.get("preferred_lang")?.value;
+  const lang = preferredLang === "de" ? "de" : "en";
+  const t = await getDictionary(lang);
   return (
     <div className="min-h-screen bg-linear-to-br from-background via-blue-50/30 to-brand-50/50 relative overflow-hidden">
       {/* Animated Background Elements */}
@@ -90,7 +53,7 @@ export default function Index() {
               <Code className="h-5 w-5 text-white" />
             </div>
             <span className="text-xl font-bold bg-linear-to-r from-foreground to-brand-600 bg-clip-text text-transparent">
-              OmniScripts
+              {t.common.brand}
             </span>
           </div>
 
@@ -99,25 +62,25 @@ export default function Index() {
               href="#services"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-all duration-500 hover:scale-105"
             >
-              Services
+              {t.home.header.nav.services}
             </a>
             <a
               href="#portfolio"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-all duration-500 hover:scale-105"
             >
-              Portfolio
+              {t.home.header.nav.portfolio}
             </a>
             <a
               href="/pricing"
               className="text-sm font-medium text-muted-foreground hover:text-brand-600 transition-all duration-500 hover:scale-105"
             >
-              Pricing
+              {t.home.header.nav.pricing}
             </a>
             <a
               href="#features"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-all duration-500 hover:scale-105"
             >
-              Features
+              {t.home.header.nav.features}
             </a>
           </nav>
 
@@ -128,13 +91,13 @@ export default function Index() {
               className="hover:scale-105 transition-all duration-500"
               asChild
             >
-              <a href="/login?redirect=%2Finvoices">Sign In</a>
+              <a href="/login?redirect=%2Finvoices">{t.home.header.nav.signIn}</a>
             </Button>
             <Button
               size="sm"
               className="bg-linear-to-r from-brand-500 to-ocean-500 hover:from-brand-600 hover:to-ocean-600 transform hover:scale-105 transition-all duration-500 shadow-lg hover:shadow-xl"
             >
-              Get Started
+              {t.home.header.nav.getStarted}
             </Button>
           </div>
         </div>
@@ -149,23 +112,21 @@ export default function Index() {
               className="mb-4 animate-fade-in bg-linear-to-r from-brand-50 to-ocean-50 border-brand-200 hover:scale-105 transition-all duration-500"
             >
               <Zap className="mr-1 h-3 w-3" />
-              Modern Software Solutions
+              {t.home.hero.badge}
             </Badge>
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl animate-scale-in">
-              Build the{" "}
+              {t.home.hero.titleA}{" "}
               <span className="bg-linear-to-r from-brand-600 via-ocean-500 to-brand-700 bg-clip-text text-transparent animate-gradient-x relative">
-                Future
+                {t.home.hero.titleHighlight}
                 <div className="absolute inset-0 bg-linear-to-r from-brand-600/10 via-ocean-500/10 to-brand-700/10 blur-lg animate-pulse-slow -z-10"></div>
               </span>{" "}
-              of Digital
+              {t.home.hero.titleB}
             </h1>
             <p
               className="mt-6 text-lg leading-8 text-muted-foreground md:text-xl animate-fade-in"
               style={{ animationDelay: "0.2s" }}
             >
-              We craft exceptional apps, websites, and digital solutions that
-              drive growth and innovation. Your vision, our expertise, unlimited
-              possibilities.
+              {t.home.hero.subtitle}
             </p>
             <div
               className="mt-10 flex items-center justify-center gap-x-6 animate-fade-in"
@@ -177,7 +138,7 @@ export default function Index() {
                 size="lg"
                 className="h-12 px-8 border-2 border-brand-200 hover:border-brand-300 bg-linear-to-r hover:from-brand-50 hover:to-ocean-50 transform hover:scale-105 transition-all duration-500"
               >
-                <a href="#portfolio">View Portfolio</a>
+                <a href="#portfolio">{t.home.hero.viewPortfolio}</a>
               </Button>
             </div>
           </div>
@@ -192,11 +153,10 @@ export default function Index() {
         <div className="container relative z-10">
           <div className="mx-auto max-w-2xl text-center animate-fade-in">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl bg-linear-to-r from-foreground to-brand-600 bg-clip-text text-transparent">
-              What We Build
+              {t.home.services.title}
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              From concept to deployment, we deliver cutting-edge solutions that
-              exceed expectations
+              {t.home.services.subtitle}
             </p>
           </div>
 
@@ -208,27 +168,20 @@ export default function Index() {
                   <Smartphone className="h-6 w-6 text-white" />
                 </div>
                 <CardTitle>
-                  Mobile Apps
+                  {t.home.services.mobile.title}
                 </CardTitle>
                 <CardDescription>
-                  Native and cross-platform mobile applications that deliver
-                  exceptional user experiences
+                  {t.home.services.mobile.desc}
                 </CardDescription>
               </CardHeader>
               <CardContent className="relative z-10">
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-center">
-                    <CheckCircle className="mr-2 h-4 w-4 text-brand-500" />
-                    iOS & Android Development
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="mr-2 h-4 w-4 text-brand-500" />
-                    React Native & Flutter
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="mr-2 h-4 w-4 text-brand-500" />
-                    App Store Optimization
-                  </li>
+                  {(t.home.services.mobile.bullets as string[]).map((b, i) => (
+                    <li key={i} className="flex items-center">
+                      <CheckCircle className="mr-2 h-4 w-4 text-brand-500" />
+                      {b}
+                    </li>
+                  ))}
                 </ul>
               </CardContent>
               </Card>
@@ -245,27 +198,20 @@ export default function Index() {
                   <Globe className="h-6 w-6 text-white" />
                 </div>
                 <CardTitle>
-                  Web Applications
+                  {t.home.services.web.title}
                 </CardTitle>
                 <CardDescription>
-                  Scalable web platforms and progressive web apps built with
-                  modern technologies
+                  {t.home.services.web.desc}
                 </CardDescription>
               </CardHeader>
               <CardContent className="relative z-10">
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-center">
-                    <CheckCircle className="mr-2 h-4 w-4 text-ocean-500" />
-                    React, Vue & Angular
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="mr-2 h-4 w-4 text-ocean-500" />
-                    Cloud-Native Architecture
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="mr-2 h-4 w-4 text-ocean-500" />
-                    Performance Optimization
-                  </li>
+                  {(t.home.services.web.bullets as string[]).map((b, i) => (
+                    <li key={i} className="flex items-center">
+                      <CheckCircle className="mr-2 h-4 w-4 text-ocean-500" />
+                      {b}
+                    </li>
+                  ))}
                 </ul>
               </CardContent>
               </Card>
@@ -282,27 +228,20 @@ export default function Index() {
                   <Shield className="h-6 w-6 text-white" />
                 </div>
                 <CardTitle>
-                  Enterprise Solutions
+                  {t.home.services.enterprise.title}
                 </CardTitle>
                 <CardDescription>
-                  Custom enterprise software and integrations that streamline
-                  business operations
+                  {t.home.services.enterprise.desc}
                 </CardDescription>
               </CardHeader>
               <CardContent className="relative z-10">
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-center">
-                    <CheckCircle className="mr-2 h-4 w-4 text-navy-600" />
-                    API Development
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="mr-2 h-4 w-4 text-navy-600" />
-                    Database Design
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="mr-2 h-4 w-4 text-navy-600" />
-                    System Integration
-                  </li>
+                  {(t.home.services.enterprise.bullets as string[]).map((b, i) => (
+                    <li key={i} className="flex items-center">
+                      <CheckCircle className="mr-2 h-4 w-4 text-navy-600" />
+                      {b}
+                    </li>
+                  ))}
                 </ul>
               </CardContent>
               </Card>
@@ -316,11 +255,10 @@ export default function Index() {
         <div className="container relative z-10">
           <div className="mx-auto max-w-2xl text-center animate-fade-in">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl bg-linear-to-r from-foreground to-brand-600 bg-clip-text text-transparent">
-              Our Latest Work
+              {t.home.portfolio.title}
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Real projects, real results. See how we've helped businesses
-              transform their digital presence.
+              {t.home.portfolio.subtitle}
             </p>
           </div>
 
@@ -347,7 +285,7 @@ export default function Index() {
                   </a>
                 </div>
                 <CardDescription>
-                  A broker website for a private owner who sells properties.
+                  {t.home.portfolio.sintagma.desc}
                 </CardDescription>
               </CardHeader>
               <CardContent className="relative z-10">
@@ -393,7 +331,7 @@ export default function Index() {
                   </a>
                 </div>
                 <CardDescription>
-                    A family market that sells products online thanks to their website, created by OmniScripts.
+                    {t.home.portfolio.malkotohanche.desc}
                 </CardDescription>
               </CardHeader>
               <CardContent className="relative z-10">
@@ -434,7 +372,7 @@ export default function Index() {
                   </CardTitle>
                 </div>
                 <CardDescription>
-                  Rentauto is a platform for renting cars. This client made lots of real profit as a result of the website.
+                  {t.home.portfolio.rentauto.desc}
                 </CardDescription>
               </CardHeader>
               <CardContent className="relative z-10">
@@ -471,21 +409,21 @@ export default function Index() {
                 className="mb-2 bg-linear-to-r from-brand-50 to-ocean-50 border-brand-200"
               >
                 <Code className="mr-1 h-3 w-3" />
-                Modern Tech
+                {t.home.tech.badge}
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
-                Modern Technologies build fast apps.
+                {t.home.tech.title}
               </h2>
               <p className="text-muted-foreground md:text-lg">
-                We use latest technologies (SvelteKit, Next.js, Flutter, Tailwind CSS, Railway...) in order to deliver fast, secure and beautiful products 
-                that can be quickly deployed and maintained effortlessly</p>
+                {t.home.tech.subtitle}
+              </p>
               <div className="flex flex-wrap gap-3 pt-2">
                 <Button className="bg-linear-to-r from-brand-500 to-ocean-500 hover:from-brand-600 hover:to-ocean-600">
-                  Try in Playground
+                  {t.home.tech.buttons.playground}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
                 <Button variant="outline" className="border-2 border-brand-200 hover:border-brand-300">
-                  Read the Docs
+                  {t.home.tech.buttons.docs}
                   <ExternalLink className="ml-2 h-4 w-4" />
                 </Button>
               </div>
@@ -505,11 +443,10 @@ export default function Index() {
         <div className="container relative z-10">
           <div className="mx-auto max-w-2xl text-center animate-fade-in">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl bg-linear-to-r from-foreground to-brand-600 bg-clip-text text-transparent">
-              Why Choose OmniScripts
+              {t.home.features.title}
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              We combine technical excellence with creative innovation to
-              deliver results that matter
+              {t.home.features.subtitle}
             </p>
           </div>
 
@@ -519,11 +456,10 @@ export default function Index() {
                 <Zap className="h-8 w-8 text-brand-600 group-hover:scale-110 transition-transform duration-500" />
               </div>
               <h3 className="mt-4 text-lg font-semibold group-hover:text-brand-600 transition-colors duration-500">
-                Lightning Fast
+                {t.home.features.cards.lightning.title}
               </h3>
               <p className="mt-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-500">
-                Optimized performance and cutting-edge technologies for blazing
-                fast applications
+                {t.home.features.cards.lightning.text}
               </p>
             </div>
 
@@ -538,10 +474,10 @@ export default function Index() {
                 <Cpu className="h-8 w-8 text-ocean-600 group-hover:scale-110 transition-transform duration-500" />
               </div>
               <h3 className="mt-4 text-lg font-semibold group-hover:text-ocean-600 transition-colors duration-500">
-                Custom Technolgoies
+                {t.home.features.cards.custom.title}
               </h3>
               <p className="mt-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-500">
-                We always choose the best technologies for your project based on your needs.
+                {t.home.features.cards.custom.text}
               </p>
             </div>
 
@@ -556,10 +492,10 @@ export default function Index() {
                 <Wrench className="h-8 w-8 text-navy-600 group-hover:scale-110 transition-transform duration-500" />
               </div>
               <h3 className="mt-4 text-lg font-semibold group-hover:text-navy-600 transition-colors duration-500">
-                Long-term Maintenance
+                {t.home.features.cards.maintenance.title}
               </h3>
               <p className="mt-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-500">
-                We provide long-term maintenance and support for your project, ensuring it stays up to date and functional.
+                {t.home.features.cards.maintenance.text}
               </p>
             </div>
           </div>
@@ -571,7 +507,7 @@ export default function Index() {
         <div className="container relative z-10">
           <div className="mx-auto max-w-2xl text-center animate-fade-in">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl bg-linear-to-r from-foreground to-brand-600 bg-clip-text text-transparent">
-              What Our Clients Say
+              {t.home.testimonials.title}
             </h2>
           </div>
 
@@ -615,11 +551,10 @@ export default function Index() {
         <div className="container relative z-10">
           <div className="mx-auto max-w-3xl text-center animate-scale-in">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl bg-linear-to-r from-foreground via-brand-600 to-ocean-600 bg-clip-text text-transparent">
-              Ready to Build Something Amazing?
+              {t.home.cta.title}
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Let's discuss your project and turn your vision into reality. Our
-              team is ready to help you succeed.
+              {t.home.cta.subtitle}
             </p>
             <div
               className="mt-10 flex items-center justify-center gap-x-6 animate-fade-in"
@@ -632,7 +567,7 @@ export default function Index() {
                 className="h-12 px-8 border-2 border-brand-200 hover:border-brand-300 bg-linear-to-r hover:from-brand-50 hover:to-ocean-50 transform hover:scale-105 transition-all duration-500"
                 asChild
               >
-                <a href="https://app.reclaim.ai/m/omniscripts/omniscripts" target="_blank">Schedule a call</a>
+                <a href="https://app.reclaim.ai/m/omniscripts/omniscripts" target="_blank">{t.home.cta.schedule}</a>
               </Button>
             </div>
           </div>

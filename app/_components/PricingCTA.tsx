@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import ProjectBriefForm from "./ProjectBriefForm";
+import { useI18n } from "@/app/_i18n/I18nProvider";
 
 interface PricingCTAProps {
   children: React.ReactNode;
@@ -19,6 +20,7 @@ export default function PricingCTA({
   variant = "default" 
 }: PricingCTAProps) {
   const [isProjectFormOpen, setIsProjectFormOpen] = useState(false);
+  const { t } = useI18n();
 
   return (
     <>

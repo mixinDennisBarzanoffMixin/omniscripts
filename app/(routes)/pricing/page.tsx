@@ -20,6 +20,8 @@ import {
 } from "lucide-react";
 import PricingCTA from "@/components/PricingCTA";
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
+import { getDictionary } from "@/app/_i18n/getDictionary";
 
 export const metadata: Metadata = {
   title: "Pricing - Affordable Software Development Packages Bulgaria",
@@ -64,7 +66,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Pricing() {
+export default async function Pricing() {
+  const cookieStore = await cookies();
+  const preferredLang = cookieStore.get("preferred_lang")?.value;
+  const lang = preferredLang === "de" ? "de" : "en";
+  const t = await getDictionary(lang);
 
   const plans = [
     {
@@ -218,19 +224,17 @@ export default function Pricing() {
               className="mb-4 bg-linear-to-r from-brand-50 to-ocean-50 border-brand-200"
             >
               <Sparkles className="mr-1 h-3 w-3" />
-              Transparent Pricing
+              {t.pricing.transparentPricing}
             </Badge>
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
-              Simple{" "}
+              {t.pricing.titleA}{" "}
               <span className="bg-linear-to-r from-brand-600 via-ocean-500 to-brand-700 bg-clip-text text-transparent">
-                Pricing
+                {t.pricing.titleB}
               </span>{" "}
-              for Every Project
+              
             </h1>
             <p className="mt-6 text-lg leading-8 text-muted-foreground md:text-xl">
-              Choose the perfect plan for your project. All plans include our
-              premium development standards, modern technologies, and dedicated
-              support.
+              {t.pricing.subtitle}
             </p>
 
 
@@ -255,7 +259,7 @@ export default function Pricing() {
                     <div className="absolute -top-px left-1/2 -translate-x-1/2">
                       <Badge className="bg-linear-to-r from-brand-500 to-ocean-500 text-white border-0 px-4 py-1">
                         <Star className="mr-1 h-3 w-3" />
-                        Most Popular
+                        {t.pricing.mostPopular}
                       </Badge>
                     </div>
                   )}
@@ -273,10 +277,10 @@ export default function Pricing() {
                     <CardTitle
                       className={`text-2xl font-bold ${plan.textColor}`}
                     >
-                      {plan.name}
+                      {t.pricing.plans[plan.name.toLowerCase() as 'starter'|'professional'|'enterprise'].name}
                     </CardTitle>
                     <CardDescription className="text-base mt-2 text-muted-foreground">
-                      {plan.description}
+                      {t.pricing.plans[plan.name.toLowerCase() as 'starter'|'professional'|'enterprise'].description}
                     </CardDescription>
 
                     <div className="mt-6">
@@ -286,30 +290,25 @@ export default function Pricing() {
                         </span>
                       </div>
                       <p className="text-sm text-muted-foreground mt-1">
-                        One-time project fee
+                        {t.pricing.plans[plan.name.toLowerCase() as 'starter'|'professional'|'enterprise'].oneTimeFee}
                       </p>
                       <Badge
                         variant="outline"
                         className="mt-3 border-brand-200 text-brand-600"
                       >
-                        {plan.timeline}
+                        {t.pricing.plans[plan.name.toLowerCase() as 'starter'|'professional'|'enterprise'].timeline}
                       </Badge>
                     </div>
                   </CardHeader>
 
                   <CardContent className="relative z-10 px-8 pb-8">
                     <ul className="space-y-3 text-sm">
-                      {plan.features.map((feature, featureIndex) => (
-                        <li
-                          key={featureIndex}
-                          className="flex items-start gap-3"
-                        >
-                          <Check
-                            className={`h-4 w-4 mt-0.5 shrink-0 ${plan.textColor}`}
-                          />
-                          <span className="text-muted-foreground">
-                            {feature}
-                          </span>
+                      {(
+                        t.pricing.plans[plan.name.toLowerCase() as 'starter'|'professional'|'enterprise'].features as string[]
+                      ).map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-start gap-3">
+                          <Check className={`h-4 w-4 mt-0.5 shrink-0 ${plan.textColor}`} />
+                          <span className="text-muted-foreground">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -318,7 +317,7 @@ export default function Pricing() {
                       className={`w-full mt-8 bg-linear-to-r ${plan.gradient} hover:opacity-90 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-white`}
                       size="lg"
                     >
-                      Get Started
+                      {t.buttons.getStarted}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </PricingCTA>
                   </CardContent>
@@ -334,71 +333,47 @@ export default function Pricing() {
         <div className="container relative z-10">
           <div className="mx-auto max-w-2xl text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl bg-linear-to-r from-foreground to-brand-600 bg-clip-text text-transparent">
-              Frequently Asked Questions
+              {t.pricing.faqTitle}
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Everything you need to know about our pricing and services
+              {t.pricing.faqSubtitle}
             </p>
           </div>
 
           <div className="mx-auto max-w-4xl grid gap-8 md:grid-cols-2">
             <Card className="border-0 shadow-lg bg-card/80 backdrop-blur-xl">
               <CardHeader>
-                <CardTitle className="text-lg">
-                  What's included in the price?
-                </CardTitle>
+                <CardTitle className="text-lg">{t.pricing.faq.includedQ}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
-                  All our packages include complete development, testing,
-                  deployment, and support. You'll get a fully functional product
-                  with modern design, security, and performance optimization.
-                </p>
+                <p className="text-muted-foreground">{t.pricing.faq.includedA}</p>
               </CardContent>
             </Card>
 
             <Card className="border-0 shadow-lg bg-card/80 backdrop-blur-xl">
               <CardHeader>
-                <CardTitle className="text-lg">
-                  Can I customize my plan?
-                </CardTitle>
+                <CardTitle className="text-lg">{t.pricing.faq.customizeQ}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
-                  Absolutely! Every project is unique. We'll work with you to
-                  create a custom solution that fits your specific needs and
-                  budget requirements.
-                </p>
+                <p className="text-muted-foreground">{t.pricing.faq.customizeA}</p>
               </CardContent>
             </Card>
 
             <Card className="border-0 shadow-lg bg-card/80 backdrop-blur-xl">
               <CardHeader>
-                <CardTitle className="text-lg">
-                  What if I need changes after delivery?
-                </CardTitle>
+                <CardTitle className="text-lg">{t.pricing.faq.changesQ}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
-                  All plans include support and maintenance. Additional changes
-                  and features can be implemented at competitive hourly rates or
-                  through ongoing retainer agreements.
-                </p>
+                <p className="text-muted-foreground">{t.pricing.faq.changesA}</p>
               </CardContent>
             </Card>
 
             <Card className="border-0 shadow-lg bg-card/80 backdrop-blur-xl">
               <CardHeader>
-                <CardTitle className="text-lg">
-                  Do you offer payment plans?
-                </CardTitle>
+                <CardTitle className="text-lg">{t.pricing.faq.paymentQ}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
-                  Yes! We offer flexible payment schedules with milestone-based
-                  payments. Typically 50% upfront and 50% on completion, with
-                  custom arrangements available.
-                </p>
+                <p className="text-muted-foreground">{t.pricing.faq.paymentA}</p>
               </CardContent>
             </Card>
           </div>
@@ -411,18 +386,17 @@ export default function Pricing() {
         <div className="container relative z-10">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl bg-linear-to-r from-foreground via-brand-600 to-ocean-600 bg-clip-text text-transparent">
-              Ready to Start Your Project?
+              {t.pricing.ctaTitle}
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Let's discuss your vision and create something amazing together.
-              Get a custom quote tailored to your needs.
+              {t.pricing.ctaSubtitle}
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <PricingCTA
                 size="lg"
                 className="h-12 px-8 bg-linear-to-r from-brand-500 to-ocean-500 hover:from-brand-600 hover:to-ocean-600 transform hover:scale-110 transition-all duration-300 shadow-xl hover:shadow-2xl"
               >
-                Get Custom Quote
+                {t.buttons.getCustomQuote}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </PricingCTA>
               <Button
@@ -430,7 +404,7 @@ export default function Pricing() {
                 size="lg"
                 className="h-12 px-8 border-2 border-brand-200 hover:border-brand-300 bg-linear-to-r hover:from-brand-50 hover:to-ocean-50 transform hover:scale-105 transition-all duration-300"
               >
-                <a href="/#portfolio">View Our Work</a>
+                <a href="/#portfolio">{t.buttons.viewOurWork}</a>
               </Button>
             </div>
           </div>

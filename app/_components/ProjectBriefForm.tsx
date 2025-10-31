@@ -11,6 +11,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { X, Send, Sparkles } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useI18n } from "@/app/_i18n/I18nProvider";
 
 interface ProjectBriefFormProps {
   isOpen: boolean;
@@ -21,6 +22,7 @@ export default function ProjectBriefForm({
   isOpen,
   onClose,
 }: ProjectBriefFormProps) {
+  const { t } = useI18n();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -110,22 +112,20 @@ export default function ProjectBriefForm({
               <div className="flex items-center gap-2">
                 <Sparkles className="h-6 w-6 text-brand-500" />
                 <CardTitle className="text-2xl bg-linear-to-r from-brand-600 to-ocean-600 bg-clip-text text-transparent">
-                  Start Your Project
+                  {t('form.startTitle') as string}
                 </CardTitle>
               </div>
               <CardDescription>
-                Tell us about your vision and we'll turn it into reality. Our
-                team will review your brief and get back to you within 24 hours.
+                {t('form.startSubtitle') as string}
               </CardDescription>
             </>
           ) : (
             <>
               <CardTitle className="text-2xl text-green-600">
-                Thank You!
+                {t('form.thankYou') as string}
               </CardTitle>
               <CardDescription>
-                We've received your project brief and will be in touch within 24
-                hours to discuss your vision.
+                {t('form.thankYouSubtitle') as string}
               </CardDescription>
             </>
           )}
@@ -142,7 +142,7 @@ export default function ProjectBriefForm({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Name *
+                  {t('form.name') as string}
                   </label>
                   <input
                     type="text"
@@ -151,12 +151,12 @@ export default function ProjectBriefForm({
                     value={formData.name}
                     onChange={handleInputChange}
                     className="w-full p-3 border border-input rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all"
-                    placeholder="Your full name"
+                    placeholder={t('form.namePlaceholder') as string}
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Email *
+                    {t('form.email') as string}
                   </label>
                   <input
                     type="email"
@@ -165,14 +165,14 @@ export default function ProjectBriefForm({
                     value={formData.email}
                     onChange={handleInputChange}
                     className="w-full p-3 border border-input rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all"
-                    placeholder="your@email.com"
+                    placeholder={t('form.emailPlaceholder') as string}
                   />
                 </div>
               </div>
 
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Company
+                  {t('form.company') as string}
                 </label>
                 <input
                   type="text"
@@ -180,14 +180,14 @@ export default function ProjectBriefForm({
                   value={formData.company}
                   onChange={handleInputChange}
                   className="w-full p-3 border border-input rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all"
-                  placeholder="Your company name"
+                  placeholder={t('form.companyPlaceholder') as string}
                 />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Project Type *
+                    {t('form.projectType') as string}
                   </label>
                   <select
                     name="projectType"
@@ -196,7 +196,7 @@ export default function ProjectBriefForm({
                     onChange={handleInputChange}
                     className="w-full p-3 border border-input rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all"
                   >
-                    <option value="">Select project type</option>
+                    <option value="">{t('form.selectProjectType') as string}</option>
                     <option value="mobile-app">Mobile App</option>
                     <option value="web-application">Web Application</option>
                     <option value="enterprise-solution">
@@ -208,7 +208,7 @@ export default function ProjectBriefForm({
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Budget Range
+                    {t('form.budgetRange') as string}
                   </label>
                   <select
                     name="budget"
@@ -216,7 +216,7 @@ export default function ProjectBriefForm({
                     onChange={handleInputChange}
                     className="w-full p-3 border border-input rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all"
                   >
-                    <option value="">Select budget range</option>
+                    <option value="">{t('form.selectBudgetRange') as string}</option>
                     <option value="1k-5k">$1k - $5k</option>
                     <option value="5k-10k">$5k - $10k</option>
                     <option value="10k-25k">$10k - $25k</option>
@@ -227,7 +227,7 @@ export default function ProjectBriefForm({
 
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Timeline
+                  {t('form.timeline') as string}
                 </label>
                 <select
                   name="timeline"
@@ -235,7 +235,7 @@ export default function ProjectBriefForm({
                   onChange={handleInputChange}
                   className="w-full p-3 border border-input rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all"
                 >
-                  <option value="">Select timeline</option>
+                  <option value="">{t('form.selectTimeline') as string}</option>
                   <option value="1-3 months">1-3 months</option>
                   <option value="3-6 months">3-6 months</option>
                   <option value="6-12 months">6-12 months</option>
@@ -245,7 +245,7 @@ export default function ProjectBriefForm({
 
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Project Description *
+                  {t('form.description') as string}
                 </label>
                 <textarea
                   name="description"
@@ -254,7 +254,7 @@ export default function ProjectBriefForm({
                   onChange={handleInputChange}
                   rows={4}
                   className="w-full p-3 border border-input rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all resize-none"
-                  placeholder="Tell us about your project vision, goals, and any specific requirements..."
+                  placeholder={t('form.descriptionPlaceholder') as string}
                 />
               </div>
 
@@ -266,7 +266,7 @@ export default function ProjectBriefForm({
                   className="flex-1 bg-linear-to-r from-brand-500 to-ocean-500 hover:from-brand-600 hover:to-ocean-600 disabled:opacity-60 disabled:cursor-not-allowed transform hover:scale-105 transition-all duration-300"
                 >
                   <Send className="mr-2 h-4 w-4" />
-                  {isLoading ? "Sending..." : "Send Project Brief"}
+                  {isLoading ? (t('form.sending') as string) : (t('buttons.sendBrief') as string)}
                 </Button>
                 <Button
                   type="button"
@@ -275,7 +275,7 @@ export default function ProjectBriefForm({
                   onClick={onClose}
                   className="px-8"
                 >
-                  Cancel
+                  {t('buttons.cancel') as string}
                 </Button>
               </div>
             </form>
@@ -297,11 +297,10 @@ export default function ProjectBriefForm({
                 </svg>
               </div>
               <p className="text-muted-foreground mb-6">
-                Your project brief has been submitted successfully. We're
-                excited to work with you!
+                {t('form.thankYouSubtitle') as string}
               </p>
               <Button onClick={onClose} size="lg">
-                Close
+                {t('buttons.close') as string}
               </Button>
             </div>
           )}

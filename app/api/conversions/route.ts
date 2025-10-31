@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { sendMetaEvent } from "@/app/_lib/metaConversions";
-import { getCountryCodeFromIp } from "@/app/_lib/ipCountry";
 
 const bodySchema = z.object({
   event_name: z.string(),
@@ -28,8 +27,9 @@ export async function POST(request: NextRequest) {
     const ip = getClientIp(request);
     const url = parsed.event_source_url || request.nextUrl.href;
 
-    // Country only for events that require it (Contact), harmless otherwise
-    const countryCode = await getCountryCodeFromIp(ip);
+    // Prefer Vercel geolocation headers to avoid external requests
+    const headerCountry = request.headers.get("x-vercel-ip-country");
+    const countryCode = headerCountry && headerCountry.length === 2 ? headerCountry : null;
 
     // Allow test mode via query param ?test=1
     const testEventCode = request.nextUrl.searchParams.get("test") ? (process.env.META_CAPI_TEST_EVENT_CODE || undefined) : undefined;

@@ -1,0 +1,179 @@
+{
+  "common": {
+    "brand": "OmniScripts",
+    "ok": "OK"
+  },
+  "banner": {
+    "notice": "We may share limited usage info with third parties (e.g. Meta) to improve our services."
+  },
+  "buttons": {
+    "startProject": "Start Your Project",
+    "getStarted": "Get Started",
+    "getCustomQuote": "Get Custom Quote",
+    "viewOurWork": "View Our Work",
+    "sendBrief": "Send Project Brief",
+    "cancel": "Cancel",
+    "close": "Close"
+  },
+  "form": {
+    "startTitle": "Start Your Project",
+    "startSubtitle": "Tell us about your vision and we'll turn it into reality. Our team will review your brief and get back to you within 24 hours.",
+    "thankYou": "Thank You!",
+    "thankYouSubtitle": "We've received your project brief and will be in touch within 24 hours to discuss your vision.",
+    "name": "Name *",
+    "namePlaceholder": "Your full name",
+    "email": "Email *",
+    "emailPlaceholder": "your@email.com",
+    "company": "Company",
+    "companyPlaceholder": "Your company name",
+    "projectType": "Project Type *",
+    "selectProjectType": "Select project type",
+    "budgetRange": "Budget Range",
+    "selectBudgetRange": "Select budget range",
+    "timeline": "Timeline",
+    "selectTimeline": "Select timeline",
+    "description": "Project Description *",
+    "descriptionPlaceholder": "Tell us about your project vision, goals, and any specific requirements...",
+    "sending": "Sending..."
+  },
+  "pricing": {
+    "transparentPricing": "Transparent Pricing",
+    "titleA": "Simple",
+    "titleB": "Pricing",
+    "subtitle": "Choose the perfect plan for your project. All plans include our premium development standards, modern technologies, and dedicated support.",
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "description": "Perfect for small projects and startups",
+        "timeline": "2-4 weeks delivery",
+        "oneTimeFee": "One-time project fee",
+        "features": [
+          "Single web application or mobile app",
+          "Modern responsive design",
+          "Basic SEO optimization",
+          "3 months support & maintenance",
+          "Cloud deployment setup",
+          "Basic analytics integration"
+        ]
+      },
+      "professional": {
+        "name": "Professional",
+        "description": "Ideal for growing businesses and scale-ups",
+        "timeline": "4-8 weeks delivery",
+        "oneTimeFee": "One-time project fee",
+        "features": [
+          "Complex web platform or mobile app",
+          "Custom UI/UX design system",
+          "Advanced integrations & APIs",
+          "6 months support & maintenance",
+          "Performance optimization",
+          "Advanced analytics & reporting",
+          "User authentication system",
+          "Database design & optimization"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "description": "For large organizations and complex projects",
+        "timeline": "8-16 weeks delivery",
+        "oneTimeFee": "One-time project fee",
+        "features": [
+          "Multi-platform solution (web + mobile)",
+          "Enterprise-grade architecture",
+          "Custom integrations & workflows",
+          "12 months support & maintenance",
+          "Dedicated project manager",
+          "Advanced security implementations",
+          "Load balancing & scalability",
+          "Multi-environment deployments",
+          "Priority support & SLA"
+        ]
+      }
+    },
+    "mostPopular": "Most Popular",
+    "faqTitle": "Frequently Asked Questions",
+    "faqSubtitle": "Everything you need to know about our pricing and services",
+    "faq": {
+      "includedQ": "What's included in the price?",
+      "includedA": "All our packages include complete development, testing, deployment, and support. You'll get a fully functional product with modern design, security, and performance optimization.",
+      "customizeQ": "Can I customize my plan?",
+      "customizeA": "Absolutely! Every project is unique. We'll work with you to create a custom solution that fits your specific needs and budget requirements.",
+      "changesQ": "What if I need changes after delivery?",
+      "changesA": "All plans include support and maintenance. Additional changes and features can be implemented at competitive hourly rates or through ongoing retainer agreements.",
+      "paymentQ": "Do you offer payment plans?",
+      "paymentA": "Yes! We offer flexible payment schedules with milestone-based payments. Typically 50% upfront and 50% on completion, with custom arrangements available."
+    },
+    "ctaTitle": "Ready to Start Your Project?",
+    "ctaSubtitle": "Let's discuss your vision and create something amazing together. Get a custom quote tailored to your needs."
+  }
+  ,
+  "home": {
+    "header": {
+      "nav": {
+        "services": "Services",
+        "portfolio": "Portfolio",
+        "pricing": "Pricing",
+        "features": "Features",
+        "signIn": "Sign In",
+        "getStarted": "Get Started"
+      }
+    },
+    "hero": {
+      "badge": "Modern Software Solutions",
+      "titleA": "Build the",
+      "titleHighlight": "Future",
+      "titleB": "of Digital",
+      "subtitle": "We craft exceptional apps, websites, and digital solutions that drive growth and innovation. Your vision, our expertise, unlimited possibilities.",
+      "viewPortfolio": "View Portfolio"
+    },
+    "services": {
+      "title": "What We Build",
+      "subtitle": "From concept to deployment, we deliver cutting-edge solutions that exceed expectations",
+      "mobile": {
+        "title": "Mobile Apps",
+        "desc": "Native and cross-platform mobile applications that deliver exceptional user experiences",
+        "bullets": ["iOS & Android Development", "React Native & Flutter", "App Store Optimization"]
+      },
+      "web": {
+        "title": "Web Applications",
+        "desc": "Scalable web platforms and progressive web apps built with modern technologies",
+        "bullets": ["React, Vue & Angular", "Cloud-Native Architecture", "Performance Optimization"]
+      },
+      "enterprise": {
+        "title": "Enterprise Solutions",
+        "desc": "Custom enterprise software and integrations that streamline business operations",
+        "bullets": ["API Development", "Database Design", "System Integration"]
+      }
+    },
+    "portfolio": {
+      "title": "Our Latest Work",
+      "subtitle": "Real projects, real results. See how we've helped businesses transform their digital presence.",
+      "sintagma": { "desc": "A broker website for a private owner who sells properties." },
+      "malkotohanche": { "desc": "A family market that sells products online thanks to their website, created by OmniScripts." },
+      "rentauto": { "desc": "Rentauto is a platform for renting cars. This client made lots of real profit as a result of the website." }
+    },
+    "tech": {
+      "badge": "Modern Tech",
+      "title": "Modern Technologies build fast apps.",
+      "subtitle": "We use latest technologies (SvelteKit, Next.js, Flutter, Tailwind CSS, Railway...) in order to deliver fast, secure and beautiful products that can be quickly deployed and maintained effortlessly",
+      "buttons": { "playground": "Try in Playground", "docs": "Read the Docs" }
+    },
+    "features": {
+      "title": "Why Choose OmniScripts",
+      "subtitle": "We combine technical excellence with creative innovation to deliver results that matter",
+      "cards": {
+        "lightning": { "title": "Lightning Fast", "text": "Optimized performance and cutting-edge technologies for blazing fast applications" },
+        "custom": { "title": "Custom Technologies", "text": "We always choose the best technologies for your project based on your needs." },
+        "maintenance": { "title": "Long-term Maintenance", "text": "We provide long-term maintenance and support for your project, ensuring it stays up to date and functional." }
+      }
+    },
+    "testimonials": { "title": "What Our Clients Say" },
+    "cta": {
+      "title": "Ready to Build Something Amazing?",
+      "subtitle": "Let's discuss your project and turn your vision into reality. Our team is ready to help you succeed.",
+      "schedule": "Schedule a call"
+    }
+  }
+}
+
+

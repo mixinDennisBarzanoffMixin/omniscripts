@@ -1,0 +1,179 @@
+{
+  "common": {
+    "brand": "OmniScripts",
+    "ok": "OK"
+  },
+  "banner": {
+    "notice": "Wir können begrenzte Nutzungsinformationen mit Drittanbietern (z. B. Meta) teilen, um unsere Dienste zu verbessern."
+  },
+  "buttons": {
+    "startProject": "Projekt starten",
+    "getStarted": "Loslegen",
+    "getCustomQuote": "Individuelles Angebot erhalten",
+    "viewOurWork": "Unsere Arbeiten ansehen",
+    "sendBrief": "Projektbrief senden",
+    "cancel": "Abbrechen",
+    "close": "Schließen"
+  },
+  "form": {
+    "startTitle": "Projekt starten",
+    "startSubtitle": "Erzählen Sie uns von Ihrer Vision – wir setzen sie um. Unser Team prüft Ihren Brief und meldet sich innerhalb von 24 Stunden.",
+    "thankYou": "Vielen Dank!",
+    "thankYouSubtitle": "Wir haben Ihren Projektbrief erhalten und melden uns innerhalb von 24 Stunden, um Ihre Vision zu besprechen.",
+    "name": "Name *",
+    "namePlaceholder": "Ihr vollständiger Name",
+    "email": "E-Mail *",
+    "emailPlaceholder": "ihre@email.de",
+    "company": "Firma",
+    "companyPlaceholder": "Ihr Firmenname",
+    "projectType": "Projekttyp *",
+    "selectProjectType": "Projekttyp auswählen",
+    "budgetRange": "Budgetrahmen",
+    "selectBudgetRange": "Budgetrahmen auswählen",
+    "timeline": "Zeitplan",
+    "selectTimeline": "Zeitplan auswählen",
+    "description": "Projektbeschreibung *",
+    "descriptionPlaceholder": "Beschreiben Sie Vision, Ziele und besondere Anforderungen...",
+    "sending": "Senden..."
+  },
+  "pricing": {
+    "transparentPricing": "Transparente Preise",
+    "titleA": "Einfache",
+    "titleB": "Preise",
+    "subtitle": "Wählen Sie das perfekte Paket für Ihr Projekt. Alle Pakete beinhalten unsere hohen Entwicklungsstandards, moderne Technologien und engagierten Support.",
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "description": "Perfekt für kleine Projekte und Startups",
+        "timeline": "Lieferung in 2–4 Wochen",
+        "oneTimeFee": "Einmalige Projektgebühr",
+        "features": [
+          "Einzelne Webanwendung oder Mobile App",
+          "Modernes, responsives Design",
+          "Basis-SEO-Optimierung",
+          "3 Monate Support & Wartung",
+          "Cloud‑Bereitstellungseinrichtung",
+          "Einfache Analytics‑Integration"
+        ]
+      },
+      "professional": {
+        "name": "Professional",
+        "description": "Ideal für wachsende Unternehmen und Scale‑ups",
+        "timeline": "Lieferung in 4–8 Wochen",
+        "oneTimeFee": "Einmalige Projektgebühr",
+        "features": [
+          "Komplexe Webplattform oder Mobile App",
+          "Individuelles UI/UX‑Designsystem",
+          "Erweiterte Integrationen & APIs",
+          "6 Monate Support & Wartung",
+          "Performance‑Optimierung",
+          "Erweiterte Analysen & Reporting",
+          "Benutzerauthentifizierungssystem",
+          "Datenbankdesign & ‑optimierung"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "description": "Für große Organisationen und komplexe Projekte",
+        "timeline": "Lieferung in 8–16 Wochen",
+        "oneTimeFee": "Einmalige Projektgebühr",
+        "features": [
+          "Multi‑Plattform‑Lösung (Web + Mobile)",
+          "Enterprise‑Architektur",
+          "Individuelle Integrationen & Workflows",
+          "12 Monate Support & Wartung",
+          "Dedizierter Projektmanager",
+          "Erweiterte Sicherheitsimplementierungen",
+          "Lastverteilung & Skalierbarkeit",
+          "Multi‑Umgebungsbereitstellungen",
+          "Priorisierter Support & SLA"
+        ]
+      }
+    },
+    "mostPopular": "Am beliebtesten",
+    "faqTitle": "Häufig gestellte Fragen",
+    "faqSubtitle": "Alles, was Sie über unsere Preise und Services wissen müssen",
+    "faq": {
+      "includedQ": "Was ist im Preis enthalten?",
+      "includedA": "Alle Pakete enthalten Entwicklung, Tests, Bereitstellung und Support. Sie erhalten ein voll funktionsfähiges Produkt mit modernem Design, Sicherheit und Leistungsoptimierung.",
+      "customizeQ": "Kann ich mein Paket anpassen?",
+      "customizeA": "Auf jeden Fall! Jedes Projekt ist einzigartig. Wir erstellen gemeinsam eine Lösung, die zu Ihren Anforderungen und Ihrem Budget passt.",
+      "changesQ": "Was ist, wenn ich nach der Lieferung Änderungen brauche?",
+      "changesA": "Alle Pakete beinhalten Support und Wartung. Weitere Änderungen und Features können zu fairen Stundensätzen oder per Retainer umgesetzt werden.",
+      "paymentQ": "Bieten Sie Ratenzahlungen an?",
+      "paymentA": "Ja! Wir bieten flexible Zahlungspläne mit Meilensteinen – typischerweise 50% im Voraus und 50% bei Abschluss, mit individuellen Vereinbarungen möglich."
+    },
+    "ctaTitle": "Bereit, Ihr Projekt zu starten?",
+    "ctaSubtitle": "Lassen Sie uns Ihre Vision besprechen und etwas Großartiges schaffen. Erhalten Sie ein individuelles Angebot."
+  }
+  ,
+  "home": {
+    "header": {
+      "nav": {
+        "services": "Leistungen",
+        "portfolio": "Portfolio",
+        "pricing": "Preise",
+        "features": "Funktionen",
+        "signIn": "Anmelden",
+        "getStarted": "Loslegen"
+      }
+    },
+    "hero": {
+      "badge": "Moderne Softwarelösungen",
+      "titleA": "Gestalten Sie die",
+      "titleHighlight": "Zukunft",
+      "titleB": "der digitalen Welt",
+      "subtitle": "Wir entwickeln erstklassige Apps, Websites und digitale Lösungen, die Wachstum und Innovation vorantreiben. Ihre Vision, unsere Expertise – unbegrenzte Möglichkeiten.",
+      "viewPortfolio": "Portfolio ansehen"
+    },
+    "services": {
+      "title": "Was wir bauen",
+      "subtitle": "Von der Idee bis zur Bereitstellung liefern wir moderne Lösungen, die Erwartungen übertreffen",
+      "mobile": {
+        "title": "Mobile Apps",
+        "desc": "Native und plattformübergreifende Mobile‑Apps mit hervorragender User Experience",
+        "bullets": ["iOS & Android Entwicklung", "React Native & Flutter", "App‑Store‑Optimierung"]
+      },
+      "web": {
+        "title": "Webanwendungen",
+        "desc": "Skalierbare Webplattformen und Progressive Web Apps mit modernen Technologien",
+        "bullets": ["React, Vue & Angular", "Cloud‑native Architektur", "Performance‑Optimierung"]
+      },
+      "enterprise": {
+        "title": "Enterprise‑Lösungen",
+        "desc": "Individuelle Unternehmenssoftware und Integrationen zur Optimierung von Geschäftsprozessen",
+        "bullets": ["API‑Entwicklung", "Datenbankdesign", "Systemintegration"]
+      }
+    },
+    "portfolio": {
+      "title": "Unsere neuesten Projekte",
+      "subtitle": "Echte Projekte, echte Ergebnisse. So haben wir Unternehmen bei der digitalen Transformation unterstützt.",
+      "sintagma": { "desc": "Makler‑Website für einen privaten Eigentümer, der Immobilien verkauft." },
+      "malkotohanche": { "desc": "Ein Familienmarkt, der dank seiner von OmniScripts erstellten Website online verkauft." },
+      "rentauto": { "desc": "Rentauto ist eine Plattform zur Autovermietung. Der Kunde erzielte dadurch messbare Gewinne." }
+    },
+    "tech": {
+      "badge": "Moderne Technik",
+      "title": "Moderne Technologien ermöglichen schnelle Apps.",
+      "subtitle": "Wir nutzen aktuelle Technologien (SvelteKit, Next.js, Flutter, Tailwind CSS, Railway ...), um schnelle, sichere und schöne Produkte zu liefern, die schnell bereitgestellt und einfach gepflegt werden können.",
+      "buttons": { "playground": "Im Playground testen", "docs": "Dokumentation lesen" }
+    },
+    "features": {
+      "title": "Warum OmniScripts?",
+      "subtitle": "Technische Exzellenz trifft kreative Innovation – für Ergebnisse, die zählen",
+      "cards": {
+        "lightning": { "title": "Blitzschnell", "text": "Optimierte Performance und modernste Technologien für rasend schnelle Anwendungen" },
+        "custom": { "title": "Individuelle Technologien", "text": "Wir wählen stets die besten Technologien für Ihr Projekt – basierend auf Ihren Anforderungen." },
+        "maintenance": { "title": "Langfristige Wartung", "text": "Wir bieten langfristige Wartung und Support, damit Ihr Projekt aktuell und funktionsfähig bleibt." }
+      }
+    },
+    "testimonials": { "title": "Was unsere Kunden sagen" },
+    "cta": {
+      "title": "Bereit, etwas Großartiges zu bauen?",
+      "subtitle": "Lassen Sie uns Ihr Projekt besprechen und Ihre Vision Realität werden. Unser Team steht bereit, Sie zum Erfolg zu führen.",
+      "schedule": "Termin vereinbaren"
+    }
+  }
+}
+
+

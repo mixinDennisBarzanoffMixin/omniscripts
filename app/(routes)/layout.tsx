@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import MetaEventsTracker from "@/app/_components/MetaEventsTracker";
 import ThirdPartyNotice from "@/app/_components/ThirdPartyNotice";
+import { cookies } from "next/headers";
+import { getDictionary } from "@/app/_i18n/getDictionary";
+import { I18nProvider } from "@/app/_i18n/I18nProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -95,11 +98,15 @@ export const metadata: Metadata = {
   category: "Technology",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const preferredLang = cookieStore.get("preferred_lang")?.value;
+  const htmlLang = preferredLang === "de" ? "de" : "en";
+  const dict = await getDictionary(htmlLang);
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -152,7 +159,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
+    <html lang={htmlLang}>
       <head>
         <script
           type="application/ld+json"
@@ -163,7 +170,9 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <I18nProvider lang={htmlLang} dict={dict}>
+          {children}
+        </I18nProvider>
         <MetaEventsTracker />
         <ThirdPartyNotice />
       </body>

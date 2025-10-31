@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useI18n } from "@/app/_i18n/I18nProvider";
 
 export default function ThirdPartyNotice() {
   const [visible, setVisible] = useState(false);
@@ -15,14 +16,13 @@ export default function ThirdPartyNotice() {
   }, []);
 
   if (!visible) return null;
+  const { t } = useI18n();
 
   return (
     <div className="fixed bottom-0 inset-x-0 z-[9998]">
       <div className="mx-auto max-w-7xl px-4 pb-4">
         <div className="rounded-md bg-black/70 text-white text-xs md:text-sm px-3 py-2 flex items-center justify-between gap-3">
-          <p className="opacity-90">
-            We may share limited usage info with third parties (e.g. Meta) to improve our services.
-          </p>
+          <p className="opacity-90">{t('banner.notice') as string}</p>
           <button
             className="shrink-0 inline-flex items-center rounded-sm bg-white/10 hover:bg-white/20 px-2 py-1"
             onClick={() => {
@@ -30,7 +30,7 @@ export default function ThirdPartyNotice() {
               setVisible(false);
             }}
           >
-            OK
+            {t('common.ok') as string}
           </button>
         </div>
       </div>
