@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Printer } from "lucide-react";
-import { COMPANY_DATA, COMPANY_DATA_EN, getContractById, Contract, CONTRACT_TRANSLATIONS } from "@/app/_data/contracts";
+import { COMPANY_DATA, COMPANY_DATA_EN, getContractById, CONTRACT_TRANSLATIONS } from "@/app/_data/contracts";
+import { Contract } from "@/app/_data/contractTypes";
 
 export default function ContractPage() {
   const router = useRouter();
