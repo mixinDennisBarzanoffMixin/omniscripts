@@ -172,9 +172,9 @@ export default async function RootLayout({
       >
         <I18nProvider lang={htmlLang} dict={dict}>
           {children}
+          <MetaEventsTracker />
+          <ThirdPartyNotice />
         </I18nProvider>
-        <MetaEventsTracker />
-        <ThirdPartyNotice />
       </body>
     </html>
   );
