@@ -227,7 +227,7 @@ export const INVOICES = [
         unitPrice: 40.0,
       },
     ],
-    status: "pending",
+    status: "paid",
     notes: "Към Професионален пакет - E-commerce платформа",
   },
   // {

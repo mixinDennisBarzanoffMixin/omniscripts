@@ -667,7 +667,7 @@ export const CONTRACTS: Contract[] = [
     language: "en",
     title: "Freelance Web Development Agreement",
     titleLocal: "Граждански договор за уеб разработка",
-    status: "active",
+    status: "expired",
     startDate: "20.10.2025",
     client: {
       nameLocal: "Saad Ali Abbasi",
@@ -837,7 +837,7 @@ createWebsiteContractorContractEn({
   id: "muhammed-umar",
   number: "CTR-2025-WS-008",
   startDate: "23.10.2025",
-  status: "active",
+  status: "expired",
   contractor: {
     nameLocal: "Muhammed Umar",
     nameEn: "Muhammed Umar",
@@ -873,7 +873,7 @@ createWebsiteContractorContractEn({
   id: "ashar-ali",
   number: "CTR-2025-WS-010",
   startDate: "28.10.2025",
-  status: "pending",
+  status: "active",
   contractor: {
     nameLocal: "Ashar Ali",
     nameEn: "Ashar Ali",
@@ -891,7 +891,7 @@ createWebsiteContractorContractEn({
   id: "amsil-sarim",
   number: "CTR-2025-WS-011",
   startDate: "31.10.2025", // Please fill in the actual start date
-  status: "pending",
+  status: "active",
   contractor: {
     nameLocal: "Amsil Sarim",
     nameEn: "Amsil Sarim",
@@ -905,6 +905,24 @@ createWebsiteContractorContractEn({
   },
   paymentWisePayoneerOnly: true
 }),
+createWebsiteContractorContractEn({
+  id: "usama-islam",
+  number: "CTR-2025-WS-012",
+  startDate: "01.11.2025",
+  status: "active",
+  contractor: {
+    nameLocal: "Usama Islam",
+    nameEn: "Usama Islam",
+    cnic: "35102-4111265-9",
+    address: "St#2 Abubakar town khudian khas, Kasur Punjab, Pakistan",
+    phone: "+92307-494473",
+    email: "usamak.eng@gmail.com",
+    manager: "-",
+    bankAccount: "PK64BAHL0022098101094501",
+    bankName: "Bank Al Habib, Usama Islam, Swift: BAHLPKKALHR"
+  },
+}),
+
 
 
 

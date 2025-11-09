@@ -23,7 +23,7 @@ export default function DocumentViewPage() {
           const d = getDocumentById(params.id as string);
           if (d) {
             setDoc(d);
-            document.title = `${d.title} | OmniScripts`;
+            document.title = `${d.number} | OmniScripts`;
           } else {
             router.push('/documents');
           }
