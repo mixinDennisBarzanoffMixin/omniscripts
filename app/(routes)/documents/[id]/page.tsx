@@ -99,6 +99,8 @@ export default function DocumentViewPage() {
                 <div><strong>ID:</strong> {doc.party?.identifier || '—'}</div>
                 <div><strong>Address:</strong> {doc.party?.address || '—'}</div>
                 <div><strong>Email:</strong> {doc.party?.email || '—'}</div>
+                <div><strong>Bank Account:</strong> {doc.party?.bankAccount || '—'}</div>
+                <div><strong>Bank Name:</strong> {doc.party?.bankName || '—'}</div>
               </div>
             </div>
           </div>
