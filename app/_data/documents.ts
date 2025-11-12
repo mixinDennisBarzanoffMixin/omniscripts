@@ -38,6 +38,88 @@ export interface GenericDocument {
   notes?: string;
 }
 
+// Loan agreement factory types
+export interface LoanAgreementParams {
+  id: string;
+  number: string;
+  date: string; // document date
+  amount: string; // e.g. "500 лв."
+  providedDate: string; // e.g. "01.11.2025"
+  dueDate: string; // e.g. "02.11.2025"
+  lender: DocumentParty; // Заемодател (person)
+  borrowerName?: string; // display name for borrower; defaults to company name + EIK
+  companyBankAccountDisplay?: string; // override display for company bank account
+  lenderBankAccountDisplay?: string; // display for lender bank account
+  interest?: string; // e.g. "0% (безлихвен заем)"
+  title?: string;
+  subject?: string;
+  language?: DocumentLanguage;
+  status?: DocumentStatus;
+  attachments?: string[];
+  notes?: string;
+}
+
+export function createLoanAgreementDocument(params: LoanAgreementParams): GenericDocument {
+  const {
+    id,
+    number,
+    date,
+    amount,
+    providedDate,
+    dueDate,
+    lender,
+    borrowerName = `${COMPANY_DATA.name} (ЕИК ${COMPANY_DATA.eik})`,
+    companyBankAccountDisplay = `IBAN: ${COMPANY_DATA.iban} (${COMPANY_DATA.bank})`,
+    lenderBankAccountDisplay = lender.bankAccount ? `IBAN: ${lender.bankAccount}` : "—",
+    interest = "0% (безлихвен заем)",
+    title = "Договор за заем към дружеството",
+    subject = "Заем от управителя към дружеството (внасяне на средства)",
+    language = "bg",
+    status = "ready",
+    attachments = ["Платежно нареждане/разписка за внесената сума"],
+    notes = "Готов за печат. Попълнете сумата/дата/срок преди подпис."
+  } = params;
+
+  const fields: DocumentField[] = [
+    { label: "Заемодател", value: lender.name },
+    { label: "Заемополучател", value: borrowerName },
+    { label: "Сума на заема", value: amount },
+    { label: "Валута", value: "BGN" },
+    { label: "Дата на предоставяне", value: providedDate },
+    { label: "Лихва", value: interest },
+    { label: "Срок на погасяване", value: dueDate },
+    { label: "Банкова сметка на дружеството", value: companyBankAccountDisplay },
+    { label: "Банкова сметка на заемодателя", value: lenderBankAccountDisplay },
+  ];
+
+  const body: string[] = [
+    `1) Страни: Настоящият договор се сключва между Заемодател – ${lender.name}, и Заемополучател – ${borrowerName}.`,
+    "2) Предмет: Заемодателят предоставя на Заемополучателя парична сума за оперативни нужди на дружеството.",
+    "3) Предоставяне на сумата: Сумата се предоставя по банков път към посочената фирмена сметка или в брой срещу разписка. Дружеството потвърждава получаването на средствата.",
+    "4) Лихва: Заемът е безлихвен (0%), освен ако страните не уговорят друго писмено.",
+    "5) Срок и погасяване: Заемът се погасява до посочения срок. Допуска се предсрочно частично или пълно погасяване без неустойки.",
+    "6) Отчетност: Дружеството води отчетност за получените и погасени суми. При поискване предоставя справка на Заемодателя.",
+    "7) Приложимо право: Българско право. Компетентен съд – София.",
+    "8) Настоящият договор удостоверява, че средствата са внесени в дружеството (money going in) от Заемодателя."
+  ];
+
+  return {
+    id,
+    number,
+    type: "loan_agreement",
+    language,
+    title,
+    date,
+    status,
+    subject,
+    party: lender,
+    fields,
+    body,
+    attachments,
+    notes,
+  };
+}
+
 export const DOCUMENTS: GenericDocument[] = [
   // Case 1 – Не е осигурена другаде (вие плащате всички осигуровки и данъци)
   {
@@ -79,48 +161,40 @@ export const DOCUMENTS: GenericDocument[] = [
     ],
     notes: "Окончателно при плащане",
   },
-  {
+  // Loan Agreement using factory for easy variants
+  createLoanAgreementDocument({
     id: "doc-loan-agreement-2025-001",
     number: "LA-2025-001",
-    type: "loan_agreement",
-    language: "bg",
-    title: "Договор за заем към дружеството",
     date: "31.10.2025",
-    status: "ready",
-    subject: "Заем от управителя към дружеството (внасяне на средства)",
-    party: {
+    amount: "500 лв.",
+    providedDate: "01.11.2025",
+    dueDate: "02.11.2025",
+    lender: {
       name: "Денис Руменов Бързанов",
       country: "BG",
       identifier: "ЕГН: 0248226921",
       address: "гр. Костинброд, ул. Александър Стамболийски, 2",
-      email: "denis.barzanov2002@gmail.com"
+      email: "denis.barzanov2002@gmail.com",
+      bankAccount: "BG15BPBI79421024659801",
     },
-    fields: [
-      { label: "Заемодател", value: "Денис Руменов Бързанов" },
-      { label: "Заемополучател", value: "ОмниСкриптс ЕООД (ЕИК 208165760)" },
-      { label: "Сума на заема", value: "500 лв." },
-      { label: "Валута", value: "BGN" },
-      { label: "Дата на предоставяне", value: "01.11.2025" },
-      { label: "Лихва", value: "0% (безлихвен заем)" },
-      { label: "Срок на погасяване", value: "02.11.2025" },
-      { label: "Банкова сметка на дружеството", value: "IBAN: BG51 BPBI 7940 1094 8630 01 (Postbank)" },
-      { label: "Банкова сметка на заемодателя", value: "IBAN: BG15BPBI79421024659801" }
-    ],
-    body: [
-      "1) Страни: Настоящият договор се сключва между Заемодател – Денис Руменов Бързанов, и Заемополучател – ОмниСкриптс ЕООД (ЕИК 208165760).",
-      "2) Предмет: Заемодателят предоставя на Заемополучателя парична сума за оперативни нужди на дружеството.",
-      "3) Предоставяне на сумата: Сумата се предоставя по банков път към посочената фирмена сметка или в брой срещу разписка. Дружеството потвърждава получаването на средствата.",
-      "4) Лихва: Заемът е безлихвен (0%), освен ако страните не уговорят друго писмено.",
-      "5) Срок и погасяване: Заемът се погасява до посочения срок. Допуска се предсрочно частично или пълно погасяване без неустойки.",
-      "6) Отчетност: Дружеството води отчетност за получените и погасени суми. При поискване предоставя справка на Заемодателя.",
-      "7) Приложимо право: Българско право. Компетентен съд – София.",
-      "8) Настоящият договор удостоверява, че средствата са внесени в дружеството (money going in) от Заемодателя."
-    ],
-    attachments: [
-      "Платежно нареждане/разписка за внесената сума"
-    ],
-    notes: "Готов за печат. Попълнете сумата/дата/срок преди подпис."
-  },
+  }),  
+  createLoanAgreementDocument({
+    id: "doc-loan-agreement-2025-002",
+    number: "LA-2025-002",
+    date: "12.11.2025",
+    amount: "1000 лв.",
+    providedDate: "12.11.2025",
+    dueDate: "15.11.2025",
+    lender: {
+      name: "Денис Руменов Бързанов",
+      country: "BG",
+      identifier: "ЕГН: 0248226921",
+      address: "гр. Костинброд, ул. Александър Стамболийски, 2",
+      email: "denis.barzanov2002@gmail.com",
+      bankAccount: "BG15BPBI79421024659801",
+      bankName: "Юробанк България АД, 942"
+    },
+  }),
   {
     id: "doc-trc-ack-2025-001",
     number: "TRC-ACK-2025-001",
