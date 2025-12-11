@@ -558,7 +558,7 @@ export const CONTRACTS: Contract[] = [
     language: "bg",
     title: "Граждански договор за дизайн изработка",
     titleLocal: "Civil Contract for Design",
-    status: "pending",
+    status: "expired",
     startDate: "24.10.2025",
     endDate: "23.11.2025",
     client: {
@@ -783,7 +783,8 @@ export const CONTRACTS: Contract[] = [
     id: "kiran-ahmad",
     number: "CTR-2025-WS-005",
     startDate: "23.10.2025",
-    status: "active",
+    status: "expired",
+    endDate: "10.12.2025",
     contractor: {
       nameLocal: "Kiran Ahmad",
       nameEn: "Kiran Ahmad",
@@ -801,8 +802,9 @@ createWebsiteContractorContractEn({
   id: "syed-ali-asghar",
   number: "CTR-2025-WS-006",
   startDate: "23.10.2025",
-  status: "active",
-  contractor: {
+  status: "expired",
+  endDate: "10.12.2025",
+    contractor: {
     nameLocal: "Syed Ali Asghar",
     nameEn: "Syed Ali Asghar",
     cnic: "34603-5563963-1",
@@ -819,7 +821,8 @@ createWebsiteContractorContractEn({
   id: "muhammad-ashir",
   number: "CTR-2025-WS-007",
   startDate: "23.10.2025",
-  status: "active",
+  status: "expired",
+  endDate: "10.12.2025",
   contractor: {
     nameLocal: "Muhammad Ashir",
     nameEn: "Muhammad Ashir",
@@ -838,6 +841,7 @@ createWebsiteContractorContractEn({
   number: "CTR-2025-WS-008",
   startDate: "23.10.2025",
   status: "expired",
+  endDate: "10.12.2025",
   contractor: {
     nameLocal: "Muhammed Umar",
     nameEn: "Muhammed Umar",
@@ -855,7 +859,7 @@ createWebsiteContractorContractEn({
   id: "kafayat-ullah",
   number: "CTR-2025-WS-009",
   startDate: "23.10.2025",
-  status: "draft",
+  status: "expired",
   contractor: {
     nameLocal: "Kafayat Ullah",
     nameEn: "Kafayat Ullah",
@@ -891,7 +895,8 @@ createWebsiteContractorContractEn({
   id: "amsil-sarim",
   number: "CTR-2025-WS-011",
   startDate: "31.10.2025", // Please fill in the actual start date
-  status: "active",
+  status: "expired",
+  endDate: "10.12.2025",
   contractor: {
     nameLocal: "Amsil Sarim",
     nameEn: "Amsil Sarim",
@@ -909,7 +914,8 @@ createWebsiteContractorContractEn({
   id: "usama-islam",
   number: "CTR-2025-WS-012",
   startDate: "01.11.2025",
-  status: "active",
+  status: "expired",
+  endDate: "10.12.2025",
   contractor: {
     nameLocal: "Usama Islam",
     nameEn: "Usama Islam",

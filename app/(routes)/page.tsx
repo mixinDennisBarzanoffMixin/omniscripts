@@ -163,27 +163,27 @@ export default async function Index() {
           <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3">
             <div className="group">
               <Card className="border-0 shadow-xl bg-card/80 backdrop-blur-xl transform transition-transform duration-300 hover:scale-105 relative overflow-hidden">
-              <CardHeader className="relative z-10">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br from-brand-500 to-brand-600 shadow-lg">
-                  <Smartphone className="h-6 w-6 text-white" />
-                </div>
-                <CardTitle>
-                  {t.home.services.mobile.title}
-                </CardTitle>
-                <CardDescription>
-                  {t.home.services.mobile.desc}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="relative z-10">
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  {(t.home.services.mobile.bullets as string[]).map((b, i) => (
-                    <li key={i} className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-brand-500" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
+                <CardHeader className="relative z-10">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br from-brand-500 to-brand-600 shadow-lg">
+                    <Smartphone className="h-6 w-6 text-white" />
+                  </div>
+                  <CardTitle>
+                    {t.home.services.mobile.title}
+                  </CardTitle>
+                  <CardDescription>
+                    {t.home.services.mobile.desc}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="relative z-10">
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    {(t.home.services.mobile.bullets as string[]).map((b, i) => (
+                      <li key={i} className="flex items-center">
+                        <CheckCircle className="mr-2 h-4 w-4 text-brand-500" />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
               </Card>
             </div>
 
@@ -191,29 +191,29 @@ export default async function Index() {
               <Card
                 className="border-0 shadow-xl bg-card/80 backdrop-blur-xl transform transition-transform duration-300 hover:scale-105 relative overflow-hidden"
               >
-              <CardHeader className="relative z-10">
-                <div
-                  className="flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br from-ocean-500 to-ocean-600 shadow-lg"
-                >
-                  <Globe className="h-6 w-6 text-white" />
-                </div>
-                <CardTitle>
-                  {t.home.services.web.title}
-                </CardTitle>
-                <CardDescription>
-                  {t.home.services.web.desc}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="relative z-10">
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  {(t.home.services.web.bullets as string[]).map((b, i) => (
-                    <li key={i} className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-ocean-500" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
+                <CardHeader className="relative z-10">
+                  <div
+                    className="flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br from-ocean-500 to-ocean-600 shadow-lg"
+                  >
+                    <Globe className="h-6 w-6 text-white" />
+                  </div>
+                  <CardTitle>
+                    {t.home.services.web.title}
+                  </CardTitle>
+                  <CardDescription>
+                    {t.home.services.web.desc}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="relative z-10">
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    {(t.home.services.web.bullets as string[]).map((b, i) => (
+                      <li key={i} className="flex items-center">
+                        <CheckCircle className="mr-2 h-4 w-4 text-ocean-500" />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
               </Card>
             </div>
 
@@ -221,139 +221,38 @@ export default async function Index() {
               <Card
                 className="border-0 shadow-xl bg-card/80 backdrop-blur-xl transform transition-transform duration-300 hover:scale-105 relative overflow-hidden"
               >
-              <CardHeader className="relative z-10">
-                <div
-                  className="flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br from-navy-600 to-navy-700 shadow-lg"
-                >
-                  <Shield className="h-6 w-6 text-white" />
-                </div>
-                <CardTitle>
-                  {t.home.services.enterprise.title}
-                </CardTitle>
-                <CardDescription>
-                  {t.home.services.enterprise.desc}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="relative z-10">
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  {(t.home.services.enterprise.bullets as string[]).map((b, i) => (
-                    <li key={i} className="flex items-center">
-                      <CheckCircle className="mr-2 h-4 w-4 text-navy-600" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
+                <CardHeader className="relative z-10">
+                  <div
+                    className="flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br from-navy-600 to-navy-700 shadow-lg"
+                  >
+                    <Shield className="h-6 w-6 text-white" />
+                  </div>
+                  <CardTitle>
+                    {t.home.services.enterprise.title}
+                  </CardTitle>
+                  <CardDescription>
+                    {t.home.services.enterprise.desc}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="relative z-10">
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    {(t.home.services.enterprise.bullets as string[]).map((b, i) => (
+                      <li key={i} className="flex items-center">
+                        <CheckCircle className="mr-2 h-4 w-4 text-navy-600" />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
               </Card>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Portfolio Section */}
-      <section id="portfolio" className="py-24 relative">
+      {/* DesignStudio Portfolio */}
+      <section className="py-24 bg-linear-to-r from-muted/20 via-brand-50/30 to-ocean-50/20 relative">
         <div className="container relative z-10">
-          <div className="mx-auto max-w-2xl text-center animate-fade-in">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl bg-linear-to-r from-foreground to-brand-600 bg-clip-text text-transparent">
-              {t.home.portfolio.title}
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              {t.home.portfolio.subtitle}
-            </p>
-          </div>
-
-          <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {/* Sintagma */}
-            <Card className="border-0 shadow-xl bg-card/80 backdrop-blur-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-700 animate-scale-in group relative overflow-hidden">
-              <div className="absolute inset-0 bg-linear-to-br from-brand-500/5 to-brand-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-              <div className="aspect-video bg-linear-to-br from-brand-100 to-brand-200 relative overflow-hidden">
-                <div className="absolute inset-0 bg-linear-to-br from-brand-500/20 to-ocean-500/20"></div>
-                <a href="https://www.sintagma.co" target="_blank" rel="noopener noreferrer" className="absolute inset-2 bg-white/90 rounded-lg flex items-center justify-center">
-                  <img src="/sintagma.png" alt="Sintagma" className="h-full w-full object-cover rounded-lg" />
-                </a>
-                <Badge className="absolute top-3 right-3 bg-green-500 text-white">
-                  Live
-                </Badge>
-              </div>
-              <CardHeader className="relative z-10">
-                <div className="flex items-center justify-between">
-                  <CardTitle className="group-hover:text-brand-600 transition-colors duration-500">
-                    Sintagma.co 
-                  </CardTitle>
-                  <a href="https://www.sintagma.co" target="_blank" rel="noopener noreferrer" className="cursor-pointer p-2 -m-2 rounded-full hover:bg-brand-100/50 transition-colors">
-                    <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-brand-500 transition-colors" />
-                  </a>
-                </div>
-                <CardDescription>
-                  {t.home.portfolio.sintagma.desc}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="relative z-10">
-                <div className="flex flex-wrap gap-2 mb-3">
-                  <Badge variant="secondary" className="text-xs">
-                    React
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs">
-                    PostgreSQL
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs">
-                    Railway
-                  </Badge>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Built for a private owner who sells properties in multiple countries. With internationalisation and email sending.
-                </p>
-              </CardContent>
-            </Card>
-
-            {/* MalkotoHanche E-commerce */}
-            <Card
-              className="border-0 shadow-xl bg-card/80 backdrop-blur-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-700 animate-scale-in group relative overflow-hidden"
-              style={{ animationDelay: "0.2s" }}
-            >
-              <div className="absolute inset-0 bg-linear-to-br from-green-500/5 to-green-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-              <div className="aspect-video bg-linear-to-br from-green-100 to-green-200 relative overflow-hidden">
-                <div className="absolute inset-0 bg-linear-to-br from-green-500/20 to-green-600/20"></div>
-                <a href="https://www.malkotohanche.com" target="_blank" rel="noopener noreferrer" className="absolute inset-2 bg-white/90 rounded-lg flex items-center justify-center">
-                  <img src="/malkotohanche.png" alt="Malkoto Hanche" className="h-full w-full object-cover rounded-lg"  />
-                </a>
-                <Badge className="absolute top-3 right-3 bg-green-500 text-white">
-                  Live
-                </Badge>
-              </div>
-              <CardHeader className="relative z-10">
-                <div className="flex items-center justify-between">
-                  <CardTitle className="group-hover:text-green-600 transition-colors duration-500">
-                    Malkoto Hanche
-                  </CardTitle>
-                  <a href="https://malkotohanche.com" target="_blank" rel="noopener noreferrer" className="cursor-pointer p-2 -m-2 rounded-full hover:bg-green-100/50 transition-colors">
-                    <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-green-500 transition-colors" />
-                  </a>
-                </div>
-                <CardDescription>
-                    {t.home.portfolio.malkotohanche.desc}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="relative z-10">
-                <div className="flex flex-wrap gap-2 mb-3">
-                  <Badge variant="secondary" className="text-xs">
-                    React
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs">
-                    Strapi
-                  </Badge>
-                  <Badge variant="secondary" className="text-xs">
-                    PostgreSQL
-                  </Badge>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Complete e-commerce solution with integrated sustainability
-                  features and mobile optimization.
-                </p>
-              </CardContent>
-            </Card>
-
-            {/* DesignStudio Portfolio */}
+          <div className="mx-auto max-w-2xl">
             <Card
               className="border-0 shadow-xl bg-card/80 backdrop-blur-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-700 animate-scale-in group relative overflow-hidden"
               style={{ animationDelay: "0.4s" }}
@@ -362,34 +261,38 @@ export default async function Index() {
               <div className="aspect-video bg-linear-to-br from-purple-100 to-purple-200 relative overflow-hidden">
                 <div className="absolute inset-0 bg-linear-to-br from-purple-500/20 to-purple-600/20"></div>
                 <div className="absolute inset-2 bg-white/90 rounded-lg flex items-center justify-center">
-                  <img src="/rentauto.png" alt="Rentauto" className="h-full w-full object-cover rounded-lg" />
+                  <img src="/carsbg.png" alt="Rentauto" className="h-full w-full object-cover rounded-lg" />
                 </div>
               </div>
               <CardHeader className="relative z-10">
                 <div className="flex items-center justify-between">
-                  <CardTitle className="group-hover:text-purple-600 transition-colors duration-500">
-                    Rentauto
-                  </CardTitle>
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="group-hover:text-purple-600 transition-colors duration-500">
+                      CarsBG.eu
+                    </CardTitle>
+                    <a href="https://www.carsbg.eu" target="_blank" rel="noopener noreferrer" className="cursor-pointer p-2 -m-2 rounded-full hover:bg-green-100/50 transition-colors">
+                      <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-green-500 transition-colors" />
+                    </a>
+                  </div>
                 </div>
                 <CardDescription>
-                  {t.home.portfolio.rentauto.desc}
+                  {t.home.portfolio.carsbg.desc}
                 </CardDescription>
               </CardHeader>
               <CardContent className="relative z-10">
                 <div className="flex flex-wrap gap-2 mb-3">
                   <Badge variant="secondary" className="text-xs">
-                    Spring Boot
+                    Vercel
                   </Badge>
                   <Badge variant="secondary" className="text-xs">
-                    MySQL
+                    NextJS
                   </Badge>
                   <Badge variant="secondary" className="text-xs">
                     Paypal
                   </Badge>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Stunning portfolio site with 3D animations and immersive user
-                  experiences.
+
                 </p>
               </CardContent>
             </Card>
@@ -398,8 +301,8 @@ export default async function Index() {
       </section>
 
 
-            {/* Tech Stack / Code Example Section */}
-            <section className="py-24 relative">
+      {/* Tech Stack / Code Example Section */}
+      <section className="py-24 relative">
         <div className="container relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             {/* Left: Text content */}
@@ -532,7 +435,7 @@ export default async function Index() {
                   </div>
                   <div>
                     <p className="font-semibold group-hover:text-brand-600 transition-colors duration-500">
-                      Vanya Blagoeva 
+                      Vanya Blagoeva
                     </p>
                     <p className="text-sm text-muted-foreground">
                       CEO, Strongplast LTD

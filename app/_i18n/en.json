@@ -150,7 +150,8 @@
       "subtitle": "Real projects, real results. See how we've helped businesses transform their digital presence.",
       "sintagma": { "desc": "A broker website for a private owner who sells properties." },
       "malkotohanche": { "desc": "A family market that sells products online thanks to their website, created by OmniScripts." },
-      "rentauto": { "desc": "Rentauto is a platform for renting cars. This client made lots of real profit as a result of the website." }
+      "rentauto": { "desc": "Rentauto is a platform for renting cars. This client made lots of real profit as a result of the website." },
+      "carsbg": { "desc": "Complex Dealership scraping website." }
     },
     "tech": {
       "badge": "Modern Tech",

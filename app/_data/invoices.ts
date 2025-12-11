@@ -107,12 +107,12 @@ export const CLIENTS = {
     // managerIdCard: "",
     // managerIdIssuePlace: "",
     // managerIdIssueDate: "",
-    email: "rentauto@abv.bg",
-    phone: "—",
+    email: "info@carsbg11.com",
+    phone: "+359 888 911 800",
     // No bank info known for this client in contract context
-    // bank: "",
-    // iban: "",
-    // bic: ""
+    bank: "Fininvest Bank",
+    iban: "BG53FINV91501017680880",
+    bic: "FINVBGSF"
   },
 };
 
@@ -159,9 +159,9 @@ export const SERVICE_TEMPLATES = {
   ],
   carWebsiteIvan: [
     {
-      description: "Авансово плащане за направата на сайт",
+      description: "Плащане за изработка на сайт",
       quantity: 1,
-      unitPrice: 6500.0,
+      unitPrice: 3000.0,
     }
   ],
   // enterprise: [
@@ -230,17 +230,17 @@ export const INVOICES = [
     status: "paid",
     notes: "Към Професионален пакет - E-commerce платформа",
   },
-  // {
-  //   id: "INV-002",
-  //   number: "INV-2025-002",
-  //   client: CLIENTS.carsbg11,
-  //   date: "14.10.2025",
-  //   paymentTermsDays: 30,
-  //   place: "София",
-  //   services: SERVICE_TEMPLATES.carWebsiteIvan,
-  //   status: "pending",
-  //   notes: "Професионален пакет - Уебсайт за автомобили",
-  // },
+  {
+    id: "INV-003",
+    number: "INV-2025-003",
+    client: CLIENTS.carsbg11,
+    date: "05.12.2025",
+    paymentTermsDays: 30,
+    place: "София",
+    services: SERVICE_TEMPLATES.carWebsiteIvan,
+    status: "paid",
+    notes: "Професионален пакет - Уебсайт за автомобили",
+  },
 ];
 
 // Utility functions

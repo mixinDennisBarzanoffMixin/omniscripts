@@ -119,6 +119,85 @@ export function createLoanAgreementDocument(params: LoanAgreementParams): Generi
     notes,
   };
 }
+/**
+ * Generates a contract termination notice document for a civil contract (Граждански договор)
+ * with immediate effect from today.
+ *
+ * @param params Object containing party info and contract number.
+ * Fields:
+ *   - id: string (unique document id)
+ *   - number: string (termination doc number)
+ *   - contractNumber: string (original civil contract number)
+ *   - party: { name: string, identifier?: string, address?: string, email?: string }
+ *   - date?: string (defaults to today's date)
+ *   - status?: string
+ */
+export function createCivilContractTerminationDocument(params: {
+  id: string;
+  number: string;
+  contractNumber: string;
+  party: {
+    name: string;
+    identifier?: string;
+    address?: string;
+    email?: string;
+    country?: string;
+    bankAccount?: string;
+    bankName?: string;
+  };
+  date?: string;
+  status?: string;
+}): GenericDocument {
+  const {
+    id,
+    number,
+    contractNumber,
+    party,
+    date = new Date().toISOString().slice(0, 10),
+    status = "ready",
+  } = params;
+
+  const title = "Notice of Civil Contract Termination";
+  const subject = `Termination of Civil Contract No. ${contractNumber}`;
+  const language = "en";
+  const attachments = [`Civil Contract No. ${contractNumber}`];
+  const notes =
+    "This document certifies the termination of a civil contract with immediate effect. Please notify all parties and confirm receipt.";
+
+  const fields: DocumentField[] = [
+    { label: "Contract No.", value: contractNumber },
+    { label: "Party", value: party.name },
+    party.identifier ? { label: "Identifier", value: party.identifier } : { label: "Identifier", value: "—" },
+    party.address ? { label: "Address", value: party.address } : { label: "Address", value: "—" },
+    party.email ? { label: "Email", value: party.email } : { label: "Email", value: "—" },
+    { label: "Date of Termination", value: date },
+    { label: "Grounds", value: "Termination by mutual agreement (Art. 325, item 1 of the LC) / unilateral with notice" },
+  ];
+
+  const body: string[] = [
+    `This notice is to inform ${party.name}${party.identifier ? " (" + party.identifier + ")" : ""} that Civil Contract No. ${contractNumber} is hereby terminated effective as of the date of this notice.`,
+    "All relations arising from the contract are considered terminated as of today.",
+    "The parties settle any outstanding obligations as of the date of termination.",
+    "This notice is issued in accordance with legal requirements for the termination of a civil contract.",
+  ];
+
+  return {
+    id,
+    number,
+    type: "generic_statement",
+    language,
+    title,
+    date,
+    status: "ready" as DocumentStatus,
+    subject,
+    party,
+    fields,
+    body,
+    attachments,
+    notes,
+  };
+}
+
 
 export const DOCUMENTS: GenericDocument[] = [
   // Case 1 – Не е осигурена другаде (вие плащате всички осигуровки и данъци)
@@ -195,6 +274,171 @@ export const DOCUMENTS: GenericDocument[] = [
       bankName: "Юробанк България АД, 942"
     },
   }),
+  createLoanAgreementDocument({
+    id: "doc-loan-agreement-2025-003",
+    number: "LA-2025-003",
+    date: "12.11.2025",
+    amount: "400 лв.",
+    providedDate: "01.12.2025",
+    dueDate: "02.12.2025",
+    lender: {
+      name: "Денис Руменов Бързанов",
+      country: "BG",
+      identifier: "ЕГН: 0248226921",
+      address: "гр. Костинброд, ул. Александър Стамболийски, 2",
+      email: "denis.barzanov2002@gmail.com",
+      bankAccount: "BG15BPBI79421024659801",
+      bankName: "Юробанк България АД, 942"
+    },
+  }),
+  createLoanAgreementDocument({
+    id: "doc-loan-agreement-2025-004",
+    number: "LA-2025-004",
+    date: "10.12.2025",
+    amount: "300 лв.",
+    providedDate: "10.12.2025",
+    dueDate: "12.12.2025",
+    lender: {
+      name: "Денис Руменов Бързанов",
+      country: "BG",
+      identifier: "ЕГН: 0248226921",
+      address: "гр. Костинброд, ул. Александър Стамболийски, 2",
+      email: "denis.barzanov2002@gmail.com",
+      bankAccount: "BG15BPBI79421024659801",
+      bankName: "Юробанк България АД, 942"
+    },
+  }),
+  createCivilContractTerminationDocument({
+    id: "doc-civil-contract-termination-2025-001",
+    number: "CT-2025-001",
+    contractNumber: "CTR-2025-WS-004",
+    party: {
+      name: "Saad Ali Abbasi / Saad Ali Abbasi",
+      address: "I-10/4 street 26 house 1113 Islamabad, Pakistan",
+      identifier: "CNIC: 3740423977455",
+      email: "saadaliabbasi2347@gmail.com",
+      country: "PK",
+      bankAccount: "PK95MEZN0003020110099471",
+      bankName: "Meezan Bank",
+    },
+    date: "10.12.2025",
+  }),
+  createCivilContractTerminationDocument({
+    id: "doc-civil-contract-termination-2025-002",
+    number: "CT-2025-002",
+    contractNumber: "CTR-2025-WS-005",
+    party: {
+      name: "Kiran Ahmad / Kiran Ahmad",
+      address: "Happy valley Kohat Kpk near children park",
+      identifier: "CNIC: 14301-1199011-4",
+      email: "kiran.ahmad.usman@gmail.com",
+      country: "PK",
+      bankAccount: "PK29MEZN0000300109403559",
+      bankName: "Meezan Bank - Meezan Digital Center"
+    },
+    date: "10.12.2025",
+  }),
+  createCivilContractTerminationDocument({
+    id: "doc-civil-contract-termination-2025-003",
+    number: "CT-2025-003",
+    contractNumber: "CTR-2025-WS-006",
+    party: {
+      name: "Syed Ali Asghar / Syed Ali Asghar",
+      address: "Umer Academy Street, Defence Road, Sialkot, Pakistan",
+      identifier: "CNIC: 34603-5563963-1",
+      email: "aligee512@gmail.com",
+      country: "PK",
+      bankAccount: "PK05NAYA1234503328622123",
+      bankName: "NAYAPAY"
+    },
+    date: "10.12.2025",
+  }),
+  createCivilContractTerminationDocument({
+    id: "doc-civil-contract-termination-2025-004",
+    number: "CT-2025-004",
+    contractNumber: "CTR-2025-WS-007",
+    party: {
+      name: "Muhammad Ashir / Muhammad Ashir",
+      address: "Rabia city block d1 flat no 41 3rd floor, gulistan e johar, karachi",
+      identifier: "CNIC: 42201-3980178-1",
+      email: "shaikhashir871@gmail.com",
+      country: "PK",
+      bankAccount: "PK80ASCM0003710350003094",
+      bankName: "Askari bank , Muhammad Ashir"
+    },
+    date: "10.12.2025",
+  }),
+  createCivilContractTerminationDocument({
+    id: "doc-civil-contract-termination-2025-005",
+    number: "CT-2025-005",
+    contractNumber: "CTR-2025-WS-008",
+    party: {
+      name: "Muhammed Umar / Muhammed Umar",
+      address: "SHOE MARKET GHOSIA PLAZA G W R 24 FLAT NUMBER GARDEN WEST KARACHI WEST",
+      identifier: "CNIC: 42301-2029631-5",
+      email: "umartkd989@gmail.com",
+      country: "PK",
+      bankAccount: "PK52UNIL0109000312764519",
+      bankName: "United Bank Limited (UBL)"
+    },
+    date: "10.12.2025",
+  }),
+  createCivilContractTerminationDocument({
+    id: "doc-civil-contract-termination-2025-006",
+    number: "CTR-2025-WS-009",
+    contractNumber: "CTR-2025-WS-009",
+    party: {
+      name: "Kafayat Ullah / Kafayat Ullah",
+      address: "I-14, Bhata Chowk, Islamabad.",
+      identifier: "CNIC: 14302-2340898-1",
+      email: "kafayatullah000@gmail.com",
+      country: "PK",
+      bankAccount: "",
+      bankName: ""
+    },
+    date: "10.12.2025",
+  }),
+  createCivilContractTerminationDocument({
+    id: "doc-website-dev-agreement-2025-amsil",
+    number: "CTR-2025-WS-011",
+    contractNumber: "CTR-2025-WS-011",
+    party: {
+      name: "Amsil Sarim / Amsil Sarim",
+      address: "627, block F2, Wapda Town, Lahore",
+      identifier: "CNIC: 36502-1538650-9",
+      email: "amsil.engr@gmail.com",
+      country: "PK",
+      bankAccount: "PK17MEZN0002060101106695",
+      bankName: "Meezan Bank, AMSIL SARIM, Swift: MEZNPKKALH2"
+    },
+    date: "10.12.2025"
+  }),
+
+  createCivilContractTerminationDocument({
+    id: "doc-website-dev-agreement-2025-usama",
+    number: "CTR-2025-WS-012",
+    contractNumber: "CTR-2025-WS-012",
+    party: {
+      name: "Usama Islam / Usama Islam",
+      address: "St#2 Abubakar town khudian khas, Kasur Punjab, Pakistan",
+      identifier: "CNIC: 35102-4111265-9",
+      email: "usamak.eng@gmail.com",
+      country: "PK",
+      bankAccount: "PK64BAHL0022098101094501",
+      bankName: "Bank Al Habib, Usama Islam, Swift: BAHLPKKALHR"
+    },
+    date: "10.12.2025"
+  }),
+
+  // createCivilContractTerminationDocument({
+  //   id: "doc-civil-contract-termination-2025-002",
+  //   number: "CT-2025-002",
+  //   contractNumber: "CTR-2025-WS-004",
+  //   party: {
+  //     name: "Виктория Младенова",
+  //     identifier: "EGN: 0552186774",
+  //   },
+  // }),
   {
     id: "doc-trc-ack-2025-001",
     number: "TRC-ACK-2025-001",
@@ -223,6 +467,36 @@ export const DOCUMENTS: GenericDocument[] = [
     ],
     attachments: ["TRC PDF copy"],
     notes: "For audit trail only.",
+  },
+  { 
+    id: "doc-partnership-offer-innowise-2025-001",
+    number: "PARTNER-2025-001",
+    type: "generic_statement",
+    language: "en",
+    title: "Partnership Offer to Innowise",
+    date: "12.11.2025",
+    status: "ready",
+    subject: "Proposal for Strategic Partnership",
+    party: {
+      name: "Innowise USA",
+      country: "US",
+      identifier: "—",
+      address: "7901 4th St N STE 300, St. Petersburg, FL 33702, USA",
+      email: "contact@innowise.com",
+    },
+    fields: [
+      { label: "Partnership Type", value: "Delivery & Project Origination" },
+      { label: "Issuer", value: "Our Company" },
+      { label: "Offer Date", value: "12.11.2025" }
+    ],
+    body: [
+      "We are pleased to extend a formal partnership offer to Innowise USA.",
+      "Under this partnership, Innowise USA would leverage its business network to generate and refer new project opportunities, while we would focus on exemplary execution—delivering project outcomes with the highest standards of quality and reliability.",
+      "This collaboration aims to mutually strengthen our market presence, combining Innowise's business development strengths with our proven project delivery capabilities.",
+      "We envision a long-term, transparent relationship that delivers shared value to both parties as well as to end clients.",
+    ],
+    attachments: [],
+    notes: "For discussion and negotiation purposes only.",
   },
 ];
 
